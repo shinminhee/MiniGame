@@ -10,13 +10,15 @@
 		5E18CDEB26393B17002A3CFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18CDEA26393B17002A3CFD /* AppDelegate.swift */; };
 		5E18CDED26393B17002A3CFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18CDEC26393B17002A3CFD /* SceneDelegate.swift */; };
 		5E18CDEF26393B17002A3CFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18CDEE26393B17002A3CFD /* ViewController.swift */; };
-		5E18CDF226393B17002A3CFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E18CDF026393B17002A3CFD /* Main.storyboard */; };
 		5E18CDF426393B1C002A3CFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E18CDF326393B1C002A3CFD /* Assets.xcassets */; };
 		5E18CDF726393B1C002A3CFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E18CDF526393B1C002A3CFD /* LaunchScreen.storyboard */; };
 		5E18CE0126393BE5002A3CFD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E18CE0026393BE5002A3CFD /* SnapKit */; };
 		5E18CE0426393D85002A3CFD /* CustomTopicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18CE0326393D85002A3CFD /* CustomTopicButton.swift */; };
 		5E18CE0726394894002A3CFD /* TopicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18CE0626394894002A3CFD /* TopicCollectionViewCell.swift */; };
 		5E1DFDA9263C156F0095BD49 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1DFDA8263C156F0095BD49 /* Word.swift */; };
+		5E496EE4263C4A2100F82665 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EE3263C4A2100F82665 /* CustomButton.swift */; };
+		5E496EE7263CF02800F82665 /* KoreanQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EE6263CF02800F82665 /* KoreanQuizViewController.swift */; };
+		5E496EEA263CF04600F82665 /* Korean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EE9263CF04600F82665 /* Korean.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,13 +26,15 @@
 		5E18CDEA26393B17002A3CFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E18CDEC26393B17002A3CFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5E18CDEE26393B17002A3CFD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5E18CDF126393B17002A3CFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E18CDF326393B1C002A3CFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E18CDF626393B1C002A3CFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E18CDF826393B1C002A3CFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E18CE0326393D85002A3CFD /* CustomTopicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTopicButton.swift; sourceTree = "<group>"; };
 		5E18CE0626394894002A3CFD /* TopicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E1DFDA8263C156F0095BD49 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		5E496EE3263C4A2100F82665 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		5E496EE6263CF02800F82665 /* KoreanQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanQuizViewController.swift; sourceTree = "<group>"; };
+		5E496EE9263CF04600F82665 /* Korean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Korean.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,10 +71,12 @@
 				5E18CDEA26393B17002A3CFD /* AppDelegate.swift */,
 				5E18CDEC26393B17002A3CFD /* SceneDelegate.swift */,
 				5E18CDEE26393B17002A3CFD /* ViewController.swift */,
+				5E496EE6263CF02800F82665 /* KoreanQuizViewController.swift */,
 				5E18CE0626394894002A3CFD /* TopicCollectionViewCell.swift */,
 				5E18CE0326393D85002A3CFD /* CustomTopicButton.swift */,
 				5E1DFDA8263C156F0095BD49 /* Word.swift */,
-				5E18CDF026393B17002A3CFD /* Main.storyboard */,
+				5E496EE9263CF04600F82665 /* Korean.swift */,
+				5E496EE3263C4A2100F82665 /* CustomButton.swift */,
 				5E18CDF326393B1C002A3CFD /* Assets.xcassets */,
 				5E18CDF526393B1C002A3CFD /* LaunchScreen.storyboard */,
 				5E18CDF826393B1C002A3CFD /* Info.plist */,
@@ -143,7 +149,6 @@
 			files = (
 				5E18CDF726393B1C002A3CFD /* LaunchScreen.storyboard in Resources */,
 				5E18CDF426393B1C002A3CFD /* Assets.xcassets in Resources */,
-				5E18CDF226393B17002A3CFD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,10 +159,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E496EEA263CF04600F82665 /* Korean.swift in Sources */,
 				5E18CE0426393D85002A3CFD /* CustomTopicButton.swift in Sources */,
+				5E496EE7263CF02800F82665 /* KoreanQuizViewController.swift in Sources */,
 				5E18CDEF26393B17002A3CFD /* ViewController.swift in Sources */,
 				5E18CDEB26393B17002A3CFD /* AppDelegate.swift in Sources */,
 				5E18CDED26393B17002A3CFD /* SceneDelegate.swift in Sources */,
+				5E496EE4263C4A2100F82665 /* CustomButton.swift in Sources */,
 				5E18CE0726394894002A3CFD /* TopicCollectionViewCell.swift in Sources */,
 				5E1DFDA9263C156F0095BD49 /* Word.swift in Sources */,
 			);
@@ -166,14 +174,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5E18CDF026393B17002A3CFD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E18CDF126393B17002A3CFD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5E18CDF526393B1C002A3CFD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

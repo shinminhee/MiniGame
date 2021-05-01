@@ -18,6 +18,9 @@ class ViewController: UIViewController {
     let topics = ["가수", "음식", "브랜드", "동물", "장소", "탈것", "직업", "국내영화", "배우"]
     let wordLabel = UILabel()
     let paperView = UIView()
+//    let paperView = CustomDownButton(frame: CGRect(x: 100, y: 100, width: 200, height: 200))
+    let random: [String] = []
+
     
     let personView = UIView()
     var personInt: Int = 3
@@ -34,6 +37,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        randomElement()
     }
 
 
@@ -101,6 +105,12 @@ extension ViewController: UICollectionViewDataSource {
 }
 
 extension ViewController {
+    func randomElement() {
+        let arraynum: Int = Word.shared.food.count // 메시지 배열의 요소 개수를 세서 arraynum 변수에 할당
+        let numbers = Int.random(in: 0 ..< arraynum) // 랜덤으로 수를 골라 numbers 변수에 할당
+        let showingmessage = Word.shared.food[numbers]
+        print(showingmessage)
+    }
     final private func setUI() {
         setBasics()
         setLayouts()
@@ -110,6 +120,7 @@ extension ViewController {
         changeButton.setTitle("변경", for: .normal)
         changeButton.addTarget(self, action: #selector(tap(_:)), for: .touchUpInside)
         changeButton.backgroundColor = .systemIndigo
+      
         topicLabel.text = ""
         topicLabel.backgroundColor = .yellow
         wordLabel.backgroundColor = .systemPink
@@ -137,10 +148,7 @@ extension ViewController {
         }
         wordLabel.addSubview(paperView)
         paperView.snp.makeConstraints {
-            $0.leading.equalTo(wordLabel.snp.leading).inset(20)
-            $0.top.equalTo(wordLabel.snp.top).inset(20)
-            $0.trailing.equalTo(wordLabel.snp.trailing).inset(20)
-            $0.bottom.equalTo(wordLabel.snp.bottom).inset(20)
+            $0.leading.top.trailing.bottom.equalTo(wordLabel).inset(20)
         }
     }
     final private func setTopicView() {
