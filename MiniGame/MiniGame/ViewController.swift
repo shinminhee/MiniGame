@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     let changeButton = UIButton()
     let topicViewLayout = UICollectionViewFlowLayout()
     lazy var topicView = UICollectionView(frame: .zero, collectionViewLayout: topicViewLayout)
-    let topicButton = CustomTopicButton()
     let topics = ["가수", "음식", "브랜드", "동물", "장소", "탈것", "직업", "국내영화", "배우"]
     let wordLabel = UILabel()
     let paperView = UIView()
@@ -37,7 +36,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        randomElement()
     }
 
 
@@ -45,13 +43,18 @@ class ViewController: UIViewController {
 
 extension ViewController {
     @objc
+    func paperViewTaped(_ sender: UITapGestureRecognizer) {
+        paperView.isHidden = true
+    }
+    
+    @objc
     func startButton(_ sender: UIButton) {
         personView.isHidden = true
         changeButton.isHidden = true
     }
     @objc
-    func tap(_ sender: UIButton) {
-        setTopicView()
+    func changeButton(_ sender: UIButton) {
+        setTopicCollectionView()
         topicView.alpha = 1
     }
     @objc
@@ -76,8 +79,8 @@ extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.identifier, for: indexPath) as? TopicCollectionViewCell else { fatalError() }
         topicView.alpha = 0
-        topicLabel.text = topics[indexPath.row]
-        if topicLabel.text == "음식" {
+        topicLabel.text = "주제: \(topics[indexPath.row])"
+        if topics[indexPath.row] == "음식" {
             wordLabel.text = Word.shared.food[row]
         }
     }
@@ -112,22 +115,12 @@ extension ViewController {
         print(showingmessage)
     }
     final private func setUI() {
-        setBasics()
-        setLayouts()
+        setTopicView()
+        setWordLabel()
+        setPaperView()
         setpersonView()
     }
-    final private func setBasics() {
-        changeButton.setTitle("변경", for: .normal)
-        changeButton.addTarget(self, action: #selector(tap(_:)), for: .touchUpInside)
-        changeButton.backgroundColor = .systemIndigo
-      
-        topicLabel.text = ""
-        topicLabel.backgroundColor = .yellow
-        wordLabel.backgroundColor = .systemPink
-        wordLabel.textAlignment = .center
-        paperView.backgroundColor = .green
-    }
-    final private func setLayouts() {
+    final private func setTopicView() {
         view.addSubview(topicLabel)
         topicLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -135,46 +128,40 @@ extension ViewController {
             $0.width.equalTo(240)
             $0.height.equalTo(80)
         }
-        topicLabel.addSubview(changeButton)
+        view.addSubview(changeButton)
         changeButton.snp.makeConstraints {
             $0.trailing.top.bottom.equalTo(topicLabel).inset(20)
             $0.width.equalTo(60)
         }
+        changeButton.setTitle("변경", for: .normal)
+        changeButton.addTarget(self, action: #selector(changeButton(_:)), for: .touchUpInside)
+        changeButton.backgroundColor = .systemIndigo
+      
+        topicLabel.text = " 주제를 선택해 주세요"
+        topicLabel.backgroundColor = .yellow
+       
+    }
+    final private func setWordLabel() {
         view.addSubview(wordLabel)
         wordLabel.snp.makeConstraints {
             $0.leading.trailing.equalTo(topicLabel)
             $0.top.equalTo(topicLabel.snp.bottom).offset(50)
             $0.height.equalTo(160)
         }
-        wordLabel.addSubview(paperView)
+        wordLabel.backgroundColor = .systemPink
+        wordLabel.textAlignment = .center
+    }
+    final private func setPaperView() {
+        view.addSubview(paperView)
         paperView.snp.makeConstraints {
             $0.leading.top.trailing.bottom.equalTo(wordLabel).inset(20)
         }
-    }
-    final private func setTopicView() {
-        setTopicViewLayout()
-        view.addSubview(topicView)
-        topicView.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview()
-            $0.width.equalTo(250)
-            $0.height.equalTo(250)
-        }
-        topicView.dataSource = self
-        topicView.delegate = self
-        topicView.backgroundColor = .gray
-        topicView.register(TopicCollectionViewCell.self, forCellWithReuseIdentifier: TopicCollectionViewCell.identifier)
-    }
-    final private func setTopicViewLayout() {
-        topicViewLayout.scrollDirection = .vertical
-        topicViewLayout.itemSize = CGSize(width: 70, height: 70)
-        topicViewLayout.minimumInteritemSpacing = 10
-        topicViewLayout.minimumLineSpacing = 10
-        topicViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    }
-    final private func setPaperView() {
-        
-        
+        paperView.backgroundColor = .green
+        let paperViewTaped = UITapGestureRecognizer(target: self, action: #selector(paperViewTaped(_:)))
+        paperViewTaped.numberOfTouchesRequired = 1
+        paperViewTaped.numberOfTapsRequired = 1
+        paperView.addGestureRecognizer(paperViewTaped)
+        paperView.isUserInteractionEnabled = true
     }
     final private func setpersonView() {
         view.addSubview(personView)
@@ -230,4 +217,26 @@ extension ViewController {
         downButton.isUserInteractionEnabled = true
         
     }
+    final private func setTopicCollectionView() {
+        setTopicViewLayout()
+        view.addSubview(topicView)
+        topicView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(250)
+            $0.height.equalTo(250)
+        }
+        topicView.dataSource = self
+        topicView.delegate = self
+        topicView.backgroundColor = .gray
+        topicView.register(TopicCollectionViewCell.self, forCellWithReuseIdentifier: TopicCollectionViewCell.identifier)
+    }
+    final private func setTopicViewLayout() {
+        topicViewLayout.scrollDirection = .vertical
+        topicViewLayout.itemSize = CGSize(width: 70, height: 70)
+        topicViewLayout.minimumInteritemSpacing = 10
+        topicViewLayout.minimumLineSpacing = 10
+        topicViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+   
 }

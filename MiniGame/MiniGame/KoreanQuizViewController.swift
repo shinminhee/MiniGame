@@ -21,8 +21,8 @@ class KoreanQuizViewController: UIViewController {
     
     @objc
     func tap(_ sender: UIButton) {
-        let rotation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotation.toValue = Double.pi * 2
+        let rotation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotation.toValue = Double.pi
         rotation.duration = 0.25 // 1바퀴 도는데 걸리는 시간
         rotation.isCumulative = true
         rotation.repeatCount = 8 // 몇번 반복 할것인가
