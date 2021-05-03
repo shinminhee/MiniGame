@@ -21,19 +21,19 @@ class KoreanQuizViewController: UIViewController {
     
     @objc
     func tap(_ sender: UIButton) {
-        let rotation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation")
-        rotation.toValue = Double.pi
-        rotation.duration = 0.25 // 1바퀴 도는데 걸리는 시간
-        rotation.isCumulative = true
-        rotation.repeatCount = 8 // 몇번 반복 할것인가
-        alphabetView.layer.add(rotation, forKey: "rotationAnimation") // 원하는 뷰에 애니메이션 삽입
+//        let rotation: CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation")
+//        rotation.toValue = Double.pi
+//        rotation.duration = 0.25 // 1바퀴 도는데 걸리는 시간
+//        rotation.isCumulative = true
+//        rotation.repeatCount = 8 // 몇번 반복 할것인가
+//        alphabetView.layer.add(rotation, forKey: "rotationAnimation") // 원하는 뷰에 애니메이션 삽입
 
-//        let arraynum: Int = Korean.shared.first.count // 메시지 배열의 요소 개수를 세서 arraynum 변수에 할당
-//        let firstNumbers = Int.random(in: 0 ..< arraynum) // 랜덤으로 수를 골라 numbers 변수에 할당
-//        let firstMessage = Korean.shared.first[firstNumbers]
-//        let secondNumbers = Int.random(in: 0 ..< arraynum)
-//        let secondMessage = Korean.shared.first[secondNumbers]
-//        koreanLabel.text = "\(firstMessage) \(secondMessage)"
+        let arraynum: Int = Korean.shared.first.count // 메시지 배열의 요소 개수를 세서 arraynum 변수에 할당
+        let firstNumbers = Int.random(in: 0 ..< arraynum) // 랜덤으로 수를 골라 numbers 변수에 할당
+        let firstMessage = Korean.shared.first[firstNumbers]
+        let secondNumbers = Int.random(in: 0 ..< arraynum)
+        let secondMessage = Korean.shared.first[secondNumbers]
+        koreanLabel.text = "\(firstMessage) \(secondMessage)"
     }
 
 }
@@ -56,17 +56,16 @@ extension KoreanQuizViewController {
         
     }
     final private func setLayouts() {
-        view.addSubview(alphabetView)
-        alphabetView.snp.makeConstraints {
+        view.addSubview(koreanLabel)
+        koreanLabel.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
             $0.width.equalTo(200)
             $0.height.equalTo(200)
         }
-        // 스크롤뷰 말고 컨텐트뷰로 길게 잡아준다.
         view.addSubview(startButton)
         startButton.snp.makeConstraints {
-            $0.leading.trailing.equalTo(alphabetView)
-            $0.top.equalTo(alphabetView.snp.bottom).offset(50)
+            $0.leading.trailing.equalTo(koreanLabel)
+            $0.top.equalTo(koreanLabel.snp.bottom).offset(50)
             $0.height.equalTo(100)
         }
 }

@@ -10,23 +10,32 @@ import SnapKit
 
 class ViewController: UIViewController {
     
+    let modeView = UILabel()
+    let modeLeftButton = UIButton()
+    let modeRightButton = UIButton()
+    
     let topicLabel = UILabel()
     let changeButton = UIButton()
     let topicViewLayout = UICollectionViewFlowLayout()
     lazy var topicView = UICollectionView(frame: .zero, collectionViewLayout: topicViewLayout)
     let topics = ["가수", "음식", "브랜드", "동물", "장소", "탈것", "직업", "국내영화", "배우"]
+    let mode = ["노말모드", "스파이모드", "바보모드"]
+    var modeIndex = 0
     let wordLabel = UILabel()
     let paperView = UIView()
-//    let paperView = CustomDownButton(frame: CGRect(x: 100, y: 100, width: 200, height: 200))
     let random: [String] = []
 
-    
     let personView = UIView()
-    var personInt: Int = 3
+    var personNum = 0
+    var personInt = 3
+    var liarNum = 0
     let personLabel = UILabel()
     let upButton = UIButton()
     let downButton = UIButton()
     let startButton = UIButton()
+    let okButton = UIButton()
+    var personText = ""
+    var unSelected = [""]
     var row = 0 {
         willSet {
             print(newValue)
@@ -37,21 +46,55 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setUI()
     }
-
-
 }
 
 extension ViewController {
-    @objc
-    func paperViewTaped(_ sender: UITapGestureRecognizer) {
-        paperView.isHidden = true
-    }
     
     @objc
     func startButton(_ sender: UIButton) {
+        personText = Word.shared.topicManager["\(topicLabel.text ?? "")"]?.randomElement() ?? ""
         personView.isHidden = true
         changeButton.isHidden = true
+        personNum = personInt
+        wordLabel.text = personText
+        liarNum = Int.random(in: 1 ... personInt)
+        var selected = Word.shared.topicManager["\(topicLabel.text ?? "")"] ?? [""]
+        selected.removeAll(where: { $0 == personText })
+        unSelected = selected
+        print(selected)
     }
+    
+    @objc
+    func okButton(_ sender: UIButton) {
+       if personNum != 1 {
+            personNum -= 1
+        paperView.isHidden = false
+       } else {
+        personView.isHidden = false
+        changeButton.isHidden = false
+       }
+    }
+    
+    @objc
+    func paperViewTaped(_ sender: UITapGestureRecognizer) {
+        if personNum == liarNum {
+            switch modeView.text {
+            case "노말모드":
+                wordLabel.text = "당신은 라이어입니다."
+            case "스파이모드":
+                wordLabel.text = "당신은 스파이입니다."
+            case "바보모드":
+                wordLabel.text = unSelected.randomElement()
+            default:
+                break
+            }
+            paperView.isHidden = true
+        } else {
+            paperView.isHidden = true
+            wordLabel.text = personText
+        }
+    }
+    
     @objc
     func changeButton(_ sender: UIButton) {
         setTopicCollectionView()
@@ -73,16 +116,34 @@ extension ViewController {
         }
         personLabel.text = "참가인원: \(personInt)명"
     }
+    @objc
+    func rightButton(_ sender: UIButton) {
+        if modeIndex != 2 {
+            modeIndex += 1
+            modeView.text = mode[modeIndex]
+        } else {
+            modeIndex = 0
+            modeView.text = mode[modeIndex]
+        }
+    }
+    @objc
+    func leftButton(_ sender: UIButton) {
+        if modeIndex != 0 {
+            modeIndex -= 1
+            modeView.text = mode[modeIndex]
+        } else {
+            modeIndex = 2
+            modeView.text = mode[modeIndex]
+        }
+        
+    }
 }
 
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.identifier, for: indexPath) as? TopicCollectionViewCell else { fatalError() }
         topicView.alpha = 0
-        topicLabel.text = "주제: \(topics[indexPath.row])"
-        if topics[indexPath.row] == "음식" {
-            wordLabel.text = Word.shared.food[row]
-        }
+        topicLabel.text = topics[indexPath.row]
     }
 }
 
@@ -103,23 +164,17 @@ extension ViewController: UICollectionViewDataSource {
         
         return cell
     }
-    
-    
 }
 
 extension ViewController {
-    func randomElement() {
-        let arraynum: Int = Word.shared.food.count // 메시지 배열의 요소 개수를 세서 arraynum 변수에 할당
-        let numbers = Int.random(in: 0 ..< arraynum) // 랜덤으로 수를 골라 numbers 변수에 할당
-        let showingmessage = Word.shared.food[numbers]
-        print(showingmessage)
-    }
+
     final private func setUI() {
         setTopicView()
         setWordLabel()
         setPaperView()
         setpersonView()
     }
+
     final private func setTopicView() {
         view.addSubview(topicLabel)
         topicLabel.snp.makeConstraints {
@@ -148,6 +203,14 @@ extension ViewController {
             $0.top.equalTo(topicLabel.snp.bottom).offset(50)
             $0.height.equalTo(160)
         }
+        view.addSubview(okButton)
+        okButton.snp.makeConstraints {
+            $0.leading.trailing.equalTo(wordLabel).inset(30)
+            $0.bottom.equalTo(wordLabel.snp.bottom).inset(10)
+            $0.height.equalTo(20)
+        }
+        okButton.backgroundColor = .white
+        okButton.addTarget(self, action: #selector(okButton(_:)), for: .touchUpInside)
         wordLabel.backgroundColor = .systemPink
         wordLabel.textAlignment = .center
     }
@@ -165,7 +228,7 @@ extension ViewController {
     }
     final private func setpersonView() {
         view.addSubview(personView)
-        [personLabel, upButton, downButton, startButton].forEach {
+        [personLabel, upButton, downButton, startButton, modeView, modeLeftButton, modeRightButton].forEach {
         personView.addSubview($0)
         }
         personView.snp.makeConstraints {
@@ -187,12 +250,35 @@ extension ViewController {
             $0.top.equalTo(upButton.snp.bottom)
             $0.height.equalTo(15)
         }
+        modeView.snp.makeConstraints {
+            $0.centerX.centerY.equalTo(personView)
+            $0.height.equalTo(30)
+            $0.width.equalTo(80)
+        }
+        modeLeftButton.snp.makeConstraints {
+            $0.leading.equalTo(personLabel).inset(20)
+            $0.top.bottom.equalTo(modeView)
+            $0.trailing.equalTo(modeView.snp.leading)
+        }
+        modeRightButton.snp.makeConstraints {
+            $0.trailing.equalTo(upButton).inset(20)
+            $0.top.bottom.equalTo(modeView)
+            $0.leading.equalTo(modeView.snp.trailing)
+        }
         startButton.snp.makeConstraints {
             $0.leading.equalTo(personLabel).inset(20)
             $0.trailing.equalTo(upButton).inset(20)
             $0.top.equalTo(personLabel.snp.bottom).offset(60)
             $0.height.equalTo(30)
         }
+        
+        modeView.text = "\(mode[0])"
+        modeView.textAlignment = .center
+        
+        modeRightButton.backgroundColor = .red
+        modeRightButton.addTarget(self, action: #selector(rightButton(_:)), for: .touchUpInside)
+        modeLeftButton.backgroundColor = .red
+        modeLeftButton.addTarget(self, action: #selector(leftButton(_:)), for: .touchUpInside)
         
         personView.backgroundColor = .systemIndigo
         startButton.backgroundColor = .red

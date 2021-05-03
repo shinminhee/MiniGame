@@ -19,6 +19,7 @@
 		5E496EE4263C4A2100F82665 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EE3263C4A2100F82665 /* CustomButton.swift */; };
 		5E496EE7263CF02800F82665 /* KoreanQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EE6263CF02800F82665 /* KoreanQuizViewController.swift */; };
 		5E496EEA263CF04600F82665 /* Korean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EE9263CF04600F82665 /* Korean.swift */; };
+		5E496EEE263FCFE400F82665 /* MovieInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EED263FCFE400F82665 /* MovieInitialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		5E496EE3263C4A2100F82665 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		5E496EE6263CF02800F82665 /* KoreanQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanQuizViewController.swift; sourceTree = "<group>"; };
 		5E496EE9263CF04600F82665 /* Korean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Korean.swift; sourceTree = "<group>"; };
+		5E496EED263FCFE400F82665 /* MovieInitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInitialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				5E18CDEE26393B17002A3CFD /* ViewController.swift */,
 				5E496EE6263CF02800F82665 /* KoreanQuizViewController.swift */,
 				5E18CE0626394894002A3CFD /* TopicCollectionViewCell.swift */,
+				5E496EED263FCFE400F82665 /* MovieInitialViewController.swift */,
 				5E18CE0326393D85002A3CFD /* CustomTopicButton.swift */,
 				5E1DFDA8263C156F0095BD49 /* Word.swift */,
 				5E496EE9263CF04600F82665 /* Korean.swift */,
@@ -159,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E496EEE263FCFE400F82665 /* MovieInitialViewController.swift in Sources */,
 				5E496EEA263CF04600F82665 /* Korean.swift in Sources */,
 				5E18CE0426393D85002A3CFD /* CustomTopicButton.swift in Sources */,
 				5E496EE7263CF02800F82665 /* KoreanQuizViewController.swift in Sources */,
