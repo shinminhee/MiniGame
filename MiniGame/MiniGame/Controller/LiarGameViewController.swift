@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ViewController: UIViewController {
+class LiarGameViewController: UIViewController {
     
     let modeView = UILabel()
     let modeLeftButton = UIButton()
@@ -16,42 +16,41 @@ class ViewController: UIViewController {
     
     let topicLabel = UILabel()
     let changeButton = UIButton()
+    
     let topicViewLayout = UICollectionViewFlowLayout()
     lazy var topicView = UICollectionView(frame: .zero, collectionViewLayout: topicViewLayout)
     let topics = ["가수", "음식", "브랜드", "동물", "장소", "탈것", "직업", "국내영화", "배우"]
+    
     let mode = ["노말모드", "스파이모드", "바보모드"]
     var modeIndex = 0
     let wordLabel = UILabel()
     let paperView = UIView()
-    let random: [String] = []
-
+    
     let personView = UIView()
     var personNum = 0
     var personInt = 3
-    var liarNum = 0
     let personLabel = UILabel()
+    var liarNum = 0
     let upButton = UIButton()
     let downButton = UIButton()
     let startButton = UIButton()
     let okButton = UIButton()
     var personText = ""
     var unSelected = [""]
-    var row = 0 {
-        willSet {
-            print(newValue)
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         setUI()
     }
 }
 
-extension ViewController {
+extension LiarGameViewController {
     
     @objc
     func startButton(_ sender: UIButton) {
+        if topicLabel.text?.count ?? 0 <= 5 {
+        paperView.isHidden = false
         personText = Word.shared.topicManager["\(topicLabel.text ?? "")"]?.randomElement() ?? ""
         personView.isHidden = true
         changeButton.isHidden = true
@@ -62,19 +61,19 @@ extension ViewController {
         selected.removeAll(where: { $0 == personText })
         unSelected = selected
         print(selected)
+        }
     }
     
     @objc
     func okButton(_ sender: UIButton) {
-       if personNum != 1 {
+        if personNum != 1 {
             personNum -= 1
-        paperView.isHidden = false
-       } else {
-        personView.isHidden = false
-        changeButton.isHidden = false
-       }
+            paperView.isHidden = false
+        } else {
+            personView.isHidden = false
+            changeButton.isHidden = false
+        }
     }
-    
     @objc
     func paperViewTaped(_ sender: UITapGestureRecognizer) {
         if personNum == liarNum {
@@ -135,19 +134,17 @@ extension ViewController {
             modeIndex = 2
             modeView.text = mode[modeIndex]
         }
-        
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension LiarGameViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.identifier, for: indexPath) as? TopicCollectionViewCell else { fatalError() }
         topicView.alpha = 0
         topicLabel.text = topics[indexPath.row]
     }
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension LiarGameViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return topics.count
     }
@@ -161,20 +158,18 @@ extension ViewController: UICollectionViewDataSource {
         cell.layer.cornerRadius = 10
         cell.layer.borderColor = UIColor.systemIndigo.cgColor
         cell.layer.borderWidth = 2
-        
         return cell
     }
 }
 
-extension ViewController {
-
+extension LiarGameViewController {
+    
     final private func setUI() {
         setTopicView()
         setWordLabel()
         setPaperView()
         setpersonView()
     }
-
     final private func setTopicView() {
         view.addSubview(topicLabel)
         topicLabel.snp.makeConstraints {
@@ -191,10 +186,9 @@ extension ViewController {
         changeButton.setTitle("변경", for: .normal)
         changeButton.addTarget(self, action: #selector(changeButton(_:)), for: .touchUpInside)
         changeButton.backgroundColor = .systemIndigo
-      
+        
         topicLabel.text = " 주제를 선택해 주세요"
         topicLabel.backgroundColor = .yellow
-       
     }
     final private func setWordLabel() {
         view.addSubview(wordLabel)
@@ -229,7 +223,7 @@ extension ViewController {
     final private func setpersonView() {
         view.addSubview(personView)
         [personLabel, upButton, downButton, startButton, modeView, modeLeftButton, modeRightButton].forEach {
-        personView.addSubview($0)
+            personView.addSubview($0)
         }
         personView.snp.makeConstraints {
             $0.leading.top.bottom.trailing.equalTo(wordLabel)
@@ -301,7 +295,6 @@ extension ViewController {
         downButtonTaped.numberOfTapsRequired = 1
         downButton.addGestureRecognizer(downButtonTaped)
         downButton.isUserInteractionEnabled = true
-        
     }
     final private func setTopicCollectionView() {
         setTopicViewLayout()
@@ -324,5 +317,4 @@ extension ViewController {
         topicViewLayout.minimumLineSpacing = 10
         topicViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
-   
 }
