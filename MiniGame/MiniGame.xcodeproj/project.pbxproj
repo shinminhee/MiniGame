@@ -24,6 +24,9 @@
 		5E496EFE26410BDA00F82665 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EFD26410BDA00F82665 /* PersonCollectionViewCell.swift */; };
 		5E496F012641160A00F82665 /* MiniGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F002641160A00F82665 /* MiniGameViewController.swift */; };
 		5E496F0526411ECD00F82665 /* CustomGameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F0426411ECD00F82665 /* CustomGameButton.swift */; };
+		5E496F0826440C1E00F82665 /* Swift-Regular_43151.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E496F0726440C1E00F82665 /* Swift-Regular_43151.ttf */; };
+		5E496F0B264418E800F82665 /* GIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F0A264418E800F82665 /* GIf.swift */; };
+		5E496F0E26441A8200F82665 /* logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5E496F0D26441A8200F82665 /* logo.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,9 @@
 		5E496EFD26410BDA00F82665 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E496F002641160A00F82665 /* MiniGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGameViewController.swift; sourceTree = "<group>"; };
 		5E496F0426411ECD00F82665 /* CustomGameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGameButton.swift; sourceTree = "<group>"; };
+		5E496F0726440C1E00F82665 /* Swift-Regular_43151.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Swift-Regular_43151.ttf"; sourceTree = "<group>"; };
+		5E496F0A264418E800F82665 /* GIf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIf.swift; sourceTree = "<group>"; };
+		5E496F0D26441A8200F82665 /* logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logo.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +91,9 @@
 				5E18CDEA26393B17002A3CFD /* AppDelegate.swift */,
 				5E18CDEC26393B17002A3CFD /* SceneDelegate.swift */,
 				5E18CDF326393B1C002A3CFD /* Assets.xcassets */,
+				5E496F0D26441A8200F82665 /* logo.gif */,
 				5E18CDF526393B1C002A3CFD /* LaunchScreen.storyboard */,
+				5E496F0726440C1E00F82665 /* Swift-Regular_43151.ttf */,
 				5E18CDF826393B1C002A3CFD /* Info.plist */,
 			);
 			path = MiniGame;
@@ -108,6 +116,7 @@
 				5E496EFD26410BDA00F82665 /* PersonCollectionViewCell.swift */,
 				5E496F0426411ECD00F82665 /* CustomGameButton.swift */,
 				5E496EE3263C4A2100F82665 /* CustomButton.swift */,
+				5E496F0A264418E800F82665 /* GIf.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -195,6 +204,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E18CDF726393B1C002A3CFD /* LaunchScreen.storyboard in Resources */,
+				5E496F0E26441A8200F82665 /* logo.gif in Resources */,
+				5E496F0826440C1E00F82665 /* Swift-Regular_43151.ttf in Resources */,
 				5E18CDF426393B1C002A3CFD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E496F0B264418E800F82665 /* GIf.swift in Sources */,
 				5E496EEE263FCFE400F82665 /* MovieInitialViewController.swift in Sources */,
 				5E496EFA2640DCAC00F82665 /* MovieAlphabet.swift in Sources */,
 				5E496EEA263CF04600F82665 /* Korean.swift in Sources */,

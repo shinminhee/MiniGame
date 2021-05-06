@@ -58,7 +58,9 @@ extension MovieInitialViewController: UICollectionViewDataSource {
         cell.backgroundColor = .red
         cell.scoreNumber.text = "\(score)"
         cell.scoreNumber.textAlignment = .center
+        cell.personName.text = "\(indexPath.row)"
         return cell
+        
     }
 }
 extension MovieInitialViewController {

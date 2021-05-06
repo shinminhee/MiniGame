@@ -15,6 +15,8 @@ class CustomGameButton: UIButton {
         self.layer.cornerRadius = 10
         self.layer.borderColor = UIColor.systemIndigo.cgColor
         self.layer.borderWidth = 2
+        self.titleLabel?.font = UIFont(name: "Swift-Regular", size: 20)
+
     }
 
     init(view: UIView) {

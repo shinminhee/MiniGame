@@ -81,7 +81,7 @@ extension LiarGameViewController {
             case "노말모드":
                 wordLabel.text = "당신은 라이어입니다."
             case "스파이모드":
-                wordLabel.text = "당신은 스파이입니다."
+                wordLabel.text = "당신은 라이어입니다."
             case "바보모드":
                 wordLabel.text = unSelected.randomElement()
             default:
