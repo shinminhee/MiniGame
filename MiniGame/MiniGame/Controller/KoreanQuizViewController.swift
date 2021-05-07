@@ -11,12 +11,13 @@ class KoreanQuizViewController: UIViewController {
     
     let koreanLabel = UILabel()
     let alphabetView = UIView()
-    let startButton = UIButton()
+    let startButton = CustomStartButton()
+    let KoreanViewLayout = UICollectionViewFlowLayout()
+    lazy var KoreanView = UICollectionView(frame: .zero, collectionViewLayout: KoreanViewLayout)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-
+        view.backgroundColor = .black
         setUI()
     }
     
@@ -44,14 +45,17 @@ extension KoreanQuizViewController {
         setLayouts()
     }
     final private func setBasics() {
-        koreanLabel.backgroundColor = .yellow
+        koreanLabel.backgroundColor = .black
         koreanLabel.textAlignment = .center
-
+        koreanLabel.layer.borderColor = UIColor.yellow.cgColor
+        koreanLabel.layer.borderWidth = 3
+        koreanLabel.textColor = .white
         alphabetView.backgroundColor = .green
+        alphabetView.alpha = 0
         
         startButton.setTitle("시작하기", for: .normal)
         startButton.addTarget(self, action: #selector(tap(_:)), for: .touchUpInside)
-        startButton.backgroundColor = .red
+        startButton.layer.borderColor = UIColor.green.cgColor
     }
     
     final private func setLayouts() {
@@ -71,7 +75,26 @@ extension KoreanQuizViewController {
         startButton.snp.makeConstraints {
             $0.leading.trailing.equalTo(koreanLabel)
             $0.top.equalTo(koreanLabel.snp.bottom).offset(50)
-            $0.height.equalTo(100)
+            $0.height.equalTo(50)
         }
 }
-}
+    final private func setKoreanCollectionView() {
+        setKoreanViewLayout()
+        view.addSubview(KoreanView)
+        KoreanView.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+            $0.width.equalTo(200)
+            $0.height.equalTo(200)
+        }
+//        KoreanView.dataSource = self
+//        KoreanView.delegate = self
+        KoreanView.backgroundColor = .clear
+        KoreanView.register(TopicCollectionViewCell.self, forCellWithReuseIdentifier: TopicCollectionViewCell.identifier)
+    }
+    final private func setKoreanViewLayout() {
+        KoreanViewLayout.scrollDirection = .vertical
+        KoreanViewLayout.itemSize = CGSize(width: 70, height: 70)
+        KoreanViewLayout.minimumInteritemSpacing = 10
+        KoreanViewLayout.minimumLineSpacing = 10
+        KoreanViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }}

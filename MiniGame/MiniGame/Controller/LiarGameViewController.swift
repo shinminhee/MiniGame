@@ -33,14 +33,14 @@ class LiarGameViewController: UIViewController {
     var liarNum = 0
     let upButton = UIButton()
     let downButton = UIButton()
-    let startButton = UIButton()
+    let startButton = CustomStartButton()
     let okButton = UIButton()
     var personText = ""
     var unSelected = [""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         setUI()
     }
 }
@@ -98,6 +98,9 @@ extension LiarGameViewController {
     func changeButton(_ sender: UIButton) {
         setTopicCollectionView()
         topicView.alpha = 1
+        [personView, topicLabel, startButton, paperView, wordLabel, okButton, changeButton].forEach {
+            $0.alpha = 0
+        }
     }
     @objc
     func upButton(_ sender: UITapGestureRecognizer) {
@@ -141,6 +144,10 @@ extension LiarGameViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         topicView.alpha = 0
         topicLabel.text = topics[indexPath.row]
+        topicLabel.textAlignment = .center
+        [personView, topicLabel, startButton, paperView, wordLabel, okButton, changeButton].forEach {
+            $0.alpha = 1
+        }
     }
 }
 
@@ -153,7 +160,8 @@ extension LiarGameViewController: UICollectionViewDataSource {
         guard let cell = topicView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.identifier, for: indexPath) as? TopicCollectionViewCell else { fatalError() }
         cell.topicLabel.text = topics[indexPath.row]
         cell.topicLabel.textAlignment = .center
-        cell.backgroundColor = .white
+        cell.topicLabel.textColor = .white
+        cell.backgroundColor = .black
         cell.clipsToBounds = true
         cell.layer.cornerRadius = 10
         cell.layer.borderColor = UIColor.systemIndigo.cgColor
@@ -174,7 +182,7 @@ extension LiarGameViewController {
         view.addSubview(topicLabel)
         topicLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.centerY.equalTo(view.snp.centerY).offset(-100)
+            $0.centerY.equalTo(view.snp.centerY).offset(-150)
             $0.width.equalTo(240)
             $0.height.equalTo(80)
         }
@@ -187,8 +195,12 @@ extension LiarGameViewController {
         changeButton.addTarget(self, action: #selector(changeButton(_:)), for: .touchUpInside)
         changeButton.backgroundColor = .systemIndigo
         
-        topicLabel.text = " 주제를 선택해 주세요"
-        topicLabel.backgroundColor = .yellow
+        topicLabel.text = "   주제를 선택해 주세요"
+        topicLabel.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        topicLabel.textColor = .white
+        topicLabel.backgroundColor = .black
+        topicLabel.layer.borderWidth = 3
+        topicLabel.layer.borderColor = UIColor.yellow.cgColor
     }
     final private func setWordLabel() {
         view.addSubview(wordLabel)
@@ -260,13 +272,13 @@ extension LiarGameViewController {
             $0.leading.equalTo(modeView.snp.trailing)
         }
         startButton.snp.makeConstraints {
-            $0.leading.equalTo(personLabel).inset(20)
-            $0.trailing.equalTo(upButton).inset(20)
-            $0.top.equalTo(personLabel.snp.bottom).offset(60)
-            $0.height.equalTo(30)
+            $0.leading.trailing.equalTo(personView)
+            $0.top.equalTo(personView.snp.bottom).offset(20)
+            $0.height.equalTo(50)
         }
         
         modeView.text = "\(mode[0])"
+        modeView.textColor = .white
         modeView.textAlignment = .center
         
         modeRightButton.backgroundColor = .red
@@ -274,10 +286,15 @@ extension LiarGameViewController {
         modeLeftButton.backgroundColor = .red
         modeLeftButton.addTarget(self, action: #selector(leftButton(_:)), for: .touchUpInside)
         
-        personView.backgroundColor = .systemIndigo
-        startButton.backgroundColor = .red
+        personView.backgroundColor = .black
+        personView.layer.borderColor = UIColor.systemIndigo.cgColor
+        personView.layer.borderWidth = 3
+        
+        
+        startButton.layer.borderColor = UIColor.red.cgColor
         startButton.setTitle("게임시작", for: .normal)
         startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
+        
         personLabel.text = "참가인원: \(personInt)명"
         personLabel.textAlignment = .center
         personLabel.backgroundColor = .orange
@@ -307,7 +324,7 @@ extension LiarGameViewController {
         }
         topicView.dataSource = self
         topicView.delegate = self
-        topicView.backgroundColor = .gray
+        topicView.backgroundColor = .clear
         topicView.register(TopicCollectionViewCell.self, forCellWithReuseIdentifier: TopicCollectionViewCell.identifier)
     }
     final private func setTopicViewLayout() {

@@ -22,49 +22,46 @@ class MovieInitialViewController: UIViewController {
     var unSelected = [""]
     let qaTitle = ["문제", "정답"]
     let answerButton = UIButton()
-    let personCollectionViewLayout = UICollectionViewFlowLayout()
-    lazy var personCollectionView = UICollectionView(frame: .zero, collectionViewLayout: personCollectionViewLayout)
-    var score = 0
+  
 
     
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-
+        view.backgroundColor = .black
         setUI()
 
     }
 
 }
 
-extension MovieInitialViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = personCollectionView.dequeueReusableCell(withReuseIdentifier: PersonCollectionViewCell.identifier, for: indexPath) as? PersonCollectionViewCell else { fatalError() }
-        score += 1
-        cell.scoreNumber.text = "\(score)"
-        print(score)
-    }
-    
-}
-extension MovieInitialViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return personInt
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = personCollectionView.dequeueReusableCell(withReuseIdentifier: PersonCollectionViewCell.identifier, for: indexPath) as? PersonCollectionViewCell else { fatalError() }
-        cell.backgroundColor = .red
-        cell.scoreNumber.text = "\(score)"
-        cell.scoreNumber.textAlignment = .center
-        cell.personName.text = "\(indexPath.row)"
-        return cell
-        
-    }
-}
+//extension MovieInitialViewController: UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let cell = personCollectionView.dequeueReusableCell(withReuseIdentifier: PersonCollectionViewCell.identifier, for: indexPath) as? PersonCollectionViewCell else { fatalError() }
+//        score += 1
+//        cell.scoreNumber.text = "\(score)"
+//        print(score)
+//    }
+//
+//}
+//extension MovieInitialViewController: UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return personInt
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell = personCollectionView.dequeueReusableCell(withReuseIdentifier: PersonCollectionViewCell.identifier, for: indexPath) as? PersonCollectionViewCell else { fatalError() }
+//        cell.backgroundColor = .red
+//        cell.scoreNumber.text = "\(score)"
+//        cell.scoreNumber.textAlignment = .center
+//        cell.personName.text = "\(indexPath.row)"
+//        return cell
+//
+//    }
+//}
+
 extension MovieInitialViewController {
-    
     @objc
     func answerButton(_ sender: UIButton) {
         answerButton.isHidden = true
@@ -81,18 +78,18 @@ extension MovieInitialViewController {
 
     @objc
     func startButton(_ sender: UIButton) {
-        personCollectionView.dataSource = self
-        UIView.animate(withDuration: 2) {
-            self.personCollectionView.frame = CGRect(x: self.personCollectionView.center.x, y: self.personCollectionView.center.y, width: 70, height: 70)
-
-        }
         nextButton.isHidden = false
         answerButton.isHidden = false
         qAndAText = MovieAlphabet.shared.qAndA["\(qaTitle[0])"]?.randomElement() ?? ""
         print(qAndAText)
         personView.isHidden = true
-        personNum = personInt
         qAndALabel.text = qAndAText
+        
+//        personCollectionView.dataSource = self
+//        UIView.animate(withDuration: 2) {
+//            self.personCollectionView.frame = CGRect(x: self.personCollectionView.center.x, y: self.personCollectionView.center.y, width: 70, height: 70)
+//
+//        }
     }
     @objc
     func upButton(_ sender: UIButton) {
@@ -117,27 +114,27 @@ extension MovieInitialViewController {
         setQAndALabel()
         setPersonView()
         setNextButton()
-        setpersonCollectionView()
+//        setpersonCollectionView()
     }     
-    final private func setpersonCollectionView() {
-        setPersonCollectionViewLayout()
-        view.addSubview(personCollectionView)
-        personCollectionView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(20)
-            $0.top.equalTo(answerButton.snp.bottom).offset(20)
-            $0.bottom.equalTo(view.safeAreaInsets.bottom).inset(20)
-        }
-        personCollectionView.delegate = self
-        personCollectionView.backgroundColor = .gray
-        personCollectionView.register(PersonCollectionViewCell.self, forCellWithReuseIdentifier: PersonCollectionViewCell.identifier)
-    }
-    final private func setPersonCollectionViewLayout() {
-        personCollectionViewLayout.scrollDirection = .vertical
-        personCollectionViewLayout.itemSize = CGSize(width: 70, height: 70)
-        personCollectionViewLayout.minimumInteritemSpacing = 10
-        personCollectionViewLayout.minimumLineSpacing = 10
-        personCollectionViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    }
+//    final private func setpersonCollectionView() {
+//        setPersonCollectionViewLayout()
+//        view.addSubview(personCollectionView)
+//        personCollectionView.snp.makeConstraints {
+//            $0.leading.trailing.equalToSuperview().inset(20)
+//            $0.top.equalTo(answerButton.snp.bottom).offset(20)
+//            $0.bottom.equalTo(view.safeAreaInsets.bottom).inset(20)
+//        }
+//        personCollectionView.delegate = self
+//        personCollectionView.backgroundColor = .gray
+//        personCollectionView.register(PersonCollectionViewCell.self, forCellWithReuseIdentifier: PersonCollectionViewCell.identifier)
+//    }
+//    final private func setPersonCollectionViewLayout() {
+//        personCollectionViewLayout.scrollDirection = .vertical
+//        personCollectionViewLayout.itemSize = CGSize(width: 70, height: 70)
+//        personCollectionViewLayout.minimumInteritemSpacing = 10
+//        personCollectionViewLayout.minimumLineSpacing = 10
+//        personCollectionViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+//    }
     final private func setNextButton() {
         view.addSubview(nextButton)
         nextButton.snp.makeConstraints {
@@ -152,11 +149,17 @@ extension MovieInitialViewController {
         nextButton.backgroundColor = .gray
         nextButton.addTarget(self, action: #selector(nextButton(_:)), for: .touchUpInside)
         nextButton.setTitle("다음문제", for: .normal)
+        nextButton.backgroundColor = .black
+        nextButton.layer.borderWidth = 3
+        nextButton.layer.borderColor = UIColor.yellow.cgColor
         nextButton.isHidden = true
         
         answerButton.backgroundColor = .green
         answerButton.addTarget(self, action: #selector(answerButton(_:)), for: .touchUpInside)
         answerButton.setTitle("정답확인", for: .normal)
+        answerButton.backgroundColor = .black
+        answerButton.layer.borderWidth = 3
+        answerButton.layer.borderColor = UIColor.green.cgColor
         answerButton.isHidden = true
 
     }
@@ -194,12 +197,16 @@ extension MovieInitialViewController {
         personView.backgroundColor = .yellow
         personLabel.backgroundColor = .red
         personLabel.text = "참가인원: \(personInt)명"
+        
         upButton.backgroundColor = .purple
         downButton.backgroundColor = .systemPink
         upButton.addTarget(self, action: #selector(upButton(_:)), for: .touchUpInside)
         downButton.addTarget(self, action: #selector(downButton(_:)), for: .touchUpInside)
+        
         startButton.setTitle("시작하기", for: .normal)
-        startButton.backgroundColor = .white
+        startButton.layer.borderColor = UIColor.red.cgColor
+        startButton.layer.borderWidth = 3
+        startButton.backgroundColor = .black
         startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
         
     }

@@ -1,24 +1,22 @@
 //
-//  MiniGameViewController.swift
+//  MiniGameViewControllerTwo.swift
 //  MiniGame
 //
-//  Created by 신민희 on 2021/05/04.
+//  Created by 신민희 on 2021/05/07.
 //
-
-
 
 import UIKit
 import SnapKit
 
-class MiniGameViewController: UIViewController {
+class MiniGameViewControllerTwo: UIViewController {
     
     let liarGameLabel = CustomGameLabel()
     let koreanGameLabel = CustomGameLabel()
     let movieInitialGameLabel = CustomGameLabel()
     let bombGameLabel = CustomGameLabel()
     let mainLogo = UIImageView()
-    let asd = UILabel()
-
+    let bottomLogo = UIImageView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
@@ -26,7 +24,7 @@ class MiniGameViewController: UIViewController {
     }
 }
 
-extension MiniGameViewController {
+extension MiniGameViewControllerTwo {
     @objc
     func liarGame(_ sender: UIButton){
         print(#function)
@@ -50,7 +48,7 @@ extension MiniGameViewController {
     }
 }
 
-extension MiniGameViewController {
+extension MiniGameViewControllerTwo {
     final private func setUI() {
         setMainLogo()
         setLiarGame()
@@ -63,39 +61,44 @@ extension MiniGameViewController {
         mainLogo.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaInsets.top).inset(50)
             $0.leading.trailing.equalTo(view)
-            $0.height.equalTo(180)
+            $0.height.equalTo(130)
         }
+        view.addSubview(bottomLogo)
+        bottomLogo.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaInsets.bottom).inset(10)
+            $0.leading.trailing.equalTo(view)
+            $0.height.equalTo(150)
+        }
+        bottomLogo.image = UIImage(named: "bottomLogo2")
         mainLogo.image = UIImage(named: "NeonLogoImage")
     }
     final private func setLiarGame() {
         view.addSubview(liarGameLabel)
         liarGameLabel.snp.makeConstraints {
-            $0.top.equalTo(mainLogo.snp.bottom).offset(40)
-            $0.leading.equalTo(view).inset(20)
-            $0.height.equalTo(100)
-            $0.width.equalTo(160)
+            $0.top.equalTo(mainLogo.snp.bottom).offset(15)
+            $0.leading.trailing.equalTo(view).inset(20)
+            $0.height.equalTo(90)
         }
         let liarGameButton = UITapGestureRecognizer(target: self, action: #selector(liarGame(_:)))
         self.liarGameLabel.gestureRecognizers = [liarGameButton]
         liarGameLabel.addGestureRecognizer(liarGameButton)
         liarGameLabel.isUserInteractionEnabled = true
-        liarGameLabel.layer.borderColor = UIColor.red.cgColor
+        liarGameLabel.layer.borderColor = UIColor(displayP3Red: 232/255, green: 65/255, blue: 14/255, alpha: 0.5).cgColor
         liarGameLabel.text = "라이어게임"
         
     }
     final private func setKoreanGame() {
         view.addSubview(koreanGameLabel)
         koreanGameLabel.snp.makeConstraints {
-            $0.top.equalTo(liarGameLabel)
-            $0.trailing.equalTo(view).inset(20)
-            $0.height.equalTo(100)
-            $0.width.equalTo(160)
+            $0.top.equalTo(liarGameLabel.snp.bottom).offset(15)
+            $0.leading.trailing.equalTo(view).inset(20)
+            $0.height.equalTo(90)
         }
         let koreanGameButton = UITapGestureRecognizer(target: self, action: #selector(koreanGame(_:)))
         self.koreanGameLabel.gestureRecognizers = [koreanGameButton]
         koreanGameLabel.addGestureRecognizer(koreanGameButton)
         koreanGameLabel.isUserInteractionEnabled = true
-        koreanGameLabel.layer.borderColor = UIColor.green.cgColor
+        koreanGameLabel.layer.borderColor = UIColor(displayP3Red: 66/255, green: 215/255, blue: 97/255, alpha: 0.5).cgColor
         koreanGameLabel.text = "초성게임"
 //        koreanGameButton.addTarget(self, action: #selector(koreanGame(_:)), for: .touchUpInside)
 
@@ -103,31 +106,29 @@ extension MiniGameViewController {
     final private func setMovieInitial() {
         view.addSubview(movieInitialGameLabel)
         movieInitialGameLabel.snp.makeConstraints {
-            $0.top.equalTo(liarGameLabel.snp.bottom).offset(30)
-            $0.leading.equalTo(view).inset(20)
-            $0.height.equalTo(100)
-            $0.width.equalTo(160)
+            $0.top.equalTo(koreanGameLabel.snp.bottom).offset(15)
+            $0.leading.trailing.equalTo(view).inset(20)
+            $0.height.equalTo(90)
         }
         let movieInitialGameButton = UITapGestureRecognizer(target: self, action: #selector(movieInitialGame(_:)))
         self.movieInitialGameLabel.gestureRecognizers = [movieInitialGameButton]
         movieInitialGameLabel.addGestureRecognizer(movieInitialGameButton)
         movieInitialGameLabel.isUserInteractionEnabled = true
-        movieInitialGameLabel.layer.borderColor = UIColor.yellow.cgColor
+        movieInitialGameLabel.layer.borderColor = UIColor(displayP3Red: 255/255, green: 204/255, blue: 51/255, alpha: 0.5).cgColor
         movieInitialGameLabel.text = "영화이름초성게임"
     }
     final private func setBombGame() {
         view.addSubview(bombGameLabel)
         bombGameLabel.snp.makeConstraints {
-            $0.top.equalTo(movieInitialGameLabel)
-            $0.trailing.equalTo(view).inset(20)
-            $0.height.equalTo(100)
-            $0.width.equalTo(160)
+            $0.top.equalTo(movieInitialGameLabel.snp.bottom).offset(15)
+            $0.leading.trailing.equalTo(view).inset(20)
+            $0.height.equalTo(90)
         }
         let bombGameButton = UITapGestureRecognizer(target: self, action: #selector(bombGame(_:)))
         self.bombGameLabel.gestureRecognizers = [bombGameButton]
         bombGameLabel.addGestureRecognizer(bombGameButton)
         bombGameLabel.isUserInteractionEnabled = true
-        bombGameLabel.layer.borderColor = UIColor.blue.cgColor
+        bombGameLabel.layer.borderColor = UIColor(displayP3Red: 0/255, green: 59/255, blue: 255/255, alpha: 0.5).cgColor
         bombGameLabel.text = "폭탄게임"
 
     }
