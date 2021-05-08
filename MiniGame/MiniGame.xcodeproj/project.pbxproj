@@ -29,6 +29,7 @@
 		5E496F1326453A7800F82665 /* CustomGameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F1226453A7800F82665 /* CustomGameLabel.swift */; };
 		5E496F1626453B3000F82665 /* MiniGameViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F1526453B3000F82665 /* MiniGameViewControllerTwo.swift */; };
 		5E496F1926457B4500F82665 /* KoreanLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F1826457B4500F82665 /* KoreanLabel.swift */; };
+		5E496F1C26465BA900F82665 /* KoreanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F1B26465BA900F82665 /* KoreanCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		5E496F1226453A7800F82665 /* CustomGameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGameLabel.swift; sourceTree = "<group>"; };
 		5E496F1526453B3000F82665 /* MiniGameViewControllerTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGameViewControllerTwo.swift; sourceTree = "<group>"; };
 		5E496F1826457B4500F82665 /* KoreanLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanLabel.swift; sourceTree = "<group>"; };
+		5E496F1B26465BA900F82665 /* KoreanCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				5E18CE0626394894002A3CFD /* TopicCollectionViewCell.swift */,
+				5E496F1B26465BA900F82665 /* KoreanCollectionViewCell.swift */,
 				5E496EFD26410BDA00F82665 /* PersonCollectionViewCell.swift */,
 				5E496EE3263C4A2100F82665 /* CustomButton.swift */,
 				5E496F1226453A7800F82665 /* CustomGameLabel.swift */,
@@ -235,6 +238,7 @@
 				5E18CDEB26393B17002A3CFD /* AppDelegate.swift in Sources */,
 				5E18CDED26393B17002A3CFD /* SceneDelegate.swift in Sources */,
 				5E496F1626453B3000F82665 /* MiniGameViewControllerTwo.swift in Sources */,
+				5E496F1C26465BA900F82665 /* KoreanCollectionViewCell.swift in Sources */,
 				5E496EE4263C4A2100F82665 /* CustomButton.swift in Sources */,
 				5E18CE0726394894002A3CFD /* TopicCollectionViewCell.swift in Sources */,
 				5E496EF72640DC9A00F82665 /* BombGameViewController.swift in Sources */,

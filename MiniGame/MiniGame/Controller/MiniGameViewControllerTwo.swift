@@ -69,7 +69,7 @@ extension MiniGameViewControllerTwo {
             $0.leading.trailing.equalTo(view)
             $0.height.equalTo(150)
         }
-        bottomLogo.image = UIImage(named: "bottomLogo2")
+        bottomLogo.image = UIImage(named: "BottomLogo")
         mainLogo.image = UIImage(named: "NeonLogoImage")
     }
     final private func setLiarGame() {

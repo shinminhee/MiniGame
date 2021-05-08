@@ -46,9 +46,9 @@ class LiarGameViewController: UIViewController {
 }
 
 extension LiarGameViewController {
-    
     @objc
     func startButton(_ sender: UIButton) {
+        print(#function)
         if topicLabel.text?.count ?? 0 <= 5 {
         paperView.isHidden = false
         personText = Word.shared.topicManager["\(topicLabel.text ?? "")"]?.randomElement() ?? ""
@@ -63,7 +63,6 @@ extension LiarGameViewController {
         print(selected)
         }
     }
-    
     @objc
     func okButton(_ sender: UIButton) {
         if personNum != 1 {
@@ -177,6 +176,7 @@ extension LiarGameViewController {
         setWordLabel()
         setPaperView()
         setpersonView()
+        setStartButton()
     }
     final private func setTopicView() {
         view.addSubview(topicLabel)
@@ -234,7 +234,7 @@ extension LiarGameViewController {
     }
     final private func setpersonView() {
         view.addSubview(personView)
-        [personLabel, upButton, downButton, startButton, modeView, modeLeftButton, modeRightButton].forEach {
+        [personLabel, upButton, downButton, modeView, modeLeftButton, modeRightButton].forEach {
             personView.addSubview($0)
         }
         personView.snp.makeConstraints {
@@ -271,12 +271,7 @@ extension LiarGameViewController {
             $0.top.bottom.equalTo(modeView)
             $0.leading.equalTo(modeView.snp.trailing)
         }
-        startButton.snp.makeConstraints {
-            $0.leading.trailing.equalTo(personView)
-            $0.top.equalTo(personView.snp.bottom).offset(20)
-            $0.height.equalTo(50)
-        }
-        
+       
         modeView.text = "\(mode[0])"
         modeView.textColor = .white
         modeView.textAlignment = .center
@@ -289,11 +284,6 @@ extension LiarGameViewController {
         personView.backgroundColor = .black
         personView.layer.borderColor = UIColor.systemIndigo.cgColor
         personView.layer.borderWidth = 3
-        
-        
-        startButton.layer.borderColor = UIColor.red.cgColor
-        startButton.setTitle("게임시작", for: .normal)
-        startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
         
         personLabel.text = "참가인원: \(personInt)명"
         personLabel.textAlignment = .center
@@ -334,4 +324,17 @@ extension LiarGameViewController {
         topicViewLayout.minimumLineSpacing = 10
         topicViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
+    final private func setStartButton() {
+        view.addSubview(startButton)
+        startButton.snp.makeConstraints {
+            $0.leading.trailing.equalTo(personView)
+            $0.top.equalTo(personView.snp.bottom).offset(20)
+            $0.height.equalTo(50)
+        }
+        startButton.layer.borderColor = UIColor.red.cgColor
+        startButton.setTitle("게임시작", for: .normal)
+        startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
+    }
 }
+
+
