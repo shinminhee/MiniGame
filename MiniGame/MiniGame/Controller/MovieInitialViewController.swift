@@ -138,9 +138,9 @@ extension MovieInitialViewController {
     final private func setNextButton() {
         view.addSubview(nextButton)
         nextButton.snp.makeConstraints {
-            $0.top.equalTo(qAndALabel.snp.bottom).offset(20)
-            $0.leading.trailing.equalTo(qAndALabel)
-            $0.height.equalTo(30)
+            $0.leading.trailing.equalTo(view).inset(40)
+            $0.bottom.equalTo(view.snp.bottom).inset(200)
+            $0.height.equalTo(50)
         }
         view.addSubview(answerButton)
         answerButton.snp.makeConstraints {

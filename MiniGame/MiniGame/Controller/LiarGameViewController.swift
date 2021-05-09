@@ -327,8 +327,8 @@ extension LiarGameViewController {
     final private func setStartButton() {
         view.addSubview(startButton)
         startButton.snp.makeConstraints {
-            $0.leading.trailing.equalTo(personView)
-            $0.top.equalTo(personView.snp.bottom).offset(20)
+            $0.leading.trailing.equalTo(view).inset(40)
+            $0.bottom.equalTo(view.snp.bottom).inset(200)
             $0.height.equalTo(50)
         }
         startButton.layer.borderColor = UIColor.red.cgColor
