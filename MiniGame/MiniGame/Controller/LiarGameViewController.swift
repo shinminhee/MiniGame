@@ -287,7 +287,9 @@ extension LiarGameViewController {
         
         personLabel.text = "참가인원: \(personInt)명"
         personLabel.textAlignment = .center
-        personLabel.backgroundColor = .orange
+        personLabel.layer.borderColor = UIColor.orange.cgColor
+        personLabel.layer.borderWidth = 3
+        personLabel.textColor = .white
         
         upButton.backgroundColor = .yellow
         let upButtonTaped = UITapGestureRecognizer(target: self, action: #selector(upButton(_:)))
@@ -328,7 +330,7 @@ extension LiarGameViewController {
         view.addSubview(startButton)
         startButton.snp.makeConstraints {
             $0.leading.trailing.equalTo(view).inset(40)
-            $0.bottom.equalTo(view.snp.bottom).inset(200)
+            $0.bottom.equalTo(view.snp.bottom).inset(180)
             $0.height.equalTo(50)
         }
         startButton.layer.borderColor = UIColor.red.cgColor

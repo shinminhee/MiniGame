@@ -6,13 +6,15 @@
 //
 
 import UIKit
+import AVFoundation
 
 class BombGameViewController: UIViewController {
     
     var bombLabel = UILabel()
     let startButton = UIButton()
     var timer: Timer?
-    var count = 0
+    var count = 3
+    let alarm: SystemSoundID = 1005
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +25,19 @@ class BombGameViewController: UIViewController {
 
 extension BombGameViewController {
     @objc
+    func startButton(_ sender: UIButton) {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCount), userInfo: nil, repeats: true)
+    }
+    @objc
     func timerCount() {
-        self.count += 1
+        self.count -= 1
         bombLabel.text = "\(count)"
+        if count <= 0 {
+            AudioServicesPlaySystemSound(alarm)
+            timer?.invalidate()
+            timer = nil
+
+        }
     }
     
 }
@@ -38,7 +50,6 @@ extension BombGameViewController {
     }
 
     func setTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCount), userInfo: nil, repeats: true)
         startButton.backgroundColor = .gray
         bombLabel.backgroundColor = .blue
     }
@@ -57,6 +68,7 @@ extension BombGameViewController {
     }
     func setStartButton() {
         startButton.backgroundColor = .gray
+        startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
         bombLabel.backgroundColor = .blue
     }
 

@@ -19,7 +19,7 @@ class MovieInitialViewController: UIViewController {
     let downButton = UIButton()
     let startButton = UIButton()
     let nextButton = UIButton()
-    var unSelected = [""]
+    var unSelected = ""
     let qaTitle = ["문제", "정답"]
     let answerButton = UIButton()
   
@@ -65,7 +65,7 @@ extension MovieInitialViewController {
     @objc
     func answerButton(_ sender: UIButton) {
         answerButton.isHidden = true
-        let selected =  MovieAlphabet.shared.dicQAndA["\(qAndAText)"] ?? [""]
+        let selected =  MovieAlphabet.shared.dicQAndA["\(qAndAText)"] ?? ""
         unSelected = selected
         qAndALabel.text = "\(unSelected)"
     }

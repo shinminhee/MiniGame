@@ -59,7 +59,7 @@ extension MiniGameViewControllerTwo {
     final private func setMainLogo() {
         view.addSubview(mainLogo)
         mainLogo.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaInsets.top).inset(50)
+            $0.top.equalTo(view.safeAreaInsets.top).inset(30)
             $0.leading.trailing.equalTo(view)
             $0.height.equalTo(130)
         }

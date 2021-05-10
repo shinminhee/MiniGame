@@ -18,7 +18,7 @@ class CustomGameLabel: UILabel {
         self.layer.shadowColor = UIColor.white.cgColor // 색깔
         self.layer.shadowOffset = CGSize(width: 0, height: 4)
         self.layer.shadowRadius = 5
-        self.layer.shadowOpacity = 0.3
+        self.layer.shadowOpacity = 5
         self.textAlignment = .center
         self.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         self.textColor = UIColor.white
