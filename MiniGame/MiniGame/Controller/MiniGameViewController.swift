@@ -20,8 +20,7 @@ class MiniGameViewController: UIViewController {
     let bottomLogo = UIImageView()
     let gameTableView = UITableView()
     let game = ["라이어게임", "훈민정음게임", "영화제목초성게임", "폭탄게임"]
-    let colors: [UIColor] = [UIColor.systemRed, UIColor.systemBlue, UIColor.systemPink, UIColor.systemYellow, UIColor.systemIndigo]
-    
+    let colors: [UIColor] = [UIColor(displayP3Red: 119/255, green: 255/255, blue: 0/255, alpha: 1), UIColor(displayP3Red: 255/255, green: 0/255, blue: 146/255, alpha: 1), UIColor(displayP3Red: 255/255, green: 255/255, blue: 0/255, alpha: 1), UIColor(displayP3Red: 0/255, green: 255/255, blue: 255/255, alpha: 1)]
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
@@ -91,7 +90,7 @@ extension MiniGameViewController {
         bottomLogo.snp.makeConstraints {
             $0.bottom.equalTo(view.safeAreaInsets.bottom).inset(10)
             $0.leading.trailing.equalTo(view)
-            $0.height.equalTo(150)
+            $0.height.equalTo(200)
         }
         view.addSubview(gameTableView)
         gameTableView.snp.makeConstraints {

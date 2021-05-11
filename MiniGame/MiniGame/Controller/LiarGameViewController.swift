@@ -10,6 +10,7 @@ import SnapKit
 
 class LiarGameViewController: UIViewController {
     
+    let mainLogo = UIImageView()
     let modeView = UILabel()
     let modeLeftButton = UIButton()
     let modeRightButton = UIButton()
@@ -179,6 +180,12 @@ extension LiarGameViewController {
         setStartButton()
     }
     final private func setTopicView() {
+        view.addSubview(mainLogo)
+        mainLogo.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaInsets.top).inset(10)
+            $0.leading.trailing.equalTo(view)
+            $0.height.equalTo(240)
+        }
         view.addSubview(topicLabel)
         topicLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -201,6 +208,8 @@ extension LiarGameViewController {
         topicLabel.backgroundColor = .black
         topicLabel.layer.borderWidth = 3
         topicLabel.layer.borderColor = UIColor.yellow.cgColor
+        mainLogo.image = UIImage(named: "LiarGame")
+
     }
     final private func setWordLabel() {
         view.addSubview(wordLabel)
@@ -273,6 +282,7 @@ extension LiarGameViewController {
             $0.leading.equalTo(modeView.snp.trailing)
         }
        
+    
         modeView.text = "\(mode[0])"
         modeView.font = UIFont.systemFont(ofSize: 20)
         modeView.textColor = .white

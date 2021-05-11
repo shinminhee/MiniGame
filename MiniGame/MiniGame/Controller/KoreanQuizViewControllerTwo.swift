@@ -11,6 +11,7 @@ import UIKit
 class KoreanQuizViewControllerTwo: UIViewController {
     
     let koreanLabel = UILabel()
+    let mainLogo = UIImageView()
     let startButton = CustomStartButton()
     let nextButton = CustomStartButton()
     let KoreanCollectionViewLayout = UICollectionViewFlowLayout()
@@ -71,6 +72,8 @@ extension KoreanQuizViewControllerTwo {
     }
     
     final private func setBasics() {
+        
+        mainLogo.image = UIImage(named: "KoreanQuiz")
         koreanLabel.backgroundColor = .black
         koreanLabel.layer.borderColor = UIColor.yellow.cgColor
         koreanLabel.layer.borderWidth = 3
@@ -97,6 +100,12 @@ extension KoreanQuizViewControllerTwo {
     }
     
     final private func setLayouts() {
+        view.addSubview(mainLogo)
+        mainLogo.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaInsets.top).inset(10)
+            $0.leading.trailing.equalTo(view)
+            $0.height.equalTo(240)
+        }
         view.addSubview(koreanLabel)
         koreanLabel.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()

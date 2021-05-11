@@ -9,6 +9,7 @@ import UIKit
 
 class MovieInitialViewController: UIViewController {
     
+    let mainLogo = UIImageView()
     let qAndALabel = UILabel()
     var qAndAText = ""
     let personView = UIView()
@@ -22,6 +23,7 @@ class MovieInitialViewController: UIViewController {
     var unSelected = ""
     let qaTitle = ["문제", "정답"]
     let answerButton = CustomStartButton()
+    
   
 
     override func viewDidLoad() {
@@ -120,8 +122,16 @@ extension MovieInitialViewController {
         startButton.setTitle("시작하기", for: .normal)
         startButton.layer.borderColor = UIColor.red.cgColor
         startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
+        mainLogo.image = UIImage(named: "MovieInitial")
+
     }
     final private func setPersonView() {
+        view.addSubview(mainLogo)
+        mainLogo.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaInsets.top).inset(10)
+            $0.leading.trailing.equalTo(view)
+            $0.height.equalTo(240)
+        }
         view.addSubview(personView)
         [personLabel, upButton, downButton].forEach {
             personView.addSubview($0)

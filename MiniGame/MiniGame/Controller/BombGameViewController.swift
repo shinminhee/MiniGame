@@ -10,6 +10,7 @@ import AVFoundation
 
 class BombGameViewController: UIViewController {
     
+    let mainLogo = UIImageView()
     var bombLabel = UILabel()
     let startButton = CustomStartButton()
     var timer: Timer?
@@ -54,6 +55,12 @@ extension BombGameViewController {
         setTimeLabel()
     }
     func setTimeLabel() {
+        view.addSubview(mainLogo)
+        mainLogo.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaInsets.top).inset(10)
+            $0.leading.trailing.equalTo(view)
+            $0.height.equalTo(240)
+        }
         [timeLabel, timeTextField, secondLabel, startButton].forEach {
             view.addSubview($0)
         }
@@ -78,7 +85,8 @@ extension BombGameViewController {
             $0.leading.trailing.equalTo(view).inset(40)
             $0.height.equalTo(50)
         }
-        
+        mainLogo.image = UIImage(named: "BombGame")
+
         let text = "시간을 정해주세요 !"
         let attributedStr = NSMutableAttributedString(string: text)
         attributedStr.addAttribute(.strokeWidth, value: 6.0, range: (text as NSString).range(of: "시간을 정해주세요 !"))
