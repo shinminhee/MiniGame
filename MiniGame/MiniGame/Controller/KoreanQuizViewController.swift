@@ -6,18 +6,20 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 class KoreanQuizViewController: UIViewController {
     
     let koreanLabel = UILabel()
-    let koreanView = UIView()
     let startButton = CustomStartButton()
+    let nextButton = CustomStartButton()
     let KoreanCollectionViewLayout = UICollectionViewFlowLayout()
     lazy var KoreanCollectionView = UICollectionView(frame: .zero, collectionViewLayout: KoreanCollectionViewLayout)
-    let bigKoreanLabel = UILabel()
     var timerLabel = UILabel()
-    var timer: DispatchSourceTimer?
+    var timer: Timer?
     var count = 6
+    let alarm: SystemSoundID = 1005
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,24 +33,35 @@ extension KoreanQuizViewController {
     func timerCount() {
         self.count -= 1
         timerLabel.text = "\(count)"
-        setTimer()
-        if timerLabel.text == "\(0)" {
+        nextButton.isHidden = false
+        if count <= 0 {
+            AudioServicesPlaySystemSound(alarm)
+            timer?.invalidate()
             timer = nil
-           timer?.cancel()
+            timerLabel.alpha = 0
         }
-        print(count)
     }
-
     @objc
-    func tap(_ sender: UIButton) {
+    func startButton(_ sender: UIButton) {
         let arraynum: Int = Korean.shared.first.count // 메시지 배열의 요소 개수를 세서 arraynum 변수에 할당
         let firstNumbers = Int.random(in: 0 ..< arraynum) // 랜덤으로 수를 골라 numbers 변수에 할당
         let firstMessage = Korean.shared.first[firstNumbers]
         let secondNumbers = Int.random(in: 0 ..< arraynum)
         let secondMessage = Korean.shared.first[secondNumbers]
         koreanLabel.text = "\(firstMessage) \(secondMessage)"
-        startAnimation()
-            
+        backAnimation()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCount), userInfo: nil, repeats: true)
+    }
+    @objc
+    func nextButton(_ sender: UIButton) {
+        let arraynum: Int = Korean.shared.first.count // 메시지 배열의 요소 개수를 세서 arraynum 변수에 할당
+        let firstNumbers = Int.random(in: 0 ..< arraynum) // 랜덤으로 수를 골라 numbers 변수에 할당
+        let firstMessage = Korean.shared.first[firstNumbers]
+        let secondNumbers = Int.random(in: 0 ..< arraynum)
+        let secondMessage = Korean.shared.first[secondNumbers]
+        koreanLabel.text = "\(firstMessage) \(secondMessage)"
+        backAnimation()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCount), userInfo: nil, repeats: true)
     }
 }
 
@@ -57,23 +70,22 @@ extension KoreanQuizViewController {
         setBasics()
         setLayouts()
     }
-    func updateView_() {
+    final private func backAnimation() {
+        backView()
+        UIView.animate(withDuration: 1, delay: 0, options:.transitionCurlUp, animations: {
+            self.view.layoutIfNeeded()
+        },completion: nil)
+    }
+    func backView() {
         koreanLabel.snp.remakeConstraints{
             $0.top.equalTo(view.snp.top).inset(200)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(100)
             $0.height.equalTo(100)
             }
-        koreanLabel.textAlignment = .center
-        koreanLabel.textColor = .white
-
         }
-    final private func startAnimation() {
-            updateView_()
-            UIView.animate(withDuration: 1, delay: 0, options:.curveEaseOut, animations: {
-                self.view.layoutIfNeeded()
-            }, completion: nil)
-        }
+    
+ 
     final private func setBasics() {
         koreanLabel.backgroundColor = .black
         koreanLabel.layer.borderColor = UIColor.yellow.cgColor
@@ -82,27 +94,20 @@ extension KoreanQuizViewController {
         koreanLabel.textColor = .white
       
         startButton.setTitle("시작하기", for: .normal)
-        startButton.addTarget(self, action: #selector(tap(_:)), for: .touchUpInside)
+        startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
         startButton.layer.borderColor = UIColor.green.cgColor
         
         timerLabel.textColor = .white
         timerLabel.textAlignment = .center
-        timerLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
+        timerLabel.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+        
+        nextButton.setTitle("다음문제", for: .normal)
+        nextButton.addTarget(self, action: #selector(nextButton(_:)), for: .touchUpInside)
+        nextButton.layer.borderColor = UIColor.systemPink.cgColor
     }
+    
     final private func setTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCount), userInfo: nil, repeats: true) as? DispatchSourceTimer
-        if timer == nil {
-            timer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
-            timer?.schedule(deadline: .now(), repeating: 1)
-            timer?.setEventHandler(handler: {
-                print(Date())
-            })
-        } else {
-            timer?.schedule(deadline: .now() + .seconds(1))
-            timer?.setEventHandler {
-            }
-            timer?.activate()
-        }
+       
     }
     
     final private func setLayouts() {
@@ -122,7 +127,12 @@ extension KoreanQuizViewController {
             $0.bottom.equalTo(view.snp.bottom).inset(200)
             $0.height.equalTo(50)
         }
-}
+        view.addSubview(nextButton)
+        nextButton.snp.makeConstraints {
+            $0.leading.top.trailing.bottom.equalTo(startButton)
+        }
+        nextButton.isHidden = true
+    }
 }
 
 //final private func setKoreanCollectionView() {
@@ -181,3 +191,25 @@ extension KoreanQuizViewController {
 //        rotation.isCumulative = true
 //        rotation.repeatCount = 8 // 몇번 반복 할것인가
 //        self.alphabetView.layer.add(rotation, forKey: "rotationAnimation") // 원하는 뷰에 애니메이션 삽입
+
+//timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCount), userInfo: nil, repeats: true) as? DispatchSourceTimer
+//if timer == nil {
+//    timer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
+//    timer?.schedule(deadline: .now(), repeating: 1)
+//    timer?.setEventHandler(handler: {
+//        print(Date())
+//    })
+//} else {
+//    timer?.schedule(deadline: .now() + .seconds(1))
+//    timer?.setEventHandler {
+//    }
+//    timer?.activate()
+//}
+//self.count -= 1
+//timerLabel.text = "\(count)"
+//setTimer()
+//if timerLabel.text == "\(0)" {
+//    timer = nil
+//   timer?.cancel()
+//}
+//print(count)

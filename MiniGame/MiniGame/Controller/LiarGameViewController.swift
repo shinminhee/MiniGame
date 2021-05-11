@@ -183,7 +183,7 @@ extension LiarGameViewController {
         topicLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.centerY.equalTo(view.snp.centerY).offset(-150)
-            $0.width.equalTo(240)
+            $0.width.equalTo(300)
             $0.height.equalTo(80)
         }
         view.addSubview(changeButton)
@@ -196,7 +196,7 @@ extension LiarGameViewController {
         changeButton.backgroundColor = .systemIndigo
         
         topicLabel.text = "   주제를 선택해 주세요"
-        topicLabel.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        topicLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         topicLabel.textColor = .white
         topicLabel.backgroundColor = .black
         topicLabel.layer.borderWidth = 3
@@ -242,24 +242,25 @@ extension LiarGameViewController {
         }
         personLabel.snp.makeConstraints {
             $0.leading.top.equalTo(personView).inset(20)
-            $0.height.equalTo(30)
-            $0.width.equalTo(160)
+            $0.height.equalTo(60)
+            $0.width.equalTo(200)
         }
         upButton.snp.makeConstraints {
             $0.leading.equalTo(personLabel.snp.trailing)
             $0.top.equalTo(personLabel)
             $0.trailing.equalTo(personView).inset(20)
-            $0.height.equalTo(15)
+            $0.height.equalTo(30)
         }
         downButton.snp.makeConstraints {
             $0.leading.trailing.equalTo(upButton)
             $0.top.equalTo(upButton.snp.bottom)
-            $0.height.equalTo(15)
+            $0.height.equalTo(30)
         }
         modeView.snp.makeConstraints {
-            $0.centerX.centerY.equalTo(personView)
+            $0.centerX.equalTo(personView)
+            $0.top.equalTo(personLabel.snp.bottom).offset(20)
             $0.height.equalTo(30)
-            $0.width.equalTo(80)
+            $0.width.equalTo(150)
         }
         modeLeftButton.snp.makeConstraints {
             $0.leading.equalTo(personLabel).inset(20)
@@ -273,6 +274,7 @@ extension LiarGameViewController {
         }
        
         modeView.text = "\(mode[0])"
+        modeView.font = UIFont.systemFont(ofSize: 20)
         modeView.textColor = .white
         modeView.textAlignment = .center
         
@@ -286,6 +288,7 @@ extension LiarGameViewController {
         personView.layer.borderWidth = 3
         
         personLabel.text = "참가인원: \(personInt)명"
+        personLabel.font = UIFont.systemFont(ofSize: 20)
         personLabel.textAlignment = .center
         personLabel.layer.borderColor = UIColor.orange.cgColor
         personLabel.layer.borderWidth = 3

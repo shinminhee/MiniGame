@@ -13,55 +13,39 @@ class MovieInitialViewController: UIViewController {
     var qAndAText = ""
     let personView = UIView()
     let personLabel = UILabel()
-    var personInt = 0
-    var personNum = 0
+    var gameInt = 0
+    var gameNum = 0
     let upButton = UIButton()
     let downButton = UIButton()
-    let startButton = UIButton()
-    let nextButton = UIButton()
+    let startButton = CustomStartButton()
+    let nextButton = CustomStartButton()
     var unSelected = ""
     let qaTitle = ["문제", "정답"]
-    let answerButton = UIButton()
+    let answerButton = CustomStartButton()
   
-
-    
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
         setUI()
-
     }
 
 }
 
-//extension MovieInitialViewController: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let cell = personCollectionView.dequeueReusableCell(withReuseIdentifier: PersonCollectionViewCell.identifier, for: indexPath) as? PersonCollectionViewCell else { fatalError() }
-//        score += 1
-//        cell.scoreNumber.text = "\(score)"
-//        print(score)
-//    }
-//
-//}
-//extension MovieInitialViewController: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return personInt
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = personCollectionView.dequeueReusableCell(withReuseIdentifier: PersonCollectionViewCell.identifier, for: indexPath) as? PersonCollectionViewCell else { fatalError() }
-//        cell.backgroundColor = .red
-//        cell.scoreNumber.text = "\(score)"
-//        cell.scoreNumber.textAlignment = .center
-//        cell.personName.text = "\(indexPath.row)"
-//        return cell
-//
-//    }
-//}
-
 extension MovieInitialViewController {
+    @objc
+    func startButton(_ sender: UIButton) {
+        gameNum = gameInt
+        if gameNum > 0 {
+        startButton.isHidden = true
+        nextButton.isHidden = false
+        answerButton.isHidden = false
+        qAndAText = MovieAlphabet.shared.qAndA["\(qaTitle[0])"]?.randomElement() ?? ""
+        print(qAndAText)
+        personView.isHidden = true
+        qAndALabel.text = qAndAText
+        }
+    }
     @objc
     func answerButton(_ sender: UIButton) {
         answerButton.isHidden = true
@@ -69,43 +53,35 @@ extension MovieInitialViewController {
         unSelected = selected
         qAndALabel.text = "\(unSelected)"
     }
+
     @objc
     func nextButton(_ sender: UIButton) {
         answerButton.isHidden = false
         qAndAText = MovieAlphabet.shared.qAndA["\(qaTitle[0])"]?.randomElement() ?? ""
         qAndALabel.text = qAndAText
-    }
-
-    @objc
-    func startButton(_ sender: UIButton) {
-        nextButton.isHidden = false
-        answerButton.isHidden = false
-        qAndAText = MovieAlphabet.shared.qAndA["\(qaTitle[0])"]?.randomElement() ?? ""
-        print(qAndAText)
-        personView.isHidden = true
-        qAndALabel.text = qAndAText
-        
-//        personCollectionView.dataSource = self
-//        UIView.animate(withDuration: 2) {
-//            self.personCollectionView.frame = CGRect(x: self.personCollectionView.center.x, y: self.personCollectionView.center.y, width: 70, height: 70)
-//
-//        }
+        if gameNum != 1 {
+            gameNum -= 1
+            personView.isHidden = true
+        } else {
+            personView.isHidden = false
+            startButton.isHidden = false
+        }
     }
     @objc
     func upButton(_ sender: UIButton) {
-        if personInt <= 9 {
-            personInt += 1
+        if gameInt <= 9 {
+            gameInt += 1
         }
-        personLabel.text = "참가인원: \(personInt)명"
+        personLabel.text = "국내영화: \(gameInt)편 "
     }
     @objc
     func downButton(_ sender: UIButton) {
-        if personInt >= 2 {
-            personInt -= 1
+        if gameInt >= 2 {
+            gameInt -= 1
         } else {
-            personInt = 1
+            gameInt = 0
         }
-        personLabel.text = "참가인원: \(personInt)명"
+        personLabel.text = "국내영화: \(gameInt)편"
     }
 }
 
@@ -114,58 +90,40 @@ extension MovieInitialViewController {
         setQAndALabel()
         setPersonView()
         setNextButton()
-//        setpersonCollectionView()
-    }     
-//    final private func setpersonCollectionView() {
-//        setPersonCollectionViewLayout()
-//        view.addSubview(personCollectionView)
-//        personCollectionView.snp.makeConstraints {
-//            $0.leading.trailing.equalToSuperview().inset(20)
-//            $0.top.equalTo(answerButton.snp.bottom).offset(20)
-//            $0.bottom.equalTo(view.safeAreaInsets.bottom).inset(20)
-//        }
-//        personCollectionView.delegate = self
-//        personCollectionView.backgroundColor = .gray
-//        personCollectionView.register(PersonCollectionViewCell.self, forCellWithReuseIdentifier: PersonCollectionViewCell.identifier)
-//    }
-//    final private func setPersonCollectionViewLayout() {
-//        personCollectionViewLayout.scrollDirection = .vertical
-//        personCollectionViewLayout.itemSize = CGSize(width: 70, height: 70)
-//        personCollectionViewLayout.minimumInteritemSpacing = 10
-//        personCollectionViewLayout.minimumLineSpacing = 10
-//        personCollectionViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-//    }
+    }
+
     final private func setNextButton() {
-        view.addSubview(nextButton)
+        [nextButton, answerButton, startButton].forEach {
+            view.addSubview($0)
+        }
         nextButton.snp.makeConstraints {
             $0.leading.trailing.equalTo(view).inset(40)
             $0.bottom.equalTo(view.snp.bottom).inset(200)
             $0.height.equalTo(50)
         }
-        view.addSubview(answerButton)
         answerButton.snp.makeConstraints {
             $0.top.leading.trailing.bottom.equalTo(nextButton)
         }
-        nextButton.backgroundColor = .gray
+        startButton.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalTo(nextButton)
+        }
         nextButton.addTarget(self, action: #selector(nextButton(_:)), for: .touchUpInside)
         nextButton.setTitle("다음문제", for: .normal)
-        nextButton.backgroundColor = .black
-        nextButton.layer.borderWidth = 3
         nextButton.layer.borderColor = UIColor.yellow.cgColor
         nextButton.isHidden = true
         
-        answerButton.backgroundColor = .green
         answerButton.addTarget(self, action: #selector(answerButton(_:)), for: .touchUpInside)
         answerButton.setTitle("정답확인", for: .normal)
-        answerButton.backgroundColor = .black
-        answerButton.layer.borderWidth = 3
         answerButton.layer.borderColor = UIColor.green.cgColor
         answerButton.isHidden = true
-
+        
+        startButton.setTitle("시작하기", for: .normal)
+        startButton.layer.borderColor = UIColor.red.cgColor
+        startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
     }
     final private func setPersonView() {
         view.addSubview(personView)
-        [personLabel, upButton, downButton, startButton].forEach {
+        [personLabel, upButton, downButton].forEach {
             personView.addSubview($0)
         }
         personView.snp.makeConstraints {
@@ -187,27 +145,15 @@ extension MovieInitialViewController {
             $0.top.equalTo(upButton.snp.bottom)
             $0.height.equalTo(15)
         }
-        startButton.snp.makeConstraints {
-            $0.leading.equalTo(personLabel).inset(20)
-            $0.trailing.equalTo(upButton).inset(20)
-            $0.top.equalTo(personLabel.snp.bottom).offset(60)
-            $0.height.equalTo(30)
-        }
         
         personView.backgroundColor = .yellow
         personLabel.backgroundColor = .red
-        personLabel.text = "참가인원: \(personInt)명"
+        personLabel.text = "국내영화: \(gameInt)편"
         
         upButton.backgroundColor = .purple
-        downButton.backgroundColor = .systemPink
         upButton.addTarget(self, action: #selector(upButton(_:)), for: .touchUpInside)
+        downButton.backgroundColor = .systemPink
         downButton.addTarget(self, action: #selector(downButton(_:)), for: .touchUpInside)
-        
-        startButton.setTitle("시작하기", for: .normal)
-        startButton.layer.borderColor = UIColor.red.cgColor
-        startButton.layer.borderWidth = 3
-        startButton.backgroundColor = .black
-        startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
         
     }
     final private func setQAndALabel() {
@@ -219,6 +165,5 @@ extension MovieInitialViewController {
         }
         qAndALabel.backgroundColor = .purple
         qAndALabel.textAlignment = .center
-        
     }
 }

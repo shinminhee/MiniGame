@@ -15,11 +15,13 @@ class CustomUpButton: UIButton {
         path.addLine(to: CGPoint(x: 100, y: 100)) // (100, 3)에서 (120, 100)으로 이동한다.
         path.close() // (120, 100)에서 시작점을 자동으로 연결한다.
         path.lineWidth = 3 // 선의 굵기를 3으로 지정한다.
-        
-        UIColor.black.set()
+//        self.layer.borderWidth = 1
+//        self.backgroundColor = .black
+
+        UIColor.green.set()
         path.stroke() // 검은색으로 바탕을 채운다.
 
-        UIColor.red.set()
+        UIColor.yellow.set()
         path.fill() // 빨간색으로 채운다.
     }
 }
@@ -32,8 +34,10 @@ class CustomDownButton: UIButton {
         path.addLine(to: CGPoint(x: 50, y: 100)) // (100, 3)에서 (120, 100)으로 이동한다.
         path.close() // (120, 100)에서 시작점을 자동으로 연결한다.
         path.lineWidth = 3 // 선의 굵기를 3으로 지정한다.
-        
-        UIColor.black.set()
+//        path.layer.borderWidth = 1
+//        path.backgroundColor = .black
+//
+        UIColor.blue.set()
         path.stroke() // 검은색으로 바탕을 채운다.
 
         UIColor.red.set()
