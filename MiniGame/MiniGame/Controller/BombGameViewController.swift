@@ -24,7 +24,7 @@ class BombGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        setBasic()
+        setUI()
     }
 }
 
@@ -48,13 +48,40 @@ extension BombGameViewController {
 }
 
 extension BombGameViewController {
-    func setBasic() {
-//        setTimer()
-//        setLayout()
-//        setStartButton()
-        setTimeLabel()
+    func setUI() {
+        setLayout()
+        setBasic()
     }
-    func setTimeLabel() {
+    func setBasic() {
+        mainLogo.image = UIImage(named: "BombGame")
+
+        let text = "시간을 정해주세요 !"
+        let attributedStr = NSMutableAttributedString(string: text)
+        attributedStr.addAttribute(.strokeWidth, value: 6.0, range: (text as NSString).range(of: "시간을 정해주세요 !"))
+        timeLabel.attributedText = attributedStr
+        timeLabel.textAlignment = .center
+        
+        timeTextField.layer.borderWidth = 3
+        timeTextField.layer.borderColor = UIColor.lightGray.cgColor
+        timeTextField.font = UIFont.systemFont(ofSize: 40)
+        timeTextField.layer.cornerRadius = 10
+        timeTextField.textAlignment = .center
+        timeTextField.textColor = .white
+        timeTextField.keyboardType = .numberPad
+        
+        secondLabel.backgroundColor = .black
+        secondLabel.text = "초"
+        secondLabel.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+        secondLabel.textColor = .white
+        secondLabel.textAlignment = .center
+        
+        startButton.layer.borderColor = UIColor.red.cgColor
+        startButton.setTitle("게임시작", for: .normal)
+        startButton.setTitleColor(.white, for: .normal)
+        startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
+    }
+    
+    func setLayout() {
         view.addSubview(mainLogo)
         mainLogo.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaInsets.top).inset(10)
@@ -84,50 +111,5 @@ extension BombGameViewController {
             $0.leading.trailing.equalTo(view).inset(40)
             $0.height.equalTo(50)
         }
-        mainLogo.image = UIImage(named: "BombGame")
-
-        let text = "시간을 정해주세요 !"
-        let attributedStr = NSMutableAttributedString(string: text)
-        attributedStr.addAttribute(.strokeWidth, value: 6.0, range: (text as NSString).range(of: "시간을 정해주세요 !"))
-        timeLabel.attributedText = attributedStr
-        timeLabel.textAlignment = .center
-        
-        timeTextField.layer.borderWidth = 3
-        timeTextField.layer.borderColor = UIColor.lightGray.cgColor
-        timeTextField.font = UIFont.systemFont(ofSize: 40)
-        timeTextField.layer.cornerRadius = 10
-        timeTextField.textAlignment = .center
-        timeTextField.textColor = .white
-        timeTextField.keyboardType = .numberPad
-        
-        secondLabel.backgroundColor = .black
-        secondLabel.text = "초"
-        secondLabel.font = UIFont.systemFont(ofSize: 40, weight: .bold)
-        secondLabel.textColor = .white
-        secondLabel.textAlignment = .center
-        
-        startButton.layer.borderColor = UIColor.red.cgColor
-        startButton.setTitle("게임시작", for: .normal)
-        startButton.setTitleColor(.white, for: .normal)
-        startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
     }
-    
-    func setTimer() {
-        startButton.backgroundColor = .gray
-        bombLabel.backgroundColor = .blue
-    }
-    func setLayout() {
-        view.addSubview(bombLabel)
-        bombLabel.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-            $0.height.width.equalTo(100)
-        }
-        view.addSubview(startButton)
-        startButton.snp.makeConstraints {
-            $0.top.equalTo(bombLabel.snp.bottom)
-            $0.leading.equalTo(bombLabel.snp.leading)
-            $0.height.width.equalTo(100)
-        }
-    }
-
 }

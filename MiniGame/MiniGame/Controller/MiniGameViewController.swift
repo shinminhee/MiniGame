@@ -34,18 +34,18 @@ extension MiniGameViewController: UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "GameTableViewCell", for: indexPath) as? GameTableViewCell else { fatalError() }
         cell.GameLabel.backgroundColor = .darkGray
         let liarVC = LiarGameViewController()
-        let koreanVC = KoreanQuizViewControllerTwo()
+        let koreanVC = KoreanQuizViewController()
         let movieVC = MovieInitialViewController()
         let bombVC = BombGameViewController()
         switch game[indexPath.row] {
         case "라이어게임":
-            present(liarVC, animated: true, completion: nil)
+            self.navigationController?.pushViewController(liarVC, animated: true)
         case "훈민정음게임":
-            present(koreanVC, animated: true, completion: nil)
+            self.navigationController?.pushViewController(koreanVC, animated: true)
         case "영화제목초성게임":
-            present(movieVC, animated: true, completion: nil)
+            self.navigationController?.pushViewController(movieVC, animated: true)
         case "폭탄게임":
-            present(bombVC, animated: true, completion: nil)
+            self.navigationController?.pushViewController(bombVC, animated: true)
         default:
             break
         }
@@ -106,7 +106,7 @@ extension MiniGameViewController {
 //        let jeremyGif = UIImage.gifImageWithName("TopLogo")
 //        mainLogo.image = jeremyGif
         bottomLogo.image = UIImage(named: "BottomLogo")
-        mainLogo.image = UIImage(named: "TopLogo")
+        mainLogo.image = UIImage(named: "TopLogo2")
     }
     final private func setTableView() {
         gameTableView.backgroundColor = .black

@@ -10,19 +10,19 @@ import UIKit
 class MovieInitialViewController: UIViewController {
     
     let mainLogo = UIImageView()
-    let qAndALabel = UILabel()
+    let qAndALabel = CustomGameLabel()
     var qAndAText = ""
-    let personView = UIView()
-    let personLabel = UILabel()
+    let movieView = UIView()
+    let movieLabel = CustomGameLabel()
     var gameInt = 0
     var gameNum = 0
     let upButton = UIButton()
     let downButton = UIButton()
     let startButton = CustomStartButton()
     let nextButton = CustomStartButton()
+    let answerButton = CustomStartButton()
     var unSelected = ""
     let qaTitle = ["문제", "정답"]
-    let answerButton = CustomStartButton()
     
 
     override func viewDidLoad() {
@@ -43,7 +43,7 @@ extension MovieInitialViewController {
         answerButton.isHidden = false
         qAndAText = MovieAlphabet.shared.qAndA["\(qaTitle[0])"]?.randomElement() ?? ""
         print(qAndAText)
-        personView.isHidden = true
+            movieView.isHidden = true
         qAndALabel.text = qAndAText
         }
     }
@@ -62,9 +62,9 @@ extension MovieInitialViewController {
         qAndALabel.text = qAndAText
         if gameNum != 1 {
             gameNum -= 1
-            personView.isHidden = true
+            movieView.isHidden = true
         } else {
-            personView.isHidden = false
+            movieView.isHidden = false
             startButton.isHidden = false
         }
     }
@@ -73,7 +73,7 @@ extension MovieInitialViewController {
         if gameInt <= 9 {
             gameInt += 1
         }
-        personLabel.text = "국내영화: \(gameInt)편 "
+        movieLabel.text = "국내영화: \(gameInt)편 "
     }
     @objc
     func downButton(_ sender: UIButton) {
@@ -82,24 +82,61 @@ extension MovieInitialViewController {
         } else {
             gameInt = 0
         }
-        personLabel.text = "국내영화: \(gameInt)편"
+        movieLabel.text = "국내영화: \(gameInt)편"
     }
 }
 
 extension MovieInitialViewController {
     final private func setUI() {
         setQAndALabel()
-        setPersonView()
-        setNextButton()
+        setMovieView()
+        setButton()
+        setLayout()
     }
-
-    final private func setNextButton() {
+    final private func setLayout() {
+        view.addSubview(mainLogo)
+        mainLogo.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaInsets.top).inset(10)
+            $0.leading.trailing.equalTo(view)
+            $0.height.equalTo(240)
+        }
+        view.addSubview(qAndALabel)
+        qAndALabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(mainLogo.snp.bottom).offset(20)
+            $0.width.equalTo(240)
+            $0.height.equalTo(160)
+        }
+        view.addSubview(movieView)
+        [movieLabel, upButton, downButton].forEach {
+            movieView.addSubview($0)
+        }
+        movieView.snp.makeConstraints {
+            $0.leading.top.bottom.trailing.equalTo(qAndALabel)
+        }
+        movieLabel.snp.makeConstraints {
+            $0.leading.equalTo(movieView).inset(20)
+            $0.centerY.equalTo(movieView)
+            $0.height.equalTo(70)
+            $0.width.equalTo(160)
+        }
+        upButton.snp.makeConstraints {
+            $0.trailing.equalTo(movieView).inset(15)
+            $0.top.equalTo(movieLabel)
+            $0.height.width.equalTo(40)
+            
+        }
+        downButton.snp.makeConstraints {
+            $0.trailing.equalTo(movieView).inset(15)
+            $0.bottom.equalTo(movieLabel)
+            $0.height.width.equalTo(40)
+        }
         [nextButton, answerButton, startButton].forEach {
             view.addSubview($0)
         }
         nextButton.snp.makeConstraints {
             $0.leading.trailing.equalTo(view).inset(40)
-            $0.bottom.equalTo(view.snp.bottom).inset(200)
+            $0.top.equalTo(movieView.snp.bottom).offset(50)
             $0.height.equalTo(50)
         }
         answerButton.snp.makeConstraints {
@@ -108,6 +145,8 @@ extension MovieInitialViewController {
         startButton.snp.makeConstraints {
             $0.top.leading.trailing.bottom.equalTo(nextButton)
         }
+    }
+    final private func setButton() {
         nextButton.addTarget(self, action: #selector(nextButton(_:)), for: .touchUpInside)
         nextButton.setTitle("다음문제", for: .normal)
         nextButton.layer.borderColor = UIColor.yellow.cgColor
@@ -122,73 +161,27 @@ extension MovieInitialViewController {
         startButton.layer.borderColor = UIColor.red.cgColor
         startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
         mainLogo.image = UIImage(named: "MovieInitial")
-
     }
-    final private func setPersonView() {
-        view.addSubview(mainLogo)
-        mainLogo.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaInsets.top).inset(10)
-            $0.leading.trailing.equalTo(view)
-            $0.height.equalTo(240)
-        }
-        view.addSubview(personView)
-        [personLabel, upButton, downButton].forEach {
-            personView.addSubview($0)
-        }
-        personView.snp.makeConstraints {
-            $0.leading.top.bottom.trailing.equalTo(qAndALabel)
-        }
-        personLabel.snp.makeConstraints {
-            $0.leading.equalTo(personView).inset(20)
-            $0.centerY.equalTo(personView)
-            $0.height.equalTo(70)
-            $0.width.equalTo(160)
-        }
-        upButton.snp.makeConstraints {
-            $0.trailing.equalTo(personView).inset(15)
-            $0.top.equalTo(personLabel)
-            $0.height.width.equalTo(40)
-            
-        }
-        downButton.snp.makeConstraints {
-            $0.trailing.equalTo(personView).inset(15)
-            $0.bottom.equalTo(personLabel)
-            $0.height.width.equalTo(40)
-        }
+    final private func setMovieView() {
+        movieView.backgroundColor = .black
+        movieView.layer.borderColor = UIColor.yellow.cgColor
+        movieView.layer.cornerRadius = 10
+        movieView.layer.borderWidth = 3
         
-        personView.backgroundColor = .black
-        personView.layer.borderColor = UIColor.yellow.cgColor
-        personView.layer.cornerRadius = 10
-        personView.layer.borderWidth = 3
-        
-        personLabel.text = "국내영화: \(gameInt)편"
-        personLabel.textAlignment = .center
-        personLabel.textColor = .white
-        personLabel.backgroundColor = .black
-        personLabel.layer.borderColor = UIColor.blue.cgColor
-        personLabel.layer.cornerRadius = 10
-        personLabel.layer.borderWidth = 3
+        movieLabel.text = "국내영화: \(gameInt)편"
+        movieLabel.textAlignment = .center
+        movieLabel.layer.borderColor = UIColor.blue.cgColor
+        movieLabel.layer.cornerRadius = 10
   
         upButton.addTarget(self, action: #selector(upButton(_:)), for: .touchUpInside)
         upButton.setImage(UIImage(named: "upButton"), for: .normal)        
         downButton.addTarget(self, action: #selector(downButton(_:)), for: .touchUpInside)
         downButton.setImage(UIImage(named: "downButton"), for: .normal)
-
-        
     }
     final private func setQAndALabel() {
-        view.addSubview(qAndALabel)
-        qAndALabel.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-            $0.width.equalTo(240)
-            $0.height.equalTo(160)
-        }
-        qAndALabel.backgroundColor = .black
-        qAndALabel.layer.borderWidth = 3
         qAndALabel.layer.borderColor = UIColor.systemPink.cgColor
         qAndALabel.font = UIFont.systemFont(ofSize: 20)
         qAndALabel.textAlignment = .center
         qAndALabel.layer.cornerRadius = 10
-        qAndALabel.textColor = .white
     }
 }

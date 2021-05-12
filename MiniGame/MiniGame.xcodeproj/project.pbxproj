@@ -16,7 +16,6 @@
 		5E18CE0726394894002A3CFD /* TopicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18CE0626394894002A3CFD /* TopicCollectionViewCell.swift */; };
 		5E1DFDA9263C156F0095BD49 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1DFDA8263C156F0095BD49 /* Word.swift */; };
 		5E496EE4263C4A2100F82665 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EE3263C4A2100F82665 /* CustomButton.swift */; };
-		5E496EE7263CF02800F82665 /* KoreanQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EE6263CF02800F82665 /* KoreanQuizViewController.swift */; };
 		5E496EEA263CF04600F82665 /* Korean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EE9263CF04600F82665 /* Korean.swift */; };
 		5E496EEE263FCFE400F82665 /* MovieInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EED263FCFE400F82665 /* MovieInitialViewController.swift */; };
 		5E496EF72640DC9A00F82665 /* BombGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EF62640DC9A00F82665 /* BombGameViewController.swift */; };
@@ -45,7 +44,6 @@
 		5E18CE0626394894002A3CFD /* TopicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E1DFDA8263C156F0095BD49 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		5E496EE3263C4A2100F82665 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		5E496EE6263CF02800F82665 /* KoreanQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanQuizViewController.swift; sourceTree = "<group>"; };
 		5E496EE9263CF04600F82665 /* Korean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Korean.swift; sourceTree = "<group>"; };
 		5E496EED263FCFE400F82665 /* MovieInitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInitialViewController.swift; sourceTree = "<group>"; };
 		5E496EF62640DC9A00F82665 /* BombGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BombGameViewController.swift; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 				5E496F002641160A00F82665 /* MiniGameViewController.swift */,
 				5E496F1526453B3000F82665 /* MiniGameViewControllerTwo.swift */,
 				5E18CDEE26393B17002A3CFD /* LiarGameViewController.swift */,
-				5E496EE6263CF02800F82665 /* KoreanQuizViewController.swift */,
 				5E496F23264A780000F82665 /* KoreanQuizViewControllerTwo.swift */,
 				5E496EED263FCFE400F82665 /* MovieInitialViewController.swift */,
 				5E496EF62640DC9A00F82665 /* BombGameViewController.swift */,
@@ -237,7 +234,6 @@
 				5E496F24264A780000F82665 /* KoreanQuizViewControllerTwo.swift in Sources */,
 				5E496EEA263CF04600F82665 /* Korean.swift in Sources */,
 				5E496F012641160A00F82665 /* MiniGameViewController.swift in Sources */,
-				5E496EE7263CF02800F82665 /* KoreanQuizViewController.swift in Sources */,
 				5E18CDEF26393B17002A3CFD /* LiarGameViewController.swift in Sources */,
 				5E496F1326453A7800F82665 /* CustomGameLabel.swift in Sources */,
 				5E496F1926457B4500F82665 /* KoreanLabel.swift in Sources */,

@@ -57,6 +57,26 @@ class CustomStartButton: UIButton {
         self.layer.shadowRadius = 5
         self.layer.shadowOpacity = 0.3
         self.backgroundColor = .black
+        self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        self.setTitleColor(.white, for: .normal)
+    }
+
+    init(view: UIView) {
+         super.init(frame: .zero)
+
+         }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class CustomCloseButton: UIButton {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)     
+        self.backgroundColor = .clear
+        self.setImage(UIImage(systemName: "xmark")?.withTintColor(.systemGray, renderingMode: .alwaysOriginal), for: .normal)
     }
 
     init(view: UIView) {

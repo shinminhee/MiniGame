@@ -8,16 +8,15 @@
 import UIKit
 
 
-class KoreanQuizViewControllerTwo: UIViewController {
+class KoreanQuizViewController: UIViewController {
     
-    let koreanLabel = UILabel()
     let mainLogo = UIImageView()
+    let koreanLabel = CustomGameLabel()
     let startButton = CustomStartButton()
     let nextButton = CustomStartButton()
     let KoreanCollectionViewLayout = UICollectionViewFlowLayout()
     lazy var KoreanCollectionView = UICollectionView(frame: .zero, collectionViewLayout: KoreanCollectionViewLayout)
     let paperLabel = UILabel()
-    let colors: [UIColor] = [UIColor(displayP3Red: 9/255, green: 132/255, blue: 227/255, alpha: 1), UIColor(displayP3Red: 255/255, green: 118/255, blue: 117/255, alpha: 1), UIColor(displayP3Red: 0/255, green: 206/255, blue: 201/255, alpha: 1), UIColor(displayP3Red: 253/255, green: 203/255, blue: 110/255, alpha: 1)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +25,7 @@ class KoreanQuizViewControllerTwo: UIViewController {
     }
 }
 
-extension KoreanQuizViewControllerTwo {
+extension KoreanQuizViewController {
     @objc
     func startButton(_ sender: UIButton) {
         let arraynum: Int = Korean.shared.first.count // 메시지 배열의 요소 개수를 세서 arraynum 변수에 할당
@@ -38,8 +37,6 @@ extension KoreanQuizViewControllerTwo {
         paperLabel.isHidden = false
         nextButton.isHidden = false
         self.paperLabel.backgroundColor = .white
-
-//        self.paperLabel.backgroundColor = colors[UIColor].randomElement()
         self.paperLabel.text = "종이를 넘겨주세요"
         paperLabel.isHidden = false
     }
@@ -65,7 +62,7 @@ extension KoreanQuizViewControllerTwo {
     }
 }
 
-extension KoreanQuizViewControllerTwo {
+extension KoreanQuizViewController {
     final private func setUI() {
         setBasics()
         setLayouts()
@@ -74,14 +71,11 @@ extension KoreanQuizViewControllerTwo {
     final private func setBasics() {
         
         mainLogo.image = UIImage(named: "KoreanQuiz")
-        koreanLabel.backgroundColor = .black
         koreanLabel.layer.borderColor = UIColor.yellow.cgColor
-        koreanLabel.layer.borderWidth = 3
         koreanLabel.textAlignment = .center
-        koreanLabel.textColor = .white
-        koreanLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        koreanLabel.font = UIFont.systemFont(ofSize: 35, weight: .bold)
+        koreanLabel.layer.cornerRadius = 0
 
-      
         startButton.setTitle("시작하기", for: .normal)
         startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
         startButton.layer.borderColor = UIColor.green.cgColor
@@ -99,6 +93,7 @@ extension KoreanQuizViewControllerTwo {
         nextButton.setTitle("다음문제", for: .normal)
         nextButton.addTarget(self, action: #selector(nextButton(_:)), for: .touchUpInside)
         nextButton.layer.borderColor = UIColor.systemPink.cgColor
+        nextButton.isHidden = true
     }
     
     final private func setLayouts() {
@@ -110,7 +105,8 @@ extension KoreanQuizViewControllerTwo {
         }
         view.addSubview(koreanLabel)
         koreanLabel.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
+            $0.top.equalTo(mainLogo.snp.bottom).offset(20)
+            $0.centerX.equalTo(view)
             $0.width.height.equalTo(200)
         }
         view.addSubview(paperLabel)
@@ -120,16 +116,13 @@ extension KoreanQuizViewControllerTwo {
         view.addSubview(startButton)
         startButton.snp.makeConstraints {
             $0.leading.trailing.equalTo(view).inset(40)
-            $0.bottom.equalTo(view.snp.bottom).inset(200)
+            $0.top.equalTo(koreanLabel.snp.bottom).offset(30)
             $0.height.equalTo(50)
         }
         view.addSubview(nextButton)
         nextButton.snp.makeConstraints {
             $0.leading.top.trailing.bottom.equalTo(startButton)
         }
-        nextButton.isHidden = true
     }
-    final private func setPaper() {
-        
-    }
+   
 }

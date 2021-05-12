@@ -14,10 +14,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-                window = UIWindow(windowScene: windowScene)
-                window?.rootViewController = MiniGameViewController()
-                window?.backgroundColor = .black
-                window?.makeKeyAndVisible()
+        window = UIWindow(windowScene: windowScene)
+        let VC = MiniGameViewController()
+        let naviLoginView = UINavigationController(rootViewController: VC)
+        UINavigationBar.setTransparentTabbar()
+        window?.rootViewController = naviLoginView
+        window?.backgroundColor = .black
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -48,6 +51,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
+}
+extension UINavigationBar {
+    static func setTransparentTabbar() {
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().shadowImage     = UIImage()
+        UINavigationBar.appearance().clipsToBounds   = true
+    } // 네비게이션바 투명하게 처리
 }
 

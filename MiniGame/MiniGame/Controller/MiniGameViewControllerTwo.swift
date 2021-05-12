@@ -31,12 +31,12 @@ extension MiniGameViewControllerTwo: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let liarVC = LiarGameViewController()
-        let koreanVC = KoreanQuizViewControllerTwo()
+        let koreanVC = KoreanQuizViewController()
         let movieVC = MovieInitialViewController()
         let bombVC = BombGameViewController()
         switch game[indexPath.row] {
         case "라이어게임":
-            present(liarVC, animated: true, completion: nil)
+            self.navigationController?.pushViewController(liarVC, animated: true)
         case "훈민정음게임":
             present(koreanVC, animated: true, completion: nil)
         case "영화이름초성게임":
