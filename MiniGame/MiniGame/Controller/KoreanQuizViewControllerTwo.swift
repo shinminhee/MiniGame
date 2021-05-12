@@ -16,7 +16,7 @@ class KoreanQuizViewControllerTwo: UIViewController {
     let nextButton = CustomStartButton()
     let KoreanCollectionViewLayout = UICollectionViewFlowLayout()
     lazy var KoreanCollectionView = UICollectionView(frame: .zero, collectionViewLayout: KoreanCollectionViewLayout)
-    var paperLabel = UILabel()
+    let paperLabel = UILabel()
     let colors: [UIColor] = [UIColor(displayP3Red: 9/255, green: 132/255, blue: 227/255, alpha: 1), UIColor(displayP3Red: 255/255, green: 118/255, blue: 117/255, alpha: 1), UIColor(displayP3Red: 0/255, green: 206/255, blue: 201/255, alpha: 1), UIColor(displayP3Red: 253/255, green: 203/255, blue: 110/255, alpha: 1)]
     
     override func viewDidLoad() {
@@ -79,6 +79,8 @@ extension KoreanQuizViewControllerTwo {
         koreanLabel.layer.borderWidth = 3
         koreanLabel.textAlignment = .center
         koreanLabel.textColor = .white
+        koreanLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+
       
         startButton.setTitle("시작하기", for: .normal)
         startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)

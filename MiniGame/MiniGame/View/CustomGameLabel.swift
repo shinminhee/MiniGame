@@ -13,7 +13,7 @@ class CustomGameLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.clipsToBounds = true
-        self.layer.cornerRadius = 50
+        self.layer.cornerRadius = 40
         self.layer.borderWidth = 3
         self.layer.shadowColor = UIColor.white.cgColor // 색깔
         self.layer.shadowOffset = CGSize(width: 0, height: 4)

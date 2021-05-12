@@ -21,6 +21,7 @@ class MiniGameViewController: UIViewController {
     let gameTableView = UITableView()
     let game = ["라이어게임", "훈민정음게임", "영화제목초성게임", "폭탄게임"]
     let colors: [UIColor] = [UIColor(displayP3Red: 119/255, green: 255/255, blue: 0/255, alpha: 1), UIColor(displayP3Red: 255/255, green: 0/255, blue: 146/255, alpha: 1), UIColor(displayP3Red: 255/255, green: 255/255, blue: 0/255, alpha: 1), UIColor(displayP3Red: 0/255, green: 255/255, blue: 255/255, alpha: 1)]
+    let color: [UIColor] = [UIColor.red, UIColor.yellow, UIColor.green, UIColor.blue]
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
@@ -82,7 +83,7 @@ extension MiniGameViewController {
     final private func setLayout() {
         view.addSubview(mainLogo)
         mainLogo.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaInsets.top).inset(10)
+            $0.top.equalTo(view.safeAreaInsets.top)
             $0.leading.trailing.equalTo(view)
             $0.height.equalTo(240)
         }
@@ -98,10 +99,12 @@ extension MiniGameViewController {
             $0.top.equalTo(mainLogo.snp.bottom)
             $0.bottom.equalTo(bottomLogo.snp.top)
         }
-        gameTableView.rowHeight = 120
+        gameTableView.rowHeight = 110
     }
    
     final private func setBasic() {
+//        let jeremyGif = UIImage.gifImageWithName("TopLogo")
+//        mainLogo.image = jeremyGif
         bottomLogo.image = UIImage(named: "BottomLogo")
         mainLogo.image = UIImage(named: "TopLogo")
     }

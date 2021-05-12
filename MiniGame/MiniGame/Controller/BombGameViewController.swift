@@ -65,23 +65,22 @@ extension BombGameViewController {
             view.addSubview($0)
         }
         timeLabel.snp.makeConstraints {
-            $0.top.equalTo(view).inset(100)
+            $0.top.equalTo(mainLogo.snp.bottom).inset(10)
             $0.leading.trailing.equalToSuperview().inset(40)
-            $0.height.equalTo(100)
+            $0.height.equalTo(70)
         }
         timeTextField.snp.makeConstraints {
             $0.leading.equalTo(view).inset(100)
-            $0.top.equalTo(timeLabel.snp.bottom).inset(-40)
+            $0.top.equalTo(timeLabel.snp.bottom)
             $0.width.height.equalTo(100)
         }
         secondLabel.snp.makeConstraints {
             $0.leading.equalTo(timeTextField.snp.trailing)
-            $0.top.height.equalTo(timeTextField)
-            $0.trailing.equalTo(view).inset(30)
-            $0.width.equalTo(view.frame.width / 2)
+            $0.bottom.equalTo(timeTextField)
+            $0.width.height.equalTo(80)
         }
         startButton.snp.makeConstraints {
-            $0.top.equalTo(timeTextField.snp.bottom).offset(40)
+            $0.top.equalTo(timeTextField.snp.bottom).offset(20)
             $0.leading.trailing.equalTo(view).inset(40)
             $0.height.equalTo(50)
         }

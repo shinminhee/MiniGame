@@ -31,6 +31,7 @@
 		5E496F1C26465BA900F82665 /* KoreanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F1B26465BA900F82665 /* KoreanCollectionViewCell.swift */; };
 		5E496F21264A267500F82665 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F20264A267500F82665 /* GameTableViewCell.swift */; };
 		5E496F24264A780000F82665 /* KoreanQuizViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F23264A780000F82665 /* KoreanQuizViewControllerTwo.swift */; };
+		5E496F2A264BA0E700F82665 /* Extension+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F29264BA0E600F82665 /* Extension+UIImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		5E496F1B26465BA900F82665 /* KoreanCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E496F20264A267500F82665 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		5E496F23264A780000F82665 /* KoreanQuizViewControllerTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanQuizViewControllerTwo.swift; sourceTree = "<group>"; };
+		5E496F29264BA0E600F82665 /* Extension+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				5E496EE3263C4A2100F82665 /* CustomButton.swift */,
 				5E496F1226453A7800F82665 /* CustomGameLabel.swift */,
 				5E496F1826457B4500F82665 /* KoreanLabel.swift */,
+				5E496F29264BA0E600F82665 /* Extension+UIImage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				5E496F1926457B4500F82665 /* KoreanLabel.swift in Sources */,
 				5E18CDEB26393B17002A3CFD /* AppDelegate.swift in Sources */,
 				5E18CDED26393B17002A3CFD /* SceneDelegate.swift in Sources */,
+				5E496F2A264BA0E700F82665 /* Extension+UIImage.swift in Sources */,
 				5E496F1626453B3000F82665 /* MiniGameViewControllerTwo.swift in Sources */,
 				5E496F21264A267500F82665 /* GameTableViewCell.swift in Sources */,
 				5E496F1C26465BA900F82665 /* KoreanCollectionViewCell.swift in Sources */,

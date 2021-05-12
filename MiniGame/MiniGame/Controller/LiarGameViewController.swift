@@ -25,7 +25,7 @@ class LiarGameViewController: UIViewController {
     let mode = ["노말모드", "스파이모드", "바보모드"]
     var modeIndex = 0
     let wordLabel = UILabel()
-    let paperView = UIView()
+    let paperLabel = UILabel()
     
     let personView = UIView()
     var personNum = 0
@@ -51,7 +51,7 @@ extension LiarGameViewController {
     func startButton(_ sender: UIButton) {
         print(#function)
         if topicLabel.text?.count ?? 0 <= 5 {
-        paperView.isHidden = false
+            paperLabel.isHidden = false
         personText = Word.shared.topicManager["\(topicLabel.text ?? "")"]?.randomElement() ?? ""
         personView.isHidden = true
         changeButton.isHidden = true
@@ -68,7 +68,7 @@ extension LiarGameViewController {
     func okButton(_ sender: UIButton) {
         if personNum != 1 {
             personNum -= 1
-            paperView.isHidden = false
+            paperLabel.isHidden = false
         } else {
             personView.isHidden = false
             changeButton.isHidden = false
@@ -87,9 +87,9 @@ extension LiarGameViewController {
             default:
                 break
             }
-            paperView.isHidden = true
+            paperLabel.isHidden = true
         } else {
-            paperView.isHidden = true
+            paperLabel.isHidden = true
             wordLabel.text = personText
         }
     }
@@ -98,7 +98,7 @@ extension LiarGameViewController {
     func changeButton(_ sender: UIButton) {
         setTopicCollectionView()
         topicView.alpha = 1
-        [personView, topicLabel, startButton, paperView, wordLabel, okButton, changeButton].forEach {
+        [personView, topicLabel, startButton, paperLabel, wordLabel, okButton, changeButton].forEach {
             $0.alpha = 0
         }
     }
@@ -145,7 +145,7 @@ extension LiarGameViewController: UICollectionViewDelegate {
         topicView.alpha = 0
         topicLabel.text = topics[indexPath.row]
         topicLabel.textAlignment = .center
-        [personView, topicLabel, startButton, paperView, wordLabel, okButton, changeButton].forEach {
+        [personView, topicLabel, startButton, paperLabel, wordLabel, okButton, changeButton].forEach {
             $0.alpha = 1
         }
     }
@@ -189,7 +189,7 @@ extension LiarGameViewController {
         view.addSubview(topicLabel)
         topicLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.centerY.equalTo(view.snp.centerY).offset(-150)
+            $0.top.equalTo(mainLogo.snp.bottom).offset(10)
             $0.width.equalTo(300)
             $0.height.equalTo(80)
         }
@@ -208,6 +208,8 @@ extension LiarGameViewController {
         topicLabel.backgroundColor = .black
         topicLabel.layer.borderWidth = 3
         topicLabel.layer.borderColor = UIColor.yellow.cgColor
+        topicLabel.layer.cornerRadius = 10
+
         mainLogo.image = UIImage(named: "LiarGame")
 
     }
@@ -226,20 +228,30 @@ extension LiarGameViewController {
         }
         okButton.backgroundColor = .white
         okButton.addTarget(self, action: #selector(okButton(_:)), for: .touchUpInside)
-        wordLabel.backgroundColor = .systemPink
+        wordLabel.backgroundColor = .black
+        wordLabel.layer.borderWidth = 3
+        wordLabel.layer.borderColor = UIColor.systemPink.cgColor
+        wordLabel.font = UIFont.systemFont(ofSize: 20)
         wordLabel.textAlignment = .center
+        wordLabel.textColor = .white
+        wordLabel.layer.cornerRadius = 10
+
     }
     final private func setPaperView() {
-        view.addSubview(paperView)
-        paperView.snp.makeConstraints {
-            $0.leading.top.trailing.bottom.equalTo(wordLabel).inset(20)
+        view.addSubview(paperLabel)
+        paperLabel.snp.makeConstraints {
+            $0.leading.top.trailing.bottom.equalTo(wordLabel).inset(5)
         }
-        paperView.backgroundColor = .green
+        paperLabel.backgroundColor = .white
         let paperViewTaped = UITapGestureRecognizer(target: self, action: #selector(paperViewTaped(_:)))
         paperViewTaped.numberOfTouchesRequired = 1
         paperViewTaped.numberOfTapsRequired = 1
-        paperView.addGestureRecognizer(paperViewTaped)
-        paperView.isUserInteractionEnabled = true
+        paperLabel.addGestureRecognizer(paperViewTaped)
+        paperLabel.isUserInteractionEnabled = true
+        paperLabel.text = "종이를 넘겨주세요"
+        paperLabel.textAlignment = .center
+        paperLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+
     }
     final private func setpersonView() {
         view.addSubview(personView)
@@ -252,18 +264,18 @@ extension LiarGameViewController {
         personLabel.snp.makeConstraints {
             $0.leading.top.equalTo(personView).inset(20)
             $0.height.equalTo(60)
-            $0.width.equalTo(200)
+            $0.width.equalTo(220)
         }
         upButton.snp.makeConstraints {
             $0.leading.equalTo(personLabel.snp.trailing)
-            $0.top.equalTo(personLabel)
-            $0.trailing.equalTo(personView).inset(20)
-            $0.height.equalTo(30)
+            $0.trailing.equalTo(personView).inset(15)
+            $0.bottom.equalTo(personLabel.snp.centerY)
+            $0.height.equalTo(35)
         }
         downButton.snp.makeConstraints {
             $0.leading.trailing.equalTo(upButton)
             $0.top.equalTo(upButton.snp.bottom)
-            $0.height.equalTo(30)
+            $0.height.equalTo(35)
         }
         modeView.snp.makeConstraints {
             $0.centerX.equalTo(personView)
@@ -272,14 +284,14 @@ extension LiarGameViewController {
             $0.width.equalTo(150)
         }
         modeLeftButton.snp.makeConstraints {
-            $0.leading.equalTo(personLabel).inset(20)
-            $0.top.bottom.equalTo(modeView)
-            $0.trailing.equalTo(modeView.snp.leading)
+            $0.leading.equalTo(modeView)
+            $0.centerY.equalTo(modeView.snp.centerY)
+            $0.width.height.equalTo(35)
         }
         modeRightButton.snp.makeConstraints {
-            $0.trailing.equalTo(upButton).inset(20)
-            $0.top.bottom.equalTo(modeView)
-            $0.leading.equalTo(modeView.snp.trailing)
+            $0.trailing.equalTo(modeView)
+            $0.centerY.equalTo(modeView.snp.centerY)
+            $0.width.height.equalTo(35)
         }
        
     
@@ -288,14 +300,15 @@ extension LiarGameViewController {
         modeView.textColor = .white
         modeView.textAlignment = .center
         
-        modeRightButton.backgroundColor = .red
         modeRightButton.addTarget(self, action: #selector(rightButton(_:)), for: .touchUpInside)
-        modeLeftButton.backgroundColor = .red
         modeLeftButton.addTarget(self, action: #selector(leftButton(_:)), for: .touchUpInside)
+        modeRightButton.setImage(UIImage(named: "rightButton"), for: .normal)
+        modeLeftButton.setImage(UIImage(named: "leftButton"), for: .normal)
         
         personView.backgroundColor = .black
         personView.layer.borderColor = UIColor.systemIndigo.cgColor
         personView.layer.borderWidth = 3
+        personView.layer.cornerRadius = 10
         
         personLabel.text = "참가인원: \(personInt)명"
         personLabel.font = UIFont.systemFont(ofSize: 20)
@@ -303,15 +316,18 @@ extension LiarGameViewController {
         personLabel.layer.borderColor = UIColor.orange.cgColor
         personLabel.layer.borderWidth = 3
         personLabel.textColor = .white
+        personLabel.layer.cornerRadius = 20
+
         
-        upButton.backgroundColor = .yellow
+        
         let upButtonTaped = UITapGestureRecognizer(target: self, action: #selector(upButton(_:)))
         upButtonTaped.numberOfTouchesRequired = 1
         upButtonTaped.numberOfTapsRequired = 1
         upButton.addGestureRecognizer(upButtonTaped)
         upButton.isUserInteractionEnabled = true
+        upButton.setImage(UIImage(named: "upButton"), for: .normal)
         
-        downButton.backgroundColor = .gray
+        downButton.setImage(UIImage(named: "downButton"), for: .normal)
         let downButtonTaped = UITapGestureRecognizer(target: self, action: #selector(downButton(_:)))
         downButtonTaped.numberOfTouchesRequired = 1
         downButtonTaped.numberOfTapsRequired = 1
@@ -343,7 +359,7 @@ extension LiarGameViewController {
         view.addSubview(startButton)
         startButton.snp.makeConstraints {
             $0.leading.trailing.equalTo(view).inset(40)
-            $0.bottom.equalTo(view.snp.bottom).inset(180)
+            $0.top.equalTo(personView.snp.bottom).offset(40)
             $0.height.equalTo(50)
         }
         startButton.layer.borderColor = UIColor.red.cgColor

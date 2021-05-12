@@ -24,7 +24,6 @@ class MovieInitialViewController: UIViewController {
     let qaTitle = ["문제", "정답"]
     let answerButton = CustomStartButton()
     
-  
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -140,30 +139,41 @@ extension MovieInitialViewController {
             $0.leading.top.bottom.trailing.equalTo(qAndALabel)
         }
         personLabel.snp.makeConstraints {
-            $0.leading.top.equalTo(personView).inset(20)
-            $0.height.equalTo(30)
+            $0.leading.equalTo(personView).inset(20)
+            $0.centerY.equalTo(personView)
+            $0.height.equalTo(70)
             $0.width.equalTo(160)
         }
         upButton.snp.makeConstraints {
-            $0.leading.equalTo(personLabel.snp.trailing)
+            $0.trailing.equalTo(personView).inset(15)
             $0.top.equalTo(personLabel)
-            $0.trailing.equalTo(personView).inset(20)
-            $0.height.equalTo(15)
+            $0.height.width.equalTo(40)
+            
         }
         downButton.snp.makeConstraints {
-            $0.leading.trailing.equalTo(upButton)
-            $0.top.equalTo(upButton.snp.bottom)
-            $0.height.equalTo(15)
+            $0.trailing.equalTo(personView).inset(15)
+            $0.bottom.equalTo(personLabel)
+            $0.height.width.equalTo(40)
         }
         
-        personView.backgroundColor = .yellow
-        personLabel.backgroundColor = .red
-        personLabel.text = "국내영화: \(gameInt)편"
+        personView.backgroundColor = .black
+        personView.layer.borderColor = UIColor.yellow.cgColor
+        personView.layer.cornerRadius = 10
+        personView.layer.borderWidth = 3
         
-        upButton.backgroundColor = .purple
+        personLabel.text = "국내영화: \(gameInt)편"
+        personLabel.textAlignment = .center
+        personLabel.textColor = .white
+        personLabel.backgroundColor = .black
+        personLabel.layer.borderColor = UIColor.blue.cgColor
+        personLabel.layer.cornerRadius = 10
+        personLabel.layer.borderWidth = 3
+  
         upButton.addTarget(self, action: #selector(upButton(_:)), for: .touchUpInside)
-        downButton.backgroundColor = .systemPink
+        upButton.setImage(UIImage(named: "upButton"), for: .normal)        
         downButton.addTarget(self, action: #selector(downButton(_:)), for: .touchUpInside)
+        downButton.setImage(UIImage(named: "downButton"), for: .normal)
+
         
     }
     final private func setQAndALabel() {
@@ -173,7 +183,12 @@ extension MovieInitialViewController {
             $0.width.equalTo(240)
             $0.height.equalTo(160)
         }
-        qAndALabel.backgroundColor = .purple
+        qAndALabel.backgroundColor = .black
+        qAndALabel.layer.borderWidth = 3
+        qAndALabel.layer.borderColor = UIColor.systemPink.cgColor
+        qAndALabel.font = UIFont.systemFont(ofSize: 20)
         qAndALabel.textAlignment = .center
+        qAndALabel.layer.cornerRadius = 10
+        qAndALabel.textColor = .white
     }
 }
