@@ -14,30 +14,29 @@ class LiarGameViewController: UIViewController {
     let modeView = UILabel()
     let modeLeftButton = UIButton()
     let modeRightButton = UIButton()
+    let mode = ["노말모드", "스파이모드", "바보모드"]
+    var modeIndex = 0
     
     let topicLabel = UILabel()
     let changeButton = UIButton()
-    
     let topicViewLayout = UICollectionViewFlowLayout()
     lazy var topicView = UICollectionView(frame: .zero, collectionViewLayout: topicViewLayout)
     let topics = ["가수", "음식", "브랜드", "동물", "장소", "탈것", "직업", "국내영화", "배우"]
     
-    let mode = ["노말모드", "스파이모드", "바보모드"]
-    var modeIndex = 0
     let wordLabel = UILabel()
     let paperLabel = UILabel()
     
     let personView = UIView()
-    var personNum = 0
-    var personInt = 3
-    let personLabel = UILabel()
-    var liarNum = 0
     let upButton = UIButton()
     let downButton = UIButton()
-    let startButton = CustomStartButton()
-    let okButton = CustomStartButton()
+    let personLabel = UILabel()
+    var personNum = 0
+    var personInt = 3
+    var liarNum = 0
     var personText = ""
     var unSelected = [""]
+    let startButton = CustomStartButton()
+    let okButton = CustomStartButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,13 +50,16 @@ extension LiarGameViewController {
     func startButton(_ sender: UIButton) {
         print(#function)
         if topicLabel.text?.count ?? 0 <= 5 {
-            paperLabel.isHidden = false
-            personText = Word.shared.topicManager["\(topicLabel.text ?? "")"]?.randomElement() ?? ""
             personView.isHidden = true
             changeButton.isHidden = true
+            startButton.isHidden = true
+            personText = Word.shared.topicManager["\(topicLabel.text ?? "")"]?.randomElement() ?? ""
             personNum = personInt
             wordLabel.text = personText
             liarNum = Int.random(in: 1 ... personInt)
+            paperLabel.isHidden = false
+            paperLabel.backgroundColor = .white
+            paperLabel.text = "종이를 넘겨주세요"
             var selected = Word.shared.topicManager["\(topicLabel.text ?? "")"] ?? [""]
             selected.removeAll(where: { $0 == personText })
             unSelected = selected
@@ -68,10 +70,17 @@ extension LiarGameViewController {
     func okButton(_ sender: UIButton) {
         if personNum != 1 {
             personNum -= 1
+            okButton.isHidden = true
             paperLabel.isHidden = false
+            paperLabel.backgroundColor = .white
+            paperLabel.text = "종이를 넘겨주세요"
         } else {
-            personView.isHidden = false
             changeButton.isHidden = false
+            startButton.isHidden = false
+            okButton.isHidden = true
+            personView.isHidden = false
+            paperLabel.backgroundColor = .white
+            paperLabel.text = "종이를 넘겨주세요"
         }
     }
     @objc
@@ -80,6 +89,7 @@ extension LiarGameViewController {
             switch modeView.text {
             case "노말모드":
                 wordLabel.text = "당신은 라이어입니다."
+                print(123)
             case "스파이모드":
                 wordLabel.text = "당신은 라이어입니다."
             case "바보모드":
@@ -87,13 +97,18 @@ extension LiarGameViewController {
             default:
                 break
             }
-            paperLabel.isHidden = true
         } else {
-            paperLabel.isHidden = true
             wordLabel.text = personText
+            print(456)
+        }
+        UIView.transition(with: self.paperLabel, duration: 1, options: .transitionCurlUp, animations: {
+            self.paperLabel.backgroundColor = .clear
+            self.paperLabel.text = ""
+        }) { (_) in
+                self.okButton.isHidden = false
+                self.paperLabel.isHidden = true
         }
     }
-    
     @objc
     func changeButton(_ sender: UIButton) {
         setTopicCollectionView()
@@ -190,7 +205,7 @@ extension LiarGameViewController {
         changeButton.layer.borderWidth = 3
         changeButton.layer.borderColor = UIColor.blue.cgColor
         
-        topicLabel.text = "   주제를 선택해 주세요"
+        topicLabel.text = "    주제를 선택해 주세요"
         topicLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         topicLabel.textColor = .white
         topicLabel.backgroundColor = .black
@@ -200,11 +215,6 @@ extension LiarGameViewController {
     }
     final private func setWordLabel() {
         
-        okButton.addTarget(self, action: #selector(okButton(_:)), for: .touchUpInside)
-        okButton.setTitle("확인", for: .normal)
-        okButton.layer.borderColor = UIColor.purple.cgColor
-        okButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-
         wordLabel.backgroundColor = .black
         wordLabel.layer.borderWidth = 3
         wordLabel.layer.borderColor = UIColor.systemPink.cgColor
@@ -214,15 +224,15 @@ extension LiarGameViewController {
         wordLabel.layer.cornerRadius = 10
     }
     final private func setPaperView() {
-        paperLabel.backgroundColor = .white
         let paperViewTaped = UITapGestureRecognizer(target: self, action: #selector(paperViewTaped(_:)))
         paperViewTaped.numberOfTouchesRequired = 1
         paperViewTaped.numberOfTapsRequired = 1
+        paperLabel.isHidden = true
         paperLabel.addGestureRecognizer(paperViewTaped)
         paperLabel.isUserInteractionEnabled = true
-        paperLabel.text = "종이를 넘겨주세요"
         paperLabel.textAlignment = .center
         paperLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        paperLabel.textColor = .black
     }
     final private func setpersonView() {
         personView.backgroundColor = .black
@@ -287,6 +297,12 @@ extension LiarGameViewController {
         startButton.layer.borderColor = UIColor.red.cgColor
         startButton.setTitle("게임시작", for: .normal)
         startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
+        
+        okButton.addTarget(self, action: #selector(okButton(_:)), for: .touchUpInside)
+        okButton.setTitle("확인 후 핸드폰을 다음사람에게 넘겨주세요", for: .normal)
+        okButton.layer.borderColor = UIColor.red.cgColor
+        okButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        okButton.isHidden = true
     }
     final private func setLayout() {
         view.addSubview(mainLogo)
@@ -312,13 +328,6 @@ extension LiarGameViewController {
             $0.leading.trailing.equalTo(topicLabel)
             $0.top.equalTo(topicLabel.snp.bottom).offset(30)
             $0.height.equalTo(160)
-        }
-        view.addSubview(okButton)
-        okButton.snp.makeConstraints {
-            $0.centerX.equalTo(wordLabel)
-            $0.bottom.equalTo(wordLabel.snp.bottom).inset(10)
-            $0.height.equalTo(30)
-            $0.width.equalTo(140)
         }
         view.addSubview(paperLabel)
         paperLabel.snp.makeConstraints {
@@ -368,6 +377,10 @@ extension LiarGameViewController {
             $0.leading.trailing.equalTo(view).inset(40)
             $0.top.equalTo(personView.snp.bottom).offset(40)
             $0.height.equalTo(50)
+        }
+        view.addSubview(okButton)
+        okButton.snp.makeConstraints {
+            $0.leading.trailing.top.bottom.equalTo(startButton)
         }
     }
 }

@@ -11,7 +11,6 @@ import AVFoundation
 class BombGameViewController: UIViewController {
     
     let mainLogo = UIImageView()
-    var bombLabel = UILabel()
     let startButton = CustomStartButton()
     var timer: Timer?
     var count = 0
@@ -20,21 +19,51 @@ class BombGameViewController: UIViewController {
     let timeTextField = UITextField()
     var timeText = ""
     let secondLabel = UILabel()
+    let bombImageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
         setUI()
     }
+    private class func getAnimationImageArray() -> [UIImage] {
+        var animationArray: [UIImage] = []
+        animationArray.append(UIImage(named: "Bomb1")!)
+        animationArray.append(UIImage(named: "Bomb2")!)
+        animationArray.append(UIImage(named: "Bomb3")!)
+        animationArray.append(UIImage(named: "Bomb4")!)
+        animationArray.append(UIImage(named: "Bomb5")!)
+        animationArray.append(UIImage(named: "Bomb6")!)
+        animationArray.append(UIImage(named: "Bomb7")!)
+        animationArray.append(UIImage(named: "Bomb8")!)
+        animationArray.append(UIImage(named: "Bomb9")!)
+        animationArray.append(UIImage(named: "Bomb10")!)
+        return animationArray
+    }
+    private class func getAnimationImage() -> [UIImage] {
+        var animationArray: [UIImage] = []
+        animationArray.append(UIImage(named: "FinishBomb")!)
+        return animationArray
+    }
 }
 
 extension BombGameViewController {
     @objc
     func startButton(_ sender: UIButton) {
-        count = Int(timeTextField.text ?? "0") ?? 0
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerCount), userInfo: nil, repeats: true)
-        timeLabel.text = "\(count)"
-        print(count)
+        if timeTextField.text?.count ?? 0 >= 1 {
+            count = Int(timeTextField.text ?? "0") ?? 0
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerCount), userInfo: nil, repeats: true)
+            timeLabel.text = "\(count)"
+            print(count)
+            [startButton, timeLabel, timeTextField, secondLabel].forEach {
+                $0.isHidden = true
+            }
+            bombImageView.isHidden = false
+            bombImageView.animationImages = BombGameViewController.getAnimationImageArray()
+            bombImageView.animationDuration = 3
+            bombImageView.animationRepeatCount = 0
+            bombImageView.startAnimating()
+        }
     }
     @objc
     func timerCount() {
@@ -43,6 +72,10 @@ extension BombGameViewController {
             AudioServicesPlaySystemSound(alarm)
             timer?.invalidate()
             timer = nil
+            bombImageView.animationImages = BombGameViewController.getAnimationImage()
+            bombImageView.animationDuration = 1
+            bombImageView.animationRepeatCount = 0
+            bombImageView.startAnimating()
         }
     }
 }
@@ -54,15 +87,12 @@ extension BombGameViewController {
     }
     func setBasic() {
         mainLogo.image = UIImage(named: "BombGame")
-
-        let text = "시간을 정해주세요 !"
-        let attributedStr = NSMutableAttributedString(string: text)
-        attributedStr.addAttribute(.strokeWidth, value: 6.0, range: (text as NSString).range(of: "시간을 정해주세요 !"))
-        timeLabel.attributedText = attributedStr
+        
+        timeLabel.text = "시간을 정해주세요 !"
         timeLabel.textAlignment = .center
         
         timeTextField.layer.borderWidth = 3
-        timeTextField.layer.borderColor = UIColor.lightGray.cgColor
+        timeTextField.layer.borderColor = UIColor.yellow.cgColor
         timeTextField.font = UIFont.systemFont(ofSize: 40)
         timeTextField.layer.cornerRadius = 10
         timeTextField.textAlignment = .center
@@ -79,6 +109,9 @@ extension BombGameViewController {
         startButton.setTitle("게임시작", for: .normal)
         startButton.setTitleColor(.white, for: .normal)
         startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
+        
+        bombImageView.image = UIImage(named: "Bomb")
+        bombImageView.isHidden = true
     }
     
     func setLayout() {
@@ -110,6 +143,11 @@ extension BombGameViewController {
             $0.top.equalTo(timeTextField.snp.bottom).offset(20)
             $0.leading.trailing.equalTo(view).inset(40)
             $0.height.equalTo(50)
+        }
+        view.addSubview(bombImageView)
+        bombImageView.snp.makeConstraints {
+            $0.centerX.centerY.equalTo(startButton)
+            $0.width.height.equalTo(300)
         }
     }
 }

@@ -38,7 +38,6 @@ extension KoreanQuizViewController {
         nextButton.isHidden = false
         self.paperLabel.backgroundColor = .white
         self.paperLabel.text = "종이를 넘겨주세요"
-        paperLabel.isHidden = false
     }
     @objc
     func nextButton(_ sender: UIButton) {
@@ -73,7 +72,7 @@ extension KoreanQuizViewController {
         mainLogo.image = UIImage(named: "KoreanQuiz")
         koreanLabel.layer.borderColor = UIColor.yellow.cgColor
         koreanLabel.textAlignment = .center
-        koreanLabel.font = UIFont.systemFont(ofSize: 35, weight: .bold)
+        koreanLabel.font = UIFont.systemFont(ofSize: 45, weight: .bold)
         koreanLabel.layer.cornerRadius = 0
 
         startButton.setTitle("시작하기", for: .normal)

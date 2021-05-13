@@ -103,10 +103,10 @@ extension MiniGameViewController {
     }
    
     final private func setBasic() {
-//        let jeremyGif = UIImage.gifImageWithName("TopLogo")
-//        mainLogo.image = jeremyGif
-        bottomLogo.image = UIImage(named: "BottomLogo")
-        mainLogo.image = UIImage(named: "TopLogo2")
+        let topGif = UIImage.gifImageWithName("TopLogo")
+        mainLogo.image = topGif
+        let bottomGif = UIImage.gifImageWithName("BottomLogo")
+        bottomLogo.image = bottomGif
     }
     final private func setTableView() {
         gameTableView.backgroundColor = .black
