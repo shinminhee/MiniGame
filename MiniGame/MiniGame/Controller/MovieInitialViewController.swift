@@ -180,7 +180,7 @@ extension MovieInitialViewController {
     }
     final private func setQAndALabel() {
         qAndALabel.layer.borderColor = UIColor.systemPink.cgColor
-        qAndALabel.font = UIFont.systemFont(ofSize: 20)
+        qAndALabel.font = UIFont.boldSystemFont(ofSize: 30)
         qAndALabel.textAlignment = .center
         qAndALabel.layer.cornerRadius = 10
     }

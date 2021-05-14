@@ -8,31 +8,10 @@
 import UIKit
 
 class BombAnimation {
-    private static let sharedInstance = BombAnimation()
-
-    class func show() {
-        let backgroundView = UIView(frame: CGRect.init(x: 0, y: 0, width: 100, height: 100))
-        
-        let popupView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 100, height: 100))
-        popupView.animationImages = BombAnimation.getAnimationImageArray()
-        popupView.animationDuration = 3
-        popupView.animationRepeatCount = 0
-        
-        if let window = UIApplication.shared.keyWindow {
-            window.addSubview(backgroundView)
-            window.addSubview(popupView)
-            
-            backgroundView.frame = CGRect(x: 0, y: 0, width: window.frame.maxX, height: window.frame.maxY)
-            backgroundView.backgroundColor = .white
-            
-            popupView.center = window.center
-            popupView.startAnimating()
-        }
-    }
-
-    private class func getAnimationImageArray() -> [UIImage] {
+    static let sharedInstance = BombAnimation()
+    
+    class func getAnimationImageArray() -> [UIImage] {
         var animationArray: [UIImage] = []
-        animationArray.append(UIImage(named: "Bomb")!)
         animationArray.append(UIImage(named: "Bomb1")!)
         animationArray.append(UIImage(named: "Bomb2")!)
         animationArray.append(UIImage(named: "Bomb3")!)
@@ -43,6 +22,31 @@ class BombAnimation {
         animationArray.append(UIImage(named: "Bomb8")!)
         animationArray.append(UIImage(named: "Bomb9")!)
         animationArray.append(UIImage(named: "Bomb10")!)
+        animationArray.append(UIImage(named: "Bomb11")!)
+        animationArray.append(UIImage(named: "Bomb12")!)
+        animationArray.append(UIImage(named: "Bomb13")!)
+        animationArray.append(UIImage(named: "Bomb14")!)
+        animationArray.append(UIImage(named: "Bomb15")!)
+        animationArray.append(UIImage(named: "Bomb16")!)
+        animationArray.append(UIImage(named: "Bomb17")!)
+        animationArray.append(UIImage(named: "Bomb18")!)
+        animationArray.append(UIImage(named: "Bomb19")!)
+        animationArray.append(UIImage(named: "Bomb20")!)
+        animationArray.append(UIImage(named: "Bomb21")!)
+        animationArray.append(UIImage(named: "Bomb22")!)
+        animationArray.append(UIImage(named: "Bomb23")!)
+        animationArray.append(UIImage(named: "Bomb24")!)
+        animationArray.append(UIImage(named: "Bomb25")!)
+        animationArray.append(UIImage(named: "Bomb26")!)
+        animationArray.append(UIImage(named: "Bomb27")!)
+        animationArray.append(UIImage(named: "Bomb28")!)
+        animationArray.append(UIImage(named: "Bomb29")!)
+        animationArray.append(UIImage(named: "Bomb30")!)
+        return animationArray
+    }
+    class func getAnimationImage() -> [UIImage] {
+        var animationArray: [UIImage] = []
+        animationArray.append(UIImage(named: "FinishBomb")!)
         return animationArray
     }
 }

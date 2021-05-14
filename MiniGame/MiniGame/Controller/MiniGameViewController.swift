@@ -21,7 +21,7 @@ class MiniGameViewController: UIViewController {
     let gameTableView = UITableView()
     let game = ["라이어게임", "훈민정음게임", "영화제목초성게임", "폭탄게임"]
     let colors: [UIColor] = [UIColor(displayP3Red: 119/255, green: 255/255, blue: 0/255, alpha: 1), UIColor(displayP3Red: 255/255, green: 0/255, blue: 146/255, alpha: 1), UIColor(displayP3Red: 255/255, green: 255/255, blue: 0/255, alpha: 1), UIColor(displayP3Red: 0/255, green: 255/255, blue: 255/255, alpha: 1)]
-    let color: [UIColor] = [UIColor.red, UIColor.yellow, UIColor.green, UIColor.blue]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
@@ -63,13 +63,7 @@ extension MiniGameViewController: UITableViewDataSource {
         cell.backgroundColor = .black
         cell.GameLabel.text = game[indexPath.row]
         cell.GameLabel.font = UIFont.systemFont(ofSize: 30, weight: .bold)
-//        let text = "\(String(describing: cell.GameLabel.text))"
-//        let attributedStr = NSMutableAttributedString(string: text)
-//        attributedStr.addAttribute(.strokeWidth, value: 4.0, range: (text as NSString).range(of: "\(String(describing: cell.GameLabel.text))"))
-//        cell.GameLabel.attributedText = attributedStr
         cell.selectionStyle = .none
-
-        
         return cell
     }
 }

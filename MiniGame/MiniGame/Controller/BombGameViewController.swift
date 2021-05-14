@@ -26,25 +26,25 @@ class BombGameViewController: UIViewController {
         view.backgroundColor = .black
         setUI()
     }
-    private class func getAnimationImageArray() -> [UIImage] {
-        var animationArray: [UIImage] = []
-        animationArray.append(UIImage(named: "Bomb1")!)
-        animationArray.append(UIImage(named: "Bomb2")!)
-        animationArray.append(UIImage(named: "Bomb3")!)
-        animationArray.append(UIImage(named: "Bomb4")!)
-        animationArray.append(UIImage(named: "Bomb5")!)
-        animationArray.append(UIImage(named: "Bomb6")!)
-        animationArray.append(UIImage(named: "Bomb7")!)
-        animationArray.append(UIImage(named: "Bomb8")!)
-        animationArray.append(UIImage(named: "Bomb9")!)
-        animationArray.append(UIImage(named: "Bomb10")!)
-        return animationArray
-    }
-    private class func getAnimationImage() -> [UIImage] {
-        var animationArray: [UIImage] = []
-        animationArray.append(UIImage(named: "FinishBomb")!)
-        return animationArray
-    }
+//    private class func getAnimationImageArray() -> [UIImage] {
+//        var animationArray: [UIImage] = []
+//        animationArray.append(UIImage(named: "Bomb1")!)
+//        animationArray.append(UIImage(named: "Bomb2")!)
+//        animationArray.append(UIImage(named: "Bomb3")!)
+//        animationArray.append(UIImage(named: "Bomb4")!)
+//        animationArray.append(UIImage(named: "Bomb5")!)
+//        animationArray.append(UIImage(named: "Bomb6")!)
+//        animationArray.append(UIImage(named: "Bomb7")!)
+//        animationArray.append(UIImage(named: "Bomb8")!)
+//        animationArray.append(UIImage(named: "Bomb9")!)
+//        animationArray.append(UIImage(named: "Bomb10")!)
+//        return animationArray
+//    }
+//    private class func getAnimationImage() -> [UIImage] {
+//        var animationArray: [UIImage] = []
+//        animationArray.append(UIImage(named: "FinishBomb")!)
+//        return animationArray
+//    }
 }
 
 extension BombGameViewController {
@@ -59,8 +59,8 @@ extension BombGameViewController {
                 $0.isHidden = true
             }
             bombImageView.isHidden = false
-            bombImageView.animationImages = BombGameViewController.getAnimationImageArray()
-            bombImageView.animationDuration = 3
+            bombImageView.animationImages = BombAnimation.getAnimationImageArray()
+            bombImageView.animationDuration = 1
             bombImageView.animationRepeatCount = 0
             bombImageView.startAnimating()
         }
@@ -72,7 +72,7 @@ extension BombGameViewController {
             AudioServicesPlaySystemSound(alarm)
             timer?.invalidate()
             timer = nil
-            bombImageView.animationImages = BombGameViewController.getAnimationImage()
+            bombImageView.animationImages = BombAnimation.getAnimationImage()
             bombImageView.animationDuration = 1
             bombImageView.animationRepeatCount = 0
             bombImageView.startAnimating()

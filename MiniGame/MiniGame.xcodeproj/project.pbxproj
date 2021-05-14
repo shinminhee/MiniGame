@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5E107891264D587100AF1F82 /* BombAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E107890264D587100AF1F82 /* BombAnimation.swift */; };
-		5E107895264D5C0100AF1F82 /* TopLogo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5E107894264D5C0100AF1F82 /* TopLogo.gif */; };
 		5E107898264D5D1500AF1F82 /* BottomLogo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5E107897264D5D1500AF1F82 /* BottomLogo.gif */; };
+		5E1078A2264D9D7800AF1F82 /* TopLogo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5E1078A1264D9D7800AF1F82 /* TopLogo.gif */; };
 		5E18CDEB26393B17002A3CFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18CDEA26393B17002A3CFD /* AppDelegate.swift */; };
 		5E18CDED26393B17002A3CFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18CDEC26393B17002A3CFD /* SceneDelegate.swift */; };
 		5E18CDEF26393B17002A3CFD /* LiarGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18CDEE26393B17002A3CFD /* LiarGameViewController.swift */; };
@@ -25,7 +25,6 @@
 		5E496EFA2640DCAC00F82665 /* MovieAlphabet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EF92640DCAC00F82665 /* MovieAlphabet.swift */; };
 		5E496EFE26410BDA00F82665 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EFD26410BDA00F82665 /* PersonCollectionViewCell.swift */; };
 		5E496F012641160A00F82665 /* MiniGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F002641160A00F82665 /* MiniGameViewController.swift */; };
-		5E496F0826440C1E00F82665 /* Swift-Regular_43151.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E496F0726440C1E00F82665 /* Swift-Regular_43151.ttf */; };
 		5E496F1326453A7800F82665 /* CustomGameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F1226453A7800F82665 /* CustomGameLabel.swift */; };
 		5E496F1626453B3000F82665 /* MiniGameViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F1526453B3000F82665 /* MiniGameViewControllerTwo.swift */; };
 		5E496F1926457B4500F82665 /* KoreanLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F1826457B4500F82665 /* KoreanLabel.swift */; };
@@ -38,8 +37,8 @@
 
 /* Begin PBXFileReference section */
 		5E107890264D587100AF1F82 /* BombAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BombAnimation.swift; sourceTree = "<group>"; };
-		5E107894264D5C0100AF1F82 /* TopLogo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TopLogo.gif; path = ../../../../Downloads/TopLogo.gif; sourceTree = "<group>"; };
 		5E107897264D5D1500AF1F82 /* BottomLogo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = BottomLogo.gif; sourceTree = "<group>"; };
+		5E1078A1264D9D7800AF1F82 /* TopLogo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = TopLogo.gif; path = ../../../../../Downloads/TopLogo.gif; sourceTree = "<group>"; };
 		5E18CDE726393B17002A3CFD /* MiniGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E18CDEA26393B17002A3CFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E18CDEC26393B17002A3CFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +55,6 @@
 		5E496EF92640DCAC00F82665 /* MovieAlphabet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAlphabet.swift; sourceTree = "<group>"; };
 		5E496EFD26410BDA00F82665 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E496F002641160A00F82665 /* MiniGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGameViewController.swift; sourceTree = "<group>"; };
-		5E496F0726440C1E00F82665 /* Swift-Regular_43151.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Swift-Regular_43151.ttf"; sourceTree = "<group>"; };
 		5E496F1226453A7800F82665 /* CustomGameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGameLabel.swift; sourceTree = "<group>"; };
 		5E496F1526453B3000F82665 /* MiniGameViewControllerTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGameViewControllerTwo.swift; sourceTree = "<group>"; };
 		5E496F1826457B4500F82665 /* KoreanLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanLabel.swift; sourceTree = "<group>"; };
@@ -102,13 +100,7 @@
 				5E496EF2263FD2CC00F82665 /* View */,
 				5E496EF4263FD2DE00F82665 /* Controller */,
 				5E496EF3263FD2D400F82665 /* Support */,
-				5E18CDEA26393B17002A3CFD /* AppDelegate.swift */,
-				5E18CDEC26393B17002A3CFD /* SceneDelegate.swift */,
-				5E107894264D5C0100AF1F82 /* TopLogo.gif */,
-				5E107897264D5D1500AF1F82 /* BottomLogo.gif */,
-				5E18CDF326393B1C002A3CFD /* Assets.xcassets */,
 				5E18CDF526393B1C002A3CFD /* LaunchScreen.storyboard */,
-				5E496F0726440C1E00F82665 /* Swift-Regular_43151.ttf */,
 				5E18CDF826393B1C002A3CFD /* Info.plist */,
 			);
 			path = MiniGame;
@@ -143,6 +135,11 @@
 		5E496EF3263FD2D400F82665 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				5E18CDEA26393B17002A3CFD /* AppDelegate.swift */,
+				5E18CDEC26393B17002A3CFD /* SceneDelegate.swift */,
+				5E18CDF326393B1C002A3CFD /* Assets.xcassets */,
+				5E1078A1264D9D7800AF1F82 /* TopLogo.gif */,
+				5E107897264D5D1500AF1F82 /* BottomLogo.gif */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -225,10 +222,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E18CDF726393B1C002A3CFD /* LaunchScreen.storyboard in Resources */,
-				5E496F0826440C1E00F82665 /* Swift-Regular_43151.ttf in Resources */,
 				5E107898264D5D1500AF1F82 /* BottomLogo.gif in Resources */,
 				5E18CDF426393B1C002A3CFD /* Assets.xcassets in Resources */,
-				5E107895264D5C0100AF1F82 /* TopLogo.gif in Resources */,
+				5E1078A2264D9D7800AF1F82 /* TopLogo.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

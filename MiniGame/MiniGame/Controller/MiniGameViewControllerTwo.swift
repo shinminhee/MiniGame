@@ -161,8 +161,6 @@ extension MiniGameViewControllerTwo {
         koreanGameLabel.isUserInteractionEnabled = true
         koreanGameLabel.layer.borderColor = UIColor(displayP3Red: 66/255, green: 215/255, blue: 97/255, alpha: 0.5).cgColor
         koreanGameLabel.text = "초성게임"
-//        koreanGameButton.addTarget(self, action: #selector(koreanGame(_:)), for: .touchUpInside)
-
     }
     final private func setMovieInitial() {
         view.addSubview(movieInitialGameLabel)
