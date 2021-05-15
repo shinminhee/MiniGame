@@ -21,35 +21,22 @@ class BombGameViewController: UIViewController {
     let secondLabel = UILabel()
     let bombImageView = UIImageView()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
         setUI()
     }
-//    private class func getAnimationImageArray() -> [UIImage] {
-//        var animationArray: [UIImage] = []
-//        animationArray.append(UIImage(named: "Bomb1")!)
-//        animationArray.append(UIImage(named: "Bomb2")!)
-//        animationArray.append(UIImage(named: "Bomb3")!)
-//        animationArray.append(UIImage(named: "Bomb4")!)
-//        animationArray.append(UIImage(named: "Bomb5")!)
-//        animationArray.append(UIImage(named: "Bomb6")!)
-//        animationArray.append(UIImage(named: "Bomb7")!)
-//        animationArray.append(UIImage(named: "Bomb8")!)
-//        animationArray.append(UIImage(named: "Bomb9")!)
-//        animationArray.append(UIImage(named: "Bomb10")!)
-//        return animationArray
-//    }
-//    private class func getAnimationImage() -> [UIImage] {
-//        var animationArray: [UIImage] = []
-//        animationArray.append(UIImage(named: "FinishBomb")!)
-//        return animationArray
-//    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
 }
 
 extension BombGameViewController {
+   
     @objc
     func startButton(_ sender: UIButton) {
+
         if timeTextField.text?.count ?? 0 >= 1 {
             count = Int(timeTextField.text ?? "0") ?? 0
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerCount), userInfo: nil, repeats: true)
@@ -85,7 +72,9 @@ extension BombGameViewController {
         setLayout()
         setBasic()
     }
+   
     func setBasic() {
+        
         mainLogo.image = UIImage(named: "BombGame")
         
         timeLabel.text = "시간을 정해주세요 !"
@@ -109,6 +98,7 @@ extension BombGameViewController {
         startButton.setTitle("게임시작", for: .normal)
         startButton.setTitleColor(.white, for: .normal)
         startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
+     
         
         bombImageView.image = UIImage(named: "Bomb")
         bombImageView.isHidden = true
