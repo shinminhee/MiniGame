@@ -89,7 +89,6 @@ extension LiarGameViewController {
             switch modeView.text {
             case "노말모드":
                 wordLabel.text = "당신은 라이어입니다."
-                print(123)
             case "스파이모드":
                 wordLabel.text = "당신은 라이어입니다."
             case "바보모드":
@@ -99,7 +98,6 @@ extension LiarGameViewController {
             }
         } else {
             wordLabel.text = personText
-            print(456)
         }
         UIView.transition(with: self.paperLabel, duration: 1, options: .transitionCurlUp, animations: {
             self.paperLabel.backgroundColor = .clear
@@ -176,6 +174,7 @@ extension LiarGameViewController: UICollectionViewDataSource {
         cell.topicLabel.text = topics[indexPath.row]
         cell.topicLabel.textAlignment = .center
         cell.topicLabel.textColor = .white
+        cell.topicLabel.font = UIFont.boldSystemFont(ofSize: 18)
         cell.backgroundColor = .black
         cell.clipsToBounds = true
         cell.layer.cornerRadius = 10
