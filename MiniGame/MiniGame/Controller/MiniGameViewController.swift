@@ -12,6 +12,9 @@ import SnapKit
 
 class MiniGameViewController: UIViewController {
     
+    let splashView = UIView()
+    let logoImageView = UIImageView()
+
     let liarGameLabel = CustomGameLabel()
     let koreanGameLabel = CustomGameLabel()
     let movieInitialGameLabel = CustomGameLabel()
@@ -74,7 +77,9 @@ extension MiniGameViewController {
         setBasic()
         setTableView()
     }
+ 
     final private func setLayout() {
+        
         view.addSubview(mainLogo)
         mainLogo.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaInsets.top)
@@ -109,3 +114,26 @@ extension MiniGameViewController {
         gameTableView.register(GameTableViewCell.self, forCellReuseIdentifier: "GameTableViewCell")
     }
 }
+
+//final private func setlogoImageView() {
+//    setlogoImage()
+//    gameTableView.addSubview(splashView)
+//    splashView.snp.makeConstraints {
+//        $0.top.leading.trailing.bottom.equalToSuperview()
+//    }
+//    splashView.addSubview(logoImageView)
+//    logoImageView.snp.makeConstraints {
+//        $0.centerX.centerY.equalToSuperview()
+//        $0.leading.trailing.equalToSuperview()
+//        $0.height.equalTo(250)
+//    }
+//}
+//final private func setlogoImage() {
+//    splashView.backgroundColor = .black
+//    let topGif = UIImage.gifImageWithName("logo")
+//    logoImageView.image = topGif
+//    splashView.alpha = 1
+//    UIView.animate(withDuration: 6) {
+//        self.splashView.alpha = 0
+//    }
+//}

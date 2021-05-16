@@ -18,6 +18,8 @@
 		5E18CE0126393BE5002A3CFD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E18CE0026393BE5002A3CFD /* SnapKit */; };
 		5E18CE0726394894002A3CFD /* TopicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18CE0626394894002A3CFD /* TopicCollectionViewCell.swift */; };
 		5E1DFDA9263C156F0095BD49 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1DFDA8263C156F0095BD49 /* Word.swift */; };
+		5E217DCF26515E65000DBE79 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E217DCE26515E65000DBE79 /* SplashViewController.swift */; };
+		5E217DD32651622E000DBE79 /* logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5E217DD22651622E000DBE79 /* logo.gif */; };
 		5E496EE4263C4A2100F82665 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EE3263C4A2100F82665 /* CustomButton.swift */; };
 		5E496EEA263CF04600F82665 /* Korean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EE9263CF04600F82665 /* Korean.swift */; };
 		5E496EEE263FCFE400F82665 /* MovieInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EED263FCFE400F82665 /* MovieInitialViewController.swift */; };
@@ -48,6 +50,8 @@
 		5E18CDF826393B1C002A3CFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E18CE0626394894002A3CFD /* TopicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E1DFDA8263C156F0095BD49 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		5E217DCE26515E65000DBE79 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		5E217DD22651622E000DBE79 /* logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = logo.gif; path = MiniGame/logo.gif; sourceTree = SOURCE_ROOT; };
 		5E496EE3263C4A2100F82665 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		5E496EE9263CF04600F82665 /* Korean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Korean.swift; sourceTree = "<group>"; };
 		5E496EED263FCFE400F82665 /* MovieInitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInitialViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 				5E18CDEA26393B17002A3CFD /* AppDelegate.swift */,
 				5E18CDEC26393B17002A3CFD /* SceneDelegate.swift */,
 				5E18CDF326393B1C002A3CFD /* Assets.xcassets */,
+				5E217DD22651622E000DBE79 /* logo.gif */,
 				5E1078A1264D9D7800AF1F82 /* TopLogo.gif */,
 				5E107897264D5D1500AF1F82 /* BottomLogo.gif */,
 			);
@@ -147,6 +152,7 @@
 		5E496EF4263FD2DE00F82665 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5E217DCE26515E65000DBE79 /* SplashViewController.swift */,
 				5E496F002641160A00F82665 /* MiniGameViewController.swift */,
 				5E496F1526453B3000F82665 /* MiniGameViewControllerTwo.swift */,
 				5E18CDEE26393B17002A3CFD /* LiarGameViewController.swift */,
@@ -223,6 +229,7 @@
 			files = (
 				5E18CDF726393B1C002A3CFD /* LaunchScreen.storyboard in Resources */,
 				5E107898264D5D1500AF1F82 /* BottomLogo.gif in Resources */,
+				5E217DD32651622E000DBE79 /* logo.gif in Resources */,
 				5E18CDF426393B1C002A3CFD /* Assets.xcassets in Resources */,
 				5E1078A2264D9D7800AF1F82 /* TopLogo.gif in Resources */,
 			);
@@ -256,6 +263,7 @@
 				5E496EF72640DC9A00F82665 /* BombGameViewController.swift in Sources */,
 				5E1DFDA9263C156F0095BD49 /* Word.swift in Sources */,
 				5E496EFE26410BDA00F82665 /* PersonCollectionViewCell.swift in Sources */,
+				5E217DCF26515E65000DBE79 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
