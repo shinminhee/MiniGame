@@ -27,6 +27,10 @@ class BombGameViewController: UIViewController {
         view.backgroundColor = .black
         setUI()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        timer?.invalidate()
+        timer = nil
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
@@ -36,7 +40,8 @@ extension BombGameViewController {
    
     @objc
     func startButton(_ sender: UIButton) {
-
+        view.endEditing(true)
+//        timeTextField.resignFirstResponder()
         if timeTextField.text?.count ?? 0 >= 1 {
             count = Int(timeTextField.text ?? "0") ?? 0
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerCount), userInfo: nil, repeats: true)

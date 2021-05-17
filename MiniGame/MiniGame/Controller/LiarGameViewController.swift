@@ -33,6 +33,8 @@ class LiarGameViewController: UIViewController {
     var personNum = 0
     var personInt = 3
     var liarNum = 0
+    var spyNum = 0
+    var unSelectedSpai = [""]
     var personText = ""
     var unSelected = [""]
     let startButton = CustomStartButton()
@@ -57,13 +59,17 @@ extension LiarGameViewController {
             personNum = personInt
             wordLabel.text = personText
             liarNum = Int.random(in: 1 ... personInt)
+            spyNum = Int.random(in: 1 ... personInt)
+            while spyNum == liarNum {
+                spyNum = Int.random(in: 1 ... personInt)
+            }
+            print(spyNum, liarNum)
             paperLabel.isHidden = false
             paperLabel.backgroundColor = .white
             paperLabel.text = "종이를 넘겨주세요"
             var selected = Word.shared.topicManager["\(topicLabel.text ?? "")"] ?? [""]
             selected.removeAll(where: { $0 == personText })
             unSelected = selected
-            print(selected)
         }
     }
     @objc
@@ -98,6 +104,9 @@ extension LiarGameViewController {
             }
         } else {
             wordLabel.text = personText
+        }
+        if personNum == spyNum && modeView.text == "스파이모드" {
+            wordLabel.text?.append("\n당신은 스파이입니다.")
         }
         UIView.transition(with: self.paperLabel, duration: 1, options: .transitionCurlUp, animations: {
             self.paperLabel.backgroundColor = .clear
@@ -221,6 +230,7 @@ extension LiarGameViewController {
         wordLabel.textAlignment = .center
         wordLabel.textColor = .white
         wordLabel.layer.cornerRadius = 10
+        wordLabel.numberOfLines = 2
     }
     final private func setPaperView() {
         let paperViewTaped = UITapGestureRecognizer(target: self, action: #selector(paperViewTaped(_:)))
