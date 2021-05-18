@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2615130807289C8A77371BC8 /* Pods_MiniGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28F6B82C8541E47D8DD86B3 /* Pods_MiniGame.framework */; };
 		5E107891264D587100AF1F82 /* BombAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E107890264D587100AF1F82 /* BombAnimation.swift */; };
 		5E107898264D5D1500AF1F82 /* BottomLogo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5E107897264D5D1500AF1F82 /* BottomLogo.gif */; };
 		5E1078A2264D9D7800AF1F82 /* TopLogo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5E1078A1264D9D7800AF1F82 /* TopLogo.gif */; };
@@ -18,18 +19,15 @@
 		5E18CE0126393BE5002A3CFD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E18CE0026393BE5002A3CFD /* SnapKit */; };
 		5E18CE0726394894002A3CFD /* TopicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E18CE0626394894002A3CFD /* TopicCollectionViewCell.swift */; };
 		5E1DFDA9263C156F0095BD49 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1DFDA8263C156F0095BD49 /* Word.swift */; };
-		5E217DCF26515E65000DBE79 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E217DCE26515E65000DBE79 /* SplashViewController.swift */; };
-		5E217DD32651622E000DBE79 /* logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5E217DD22651622E000DBE79 /* logo.gif */; };
+		5E217DE52653D0B1000DBE79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E217DE42653D0B0000DBE79 /* GoogleService-Info.plist */; };
 		5E496EE4263C4A2100F82665 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EE3263C4A2100F82665 /* CustomButton.swift */; };
 		5E496EEA263CF04600F82665 /* Korean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EE9263CF04600F82665 /* Korean.swift */; };
 		5E496EEE263FCFE400F82665 /* MovieInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EED263FCFE400F82665 /* MovieInitialViewController.swift */; };
 		5E496EF72640DC9A00F82665 /* BombGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EF62640DC9A00F82665 /* BombGameViewController.swift */; };
 		5E496EFA2640DCAC00F82665 /* MovieAlphabet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EF92640DCAC00F82665 /* MovieAlphabet.swift */; };
-		5E496EFE26410BDA00F82665 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EFD26410BDA00F82665 /* PersonCollectionViewCell.swift */; };
 		5E496F012641160A00F82665 /* MiniGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F002641160A00F82665 /* MiniGameViewController.swift */; };
 		5E496F1326453A7800F82665 /* CustomGameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F1226453A7800F82665 /* CustomGameLabel.swift */; };
 		5E496F1926457B4500F82665 /* KoreanLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F1826457B4500F82665 /* KoreanLabel.swift */; };
-		5E496F1C26465BA900F82665 /* KoreanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F1B26465BA900F82665 /* KoreanCollectionViewCell.swift */; };
 		5E496F21264A267500F82665 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F20264A267500F82665 /* GameTableViewCell.swift */; };
 		5E496F24264A780000F82665 /* KoreanQuizViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F23264A780000F82665 /* KoreanQuizViewControllerTwo.swift */; };
 		5E496F2A264BA0E700F82665 /* Extension+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F29264BA0E600F82665 /* Extension+UIImage.swift */; };
@@ -48,21 +46,21 @@
 		5E18CDF826393B1C002A3CFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E18CE0626394894002A3CFD /* TopicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E1DFDA8263C156F0095BD49 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
-		5E217DCE26515E65000DBE79 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		5E217DD22651622E000DBE79 /* logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = logo.gif; path = MiniGame/logo.gif; sourceTree = SOURCE_ROOT; };
+		5E217DE42653D0B0000DBE79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5E496EE3263C4A2100F82665 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		5E496EE9263CF04600F82665 /* Korean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Korean.swift; sourceTree = "<group>"; };
 		5E496EED263FCFE400F82665 /* MovieInitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInitialViewController.swift; sourceTree = "<group>"; };
 		5E496EF62640DC9A00F82665 /* BombGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BombGameViewController.swift; sourceTree = "<group>"; };
 		5E496EF92640DCAC00F82665 /* MovieAlphabet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAlphabet.swift; sourceTree = "<group>"; };
-		5E496EFD26410BDA00F82665 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E496F002641160A00F82665 /* MiniGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGameViewController.swift; sourceTree = "<group>"; };
 		5E496F1226453A7800F82665 /* CustomGameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGameLabel.swift; sourceTree = "<group>"; };
 		5E496F1826457B4500F82665 /* KoreanLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanLabel.swift; sourceTree = "<group>"; };
-		5E496F1B26465BA900F82665 /* KoreanCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanCollectionViewCell.swift; sourceTree = "<group>"; };
 		5E496F20264A267500F82665 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		5E496F23264A780000F82665 /* KoreanQuizViewControllerTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanQuizViewControllerTwo.swift; sourceTree = "<group>"; };
 		5E496F29264BA0E600F82665 /* Extension+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage.swift"; sourceTree = "<group>"; };
+		7E279EF64DB99C61EF220A03 /* Pods-MiniGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniGame.debug.xcconfig"; path = "Target Support Files/Pods-MiniGame/Pods-MiniGame.debug.xcconfig"; sourceTree = "<group>"; };
+		BC162CA20BE2AB7503255FF5 /* Pods-MiniGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniGame.release.xcconfig"; path = "Target Support Files/Pods-MiniGame/Pods-MiniGame.release.xcconfig"; sourceTree = "<group>"; };
+		D28F6B82C8541E47D8DD86B3 /* Pods_MiniGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,17 +69,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E18CE0126393BE5002A3CFD /* SnapKit in Frameworks */,
+				2615130807289C8A77371BC8 /* Pods_MiniGame.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22AF40CB9237815090AA2902 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E279EF64DB99C61EF220A03 /* Pods-MiniGame.debug.xcconfig */,
+				BC162CA20BE2AB7503255FF5 /* Pods-MiniGame.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		5E18CDDE26393B17002A3CFD = {
 			isa = PBXGroup;
 			children = (
 				5E18CDE926393B17002A3CFD /* MiniGame */,
 				5E18CDE826393B17002A3CFD /* Products */,
+				22AF40CB9237815090AA2902 /* Pods */,
+				80F70C1B3C82B05C7EC14836 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +113,7 @@
 				5E496EF3263FD2D400F82665 /* Support */,
 				5E18CDF526393B1C002A3CFD /* LaunchScreen.storyboard */,
 				5E18CDF826393B1C002A3CFD /* Info.plist */,
+				5E217DE42653D0B0000DBE79 /* GoogleService-Info.plist */,
 			);
 			path = MiniGame;
 			sourceTree = "<group>";
@@ -129,8 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				5E18CE0626394894002A3CFD /* TopicCollectionViewCell.swift */,
-				5E496F1B26465BA900F82665 /* KoreanCollectionViewCell.swift */,
-				5E496EFD26410BDA00F82665 /* PersonCollectionViewCell.swift */,
 				5E496F20264A267500F82665 /* GameTableViewCell.swift */,
 				5E496EE3263C4A2100F82665 /* CustomButton.swift */,
 				5E496F1226453A7800F82665 /* CustomGameLabel.swift */,
@@ -146,7 +155,6 @@
 				5E18CDEA26393B17002A3CFD /* AppDelegate.swift */,
 				5E18CDEC26393B17002A3CFD /* SceneDelegate.swift */,
 				5E18CDF326393B1C002A3CFD /* Assets.xcassets */,
-				5E217DD22651622E000DBE79 /* logo.gif */,
 				5E1078A1264D9D7800AF1F82 /* TopLogo.gif */,
 				5E107897264D5D1500AF1F82 /* BottomLogo.gif */,
 			);
@@ -156,7 +164,6 @@
 		5E496EF4263FD2DE00F82665 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5E217DCE26515E65000DBE79 /* SplashViewController.swift */,
 				5E496F002641160A00F82665 /* MiniGameViewController.swift */,
 				5E18CDEE26393B17002A3CFD /* LiarGameViewController.swift */,
 				5E496F23264A780000F82665 /* KoreanQuizViewControllerTwo.swift */,
@@ -166,6 +173,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		80F70C1B3C82B05C7EC14836 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D28F6B82C8541E47D8DD86B3 /* Pods_MiniGame.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,9 +188,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E18CDFB26393B1C002A3CFD /* Build configuration list for PBXNativeTarget "MiniGame" */;
 			buildPhases = (
+				42F1C805A955A5C7268DAE13 /* [CP] Check Pods Manifest.lock */,
 				5E18CDE326393B17002A3CFD /* Sources */,
 				5E18CDE426393B17002A3CFD /* Frameworks */,
 				5E18CDE526393B17002A3CFD /* Resources */,
+				2276E5366271BAC8F7FA7F92 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -229,15 +246,57 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E217DE52653D0B1000DBE79 /* GoogleService-Info.plist in Resources */,
 				5E18CDF726393B1C002A3CFD /* LaunchScreen.storyboard in Resources */,
 				5E107898264D5D1500AF1F82 /* BottomLogo.gif in Resources */,
-				5E217DD32651622E000DBE79 /* logo.gif in Resources */,
 				5E18CDF426393B1C002A3CFD /* Assets.xcassets in Resources */,
 				5E1078A2264D9D7800AF1F82 /* TopLogo.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2276E5366271BAC8F7FA7F92 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MiniGame/Pods-MiniGame-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MiniGame/Pods-MiniGame-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MiniGame/Pods-MiniGame-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		42F1C805A955A5C7268DAE13 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MiniGame-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5E18CDE326393B17002A3CFD /* Sources */ = {
@@ -257,13 +316,10 @@
 				5E18CDED26393B17002A3CFD /* SceneDelegate.swift in Sources */,
 				5E496F2A264BA0E700F82665 /* Extension+UIImage.swift in Sources */,
 				5E496F21264A267500F82665 /* GameTableViewCell.swift in Sources */,
-				5E496F1C26465BA900F82665 /* KoreanCollectionViewCell.swift in Sources */,
 				5E496EE4263C4A2100F82665 /* CustomButton.swift in Sources */,
 				5E18CE0726394894002A3CFD /* TopicCollectionViewCell.swift in Sources */,
 				5E496EF72640DC9A00F82665 /* BombGameViewController.swift in Sources */,
 				5E1DFDA9263C156F0095BD49 /* Word.swift in Sources */,
-				5E496EFE26410BDA00F82665 /* PersonCollectionViewCell.swift in Sources */,
-				5E217DCF26515E65000DBE79 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,12 +455,14 @@
 		};
 		5E18CDFC26393B1C002A3CFD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E279EF64DB99C61EF220A03 /* Pods-MiniGame.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3GQF74JFF8;
 				INFOPLIST_FILE = MiniGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -412,18 +470,20 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.minheeshin93.MiniGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		5E18CDFD26393B1C002A3CFD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC162CA20BE2AB7503255FF5 /* Pods-MiniGame.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3GQF74JFF8;
 				INFOPLIST_FILE = MiniGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -431,7 +491,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.minheeshin93.MiniGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

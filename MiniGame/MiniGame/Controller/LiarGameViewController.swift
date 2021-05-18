@@ -34,7 +34,6 @@ class LiarGameViewController: UIViewController {
     var personInt = 3
     var liarNum = 0
     var spyNum = 0
-    var unSelectedSpai = [""]
     var personText = ""
     var unSelected = [""]
     let startButton = CustomStartButton()
@@ -50,7 +49,6 @@ class LiarGameViewController: UIViewController {
 extension LiarGameViewController {
     @objc
     func startButton(_ sender: UIButton) {
-        print(#function)
         if topicLabel.text?.count ?? 0 <= 5 {
             personView.isHidden = true
             changeButton.isHidden = true
@@ -63,7 +61,6 @@ extension LiarGameViewController {
             while spyNum == liarNum {
                 spyNum = Int.random(in: 1 ... personInt)
             }
-            print(spyNum, liarNum)
             paperLabel.isHidden = false
             paperLabel.backgroundColor = .white
             paperLabel.text = "종이를 넘겨주세요"
@@ -112,8 +109,8 @@ extension LiarGameViewController {
             self.paperLabel.backgroundColor = .clear
             self.paperLabel.text = ""
         }) { (_) in
-                self.okButton.isHidden = false
-                self.paperLabel.isHidden = true
+            self.okButton.isHidden = false
+            self.paperLabel.isHidden = true
         }
     }
     @objc
@@ -222,7 +219,6 @@ extension LiarGameViewController {
         topicLabel.layer.cornerRadius = 10
     }
     final private func setWordLabel() {
-        
         wordLabel.backgroundColor = .black
         wordLabel.layer.borderWidth = 3
         wordLabel.layer.borderColor = UIColor.systemPink.cgColor
@@ -308,7 +304,7 @@ extension LiarGameViewController {
         startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
         
         okButton.addTarget(self, action: #selector(okButton(_:)), for: .touchUpInside)
-        okButton.setTitle("확인 후 핸드폰을 다음사람에게 넘겨주세요", for: .normal)
+        okButton.setTitle("터치 후 핸드폰을 다음사람에게 넘겨주세요", for: .normal)
         okButton.layer.borderColor = UIColor.red.cgColor
         okButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         okButton.isHidden = true

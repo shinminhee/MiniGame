@@ -20,11 +20,10 @@ class KoreanLabel: UILabel {
         self.textColor = UIColor.white
         self.backgroundColor = .black
     }
-
+    
     init(view: UIView) {
-         super.init(frame: .zero)
-
-         }
+        super.init(frame: .zero)
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

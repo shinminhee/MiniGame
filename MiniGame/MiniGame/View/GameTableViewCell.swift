@@ -9,9 +9,8 @@ import UIKit
 import SnapKit
 
 class GameTableViewCell: UITableViewCell {
-    
     let GameLabel = CustomGameLabel()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUI()
@@ -21,6 +20,7 @@ class GameTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
 extension GameTableViewCell {
     func setUI() {
         contentView.addSubview(GameLabel)
@@ -28,6 +28,5 @@ extension GameTableViewCell {
             $0.top.bottom.equalToSuperview().inset(10)
             $0.leading.trailing.equalToSuperview().inset(35)
         }
-    
     }
 }

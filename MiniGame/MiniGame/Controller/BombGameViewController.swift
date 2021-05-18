@@ -17,7 +17,6 @@ class BombGameViewController: UIViewController {
     let alarm: SystemSoundID = 1005
     let timeLabel = CustomGameLabel()
     let timeTextField = UITextField()
-    var timeText = ""
     let secondLabel = UILabel()
     let bombImageView = UIImageView()
     
@@ -37,16 +36,13 @@ class BombGameViewController: UIViewController {
 }
 
 extension BombGameViewController {
-   
     @objc
     func startButton(_ sender: UIButton) {
         view.endEditing(true)
-//        timeTextField.resignFirstResponder()
         if timeTextField.text?.count ?? 0 >= 1 {
             count = Int(timeTextField.text ?? "0") ?? 0
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerCount), userInfo: nil, repeats: true)
             timeLabel.text = "\(count)"
-            print(count)
             [startButton, timeLabel, timeTextField, secondLabel].forEach {
                 $0.isHidden = true
             }
@@ -70,20 +66,23 @@ extension BombGameViewController {
             bombImageView.startAnimating()
         }
     }
+    @objc func doneButtonAction(){
+        timeTextField.resignFirstResponder()
+    }
 }
 
 extension BombGameViewController {
-    func setUI() {
-        setLayout()
+    final private func setUI() {
         setBasic()
+        setLayout()
+        addDoneButtonOnKeyboard()
     }
-   
-    func setBasic() {
-        
+    final private func setBasic() {
         mainLogo.image = UIImage(named: "BombGame")
         
-        timeLabel.text = "시간을 정해주세요 !"
+        timeLabel.text = "시간을 정해주세요 !\n주어진 시간이 지나면 폭탄이 터집니다 !"
         timeLabel.textAlignment = .center
+        timeLabel.numberOfLines = 2
         
         timeTextField.layer.borderWidth = 3
         timeTextField.layer.borderColor = UIColor.yellow.cgColor
@@ -103,13 +102,25 @@ extension BombGameViewController {
         startButton.setTitle("게임시작", for: .normal)
         startButton.setTitleColor(.white, for: .normal)
         startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
-     
+        
         
         bombImageView.image = UIImage(named: "Bomb")
         bombImageView.isHidden = true
     }
-    
-    func setLayout() {
+    final private func addDoneButtonOnKeyboard(){
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+        
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        timeTextField.inputAccessoryView = doneToolbar
+    }
+    final private func setLayout() {
         view.addSubview(mainLogo)
         mainLogo.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaInsets.top).inset(10)
@@ -121,7 +132,7 @@ extension BombGameViewController {
         }
         timeLabel.snp.makeConstraints {
             $0.top.equalTo(mainLogo.snp.bottom).inset(10)
-            $0.leading.trailing.equalToSuperview().inset(40)
+            $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(70)
         }
         timeTextField.snp.makeConstraints {

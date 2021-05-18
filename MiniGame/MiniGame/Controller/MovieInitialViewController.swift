@@ -24,13 +24,12 @@ class MovieInitialViewController: UIViewController {
     var unSelected = ""
     let qaTitle = ["문제", "정답"]
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
         setUI()
     }
-
 }
 
 extension MovieInitialViewController {
@@ -38,13 +37,12 @@ extension MovieInitialViewController {
     func startButton(_ sender: UIButton) {
         gameNum = gameInt
         if gameNum > 0 {
-        startButton.isHidden = true
-        nextButton.isHidden = false
-        answerButton.isHidden = false
-        qAndAText = MovieAlphabet.shared.qAndA["\(qaTitle[0])"]?.randomElement() ?? ""
-        print(qAndAText)
+            startButton.isHidden = true
+            nextButton.isHidden = false
+            answerButton.isHidden = false
+            qAndAText = MovieAlphabet.shared.qAndA["\(qaTitle[0])"]?.randomElement() ?? ""
             movieView.isHidden = true
-        qAndALabel.text = qAndAText
+            qAndALabel.text = qAndAText
         }
     }
     @objc
@@ -54,7 +52,7 @@ extension MovieInitialViewController {
         unSelected = selected
         qAndALabel.text = "\(unSelected)"
     }
-
+    
     @objc
     func nextButton(_ sender: UIButton) {
         answerButton.isHidden = false
@@ -92,6 +90,44 @@ extension MovieInitialViewController {
         setMovieView()
         setButton()
         setLayout()
+    }
+    final private func setButton() {
+        nextButton.addTarget(self, action: #selector(nextButton(_:)), for: .touchUpInside)
+        nextButton.setTitle("다음문제", for: .normal)
+        nextButton.layer.borderColor = UIColor.yellow.cgColor
+        nextButton.isHidden = true
+        
+        answerButton.addTarget(self, action: #selector(answerButton(_:)), for: .touchUpInside)
+        answerButton.setTitle("정답확인", for: .normal)
+        answerButton.layer.borderColor = UIColor.green.cgColor
+        answerButton.isHidden = true
+        
+        startButton.setTitle("시작하기", for: .normal)
+        startButton.layer.borderColor = UIColor.red.cgColor
+        startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
+        mainLogo.image = UIImage(named: "MovieInitial")
+    }
+    final private func setMovieView() {
+        movieView.backgroundColor = .black
+        movieView.layer.borderColor = UIColor.yellow.cgColor
+        movieView.layer.cornerRadius = 10
+        movieView.layer.borderWidth = 3
+        
+        movieLabel.text = "국내영화: \(gameInt)편"
+        movieLabel.textAlignment = .center
+        movieLabel.layer.borderColor = UIColor.blue.cgColor
+        movieLabel.layer.cornerRadius = 10
+        
+        upButton.addTarget(self, action: #selector(upButton(_:)), for: .touchUpInside)
+        upButton.setImage(UIImage(named: "upButton"), for: .normal)        
+        downButton.addTarget(self, action: #selector(downButton(_:)), for: .touchUpInside)
+        downButton.setImage(UIImage(named: "downButton"), for: .normal)
+    }
+    final private func setQAndALabel() {
+        qAndALabel.layer.borderColor = UIColor.systemPink.cgColor
+        qAndALabel.font = UIFont.boldSystemFont(ofSize: 30)
+        qAndALabel.textAlignment = .center
+        qAndALabel.layer.cornerRadius = 10
     }
     final private func setLayout() {
         view.addSubview(mainLogo)
@@ -145,43 +181,5 @@ extension MovieInitialViewController {
         startButton.snp.makeConstraints {
             $0.top.leading.trailing.bottom.equalTo(nextButton)
         }
-    }
-    final private func setButton() {
-        nextButton.addTarget(self, action: #selector(nextButton(_:)), for: .touchUpInside)
-        nextButton.setTitle("다음문제", for: .normal)
-        nextButton.layer.borderColor = UIColor.yellow.cgColor
-        nextButton.isHidden = true
-        
-        answerButton.addTarget(self, action: #selector(answerButton(_:)), for: .touchUpInside)
-        answerButton.setTitle("정답확인", for: .normal)
-        answerButton.layer.borderColor = UIColor.green.cgColor
-        answerButton.isHidden = true
-        
-        startButton.setTitle("시작하기", for: .normal)
-        startButton.layer.borderColor = UIColor.red.cgColor
-        startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
-        mainLogo.image = UIImage(named: "MovieInitial")
-    }
-    final private func setMovieView() {
-        movieView.backgroundColor = .black
-        movieView.layer.borderColor = UIColor.yellow.cgColor
-        movieView.layer.cornerRadius = 10
-        movieView.layer.borderWidth = 3
-        
-        movieLabel.text = "국내영화: \(gameInt)편"
-        movieLabel.textAlignment = .center
-        movieLabel.layer.borderColor = UIColor.blue.cgColor
-        movieLabel.layer.cornerRadius = 10
-  
-        upButton.addTarget(self, action: #selector(upButton(_:)), for: .touchUpInside)
-        upButton.setImage(UIImage(named: "upButton"), for: .normal)        
-        downButton.addTarget(self, action: #selector(downButton(_:)), for: .touchUpInside)
-        downButton.setImage(UIImage(named: "downButton"), for: .normal)
-    }
-    final private func setQAndALabel() {
-        qAndALabel.layer.borderColor = UIColor.systemPink.cgColor
-        qAndALabel.font = UIFont.boldSystemFont(ofSize: 30)
-        qAndALabel.textAlignment = .center
-        qAndALabel.layer.cornerRadius = 10
     }
 }

@@ -12,13 +12,6 @@ import SnapKit
 
 class MiniGameViewController: UIViewController {
     
-    let splashView = UIView()
-    let logoImageView = UIImageView()
-
-    let liarGameLabel = CustomGameLabel()
-    let koreanGameLabel = CustomGameLabel()
-    let movieInitialGameLabel = CustomGameLabel()
-    let bombGameLabel = CustomGameLabel()
     let mainLogo = UIImageView()
     let bottomLogo = UIImageView()
     let gameTableView = UITableView()
@@ -34,8 +27,6 @@ class MiniGameViewController: UIViewController {
 
 extension MiniGameViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GameTableViewCell", for: indexPath) as? GameTableViewCell else { fatalError() }
-        cell.GameLabel.backgroundColor = .darkGray
         let liarVC = LiarGameViewController()
         let koreanVC = KoreanQuizViewController()
         let movieVC = MovieInitialViewController()
@@ -73,13 +64,23 @@ extension MiniGameViewController: UITableViewDataSource {
 
 extension MiniGameViewController {
     final private func setUI() {
-        setLayout()
         setBasic()
         setTableView()
+        setLayout()
     }
- 
+    final private func setBasic() {
+        let topGif = UIImage.gifImageWithName("TopLogo")
+        mainLogo.image = topGif
+        let bottomGif = UIImage.gifImageWithName("BottomLogo")
+        bottomLogo.image = bottomGif
+    }
+    final private func setTableView() {
+        gameTableView.backgroundColor = .black
+        gameTableView.dataSource = self
+        gameTableView.delegate = self
+        gameTableView.register(GameTableViewCell.self, forCellReuseIdentifier: "GameTableViewCell")
+    }
     final private func setLayout() {
-        
         view.addSubview(mainLogo)
         mainLogo.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaInsets.top)
@@ -100,40 +101,4 @@ extension MiniGameViewController {
         }
         gameTableView.rowHeight = 110
     }
-   
-    final private func setBasic() {
-        let topGif = UIImage.gifImageWithName("TopLogo")
-        mainLogo.image = topGif
-        let bottomGif = UIImage.gifImageWithName("BottomLogo")
-        bottomLogo.image = bottomGif
-    }
-    final private func setTableView() {
-        gameTableView.backgroundColor = .black
-        gameTableView.dataSource = self
-        gameTableView.delegate = self
-        gameTableView.register(GameTableViewCell.self, forCellReuseIdentifier: "GameTableViewCell")
-    }
 }
-
-//final private func setlogoImageView() {
-//    setlogoImage()
-//    gameTableView.addSubview(splashView)
-//    splashView.snp.makeConstraints {
-//        $0.top.leading.trailing.bottom.equalToSuperview()
-//    }
-//    splashView.addSubview(logoImageView)
-//    logoImageView.snp.makeConstraints {
-//        $0.centerX.centerY.equalToSuperview()
-//        $0.leading.trailing.equalToSuperview()
-//        $0.height.equalTo(250)
-//    }
-//}
-//final private func setlogoImage() {
-//    splashView.backgroundColor = .black
-//    let topGif = UIImage.gifImageWithName("logo")
-//    logoImageView.image = topGif
-//    splashView.alpha = 1
-//    UIView.animate(withDuration: 6) {
-//        self.splashView.alpha = 0
-//    }
-//}

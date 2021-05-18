@@ -14,8 +14,6 @@ class KoreanQuizViewController: UIViewController {
     let koreanLabel = CustomGameLabel()
     let startButton = CustomStartButton()
     let nextButton = CustomStartButton()
-    let KoreanCollectionViewLayout = UICollectionViewFlowLayout()
-    lazy var KoreanCollectionView = UICollectionView(frame: .zero, collectionViewLayout: KoreanCollectionViewLayout)
     let paperLabel = UILabel()
     
     override func viewDidLoad() {
@@ -74,7 +72,7 @@ extension KoreanQuizViewController {
         koreanLabel.textAlignment = .center
         koreanLabel.font = UIFont.systemFont(ofSize: 45, weight: .bold)
         koreanLabel.layer.cornerRadius = 0
-
+        
         startButton.setTitle("시작하기", for: .normal)
         startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
         startButton.layer.borderColor = UIColor.green.cgColor
@@ -123,5 +121,5 @@ extension KoreanQuizViewController {
             $0.leading.top.trailing.bottom.equalTo(startButton)
         }
     }
-   
+    
 }
