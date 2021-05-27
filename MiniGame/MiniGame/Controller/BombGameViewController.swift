@@ -19,6 +19,7 @@ class BombGameViewController: UIViewController {
     let timeTextField = UITextField()
     let secondLabel = UILabel()
     let bombImageView = UIImageView()
+    let againButton = CustomStartButton()
     
     
     override func viewDidLoad() {
@@ -64,10 +65,19 @@ extension BombGameViewController {
             bombImageView.animationDuration = 1
             bombImageView.animationRepeatCount = 0
             bombImageView.startAnimating()
+            againButton.isHidden = false
         }
     }
     @objc func doneButtonAction(){
         timeTextField.resignFirstResponder()
+    }
+    @objc
+    func againButton(_ sender: UIButton) {
+        setUI()
+        [startButton, timeLabel, timeTextField, secondLabel].forEach {
+            $0.isHidden = false
+        }
+        timeTextField.text = ""
     }
 }
 
@@ -103,9 +113,14 @@ extension BombGameViewController {
         startButton.setTitleColor(.white, for: .normal)
         startButton.addTarget(self, action: #selector(startButton(_:)), for: .touchUpInside)
         
-        
         bombImageView.image = UIImage(named: "Bomb")
         bombImageView.isHidden = true
+        
+        againButton.layer.borderColor = UIColor.red.cgColor
+        againButton.setTitle("다시하기", for: .normal)
+        againButton.setTitleColor(.white, for: .normal)
+        againButton.addTarget(self, action: #selector(againButton(_:)), for: .touchUpInside)
+        againButton.isHidden = true
     }
     final private func addDoneButtonOnKeyboard(){
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
@@ -155,5 +170,12 @@ extension BombGameViewController {
             $0.centerX.centerY.equalTo(startButton)
             $0.width.height.equalTo(300)
         }
+        view.addSubview(againButton)
+        againButton.snp.makeConstraints {
+            $0.top.equalTo(bombImageView.snp.bottom).offset(30)
+            $0.leading.trailing.equalTo(view).inset(40)
+            $0.height.equalTo(50)
+        }
+        
     }
 }

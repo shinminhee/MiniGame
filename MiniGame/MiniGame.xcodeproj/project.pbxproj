@@ -27,7 +27,6 @@
 		5E496EFA2640DCAC00F82665 /* MovieAlphabet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496EF92640DCAC00F82665 /* MovieAlphabet.swift */; };
 		5E496F012641160A00F82665 /* MiniGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F002641160A00F82665 /* MiniGameViewController.swift */; };
 		5E496F1326453A7800F82665 /* CustomGameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F1226453A7800F82665 /* CustomGameLabel.swift */; };
-		5E496F1926457B4500F82665 /* KoreanLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F1826457B4500F82665 /* KoreanLabel.swift */; };
 		5E496F21264A267500F82665 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F20264A267500F82665 /* GameTableViewCell.swift */; };
 		5E496F24264A780000F82665 /* KoreanQuizViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F23264A780000F82665 /* KoreanQuizViewControllerTwo.swift */; };
 		5E496F2A264BA0E700F82665 /* Extension+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F29264BA0E600F82665 /* Extension+UIImage.swift */; };
@@ -54,7 +53,6 @@
 		5E496EF92640DCAC00F82665 /* MovieAlphabet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAlphabet.swift; sourceTree = "<group>"; };
 		5E496F002641160A00F82665 /* MiniGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniGameViewController.swift; sourceTree = "<group>"; };
 		5E496F1226453A7800F82665 /* CustomGameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGameLabel.swift; sourceTree = "<group>"; };
-		5E496F1826457B4500F82665 /* KoreanLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanLabel.swift; sourceTree = "<group>"; };
 		5E496F20264A267500F82665 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		5E496F23264A780000F82665 /* KoreanQuizViewControllerTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanQuizViewControllerTwo.swift; sourceTree = "<group>"; };
 		5E496F29264BA0E600F82665 /* Extension+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage.swift"; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 				5E496F20264A267500F82665 /* GameTableViewCell.swift */,
 				5E496EE3263C4A2100F82665 /* CustomButton.swift */,
 				5E496F1226453A7800F82665 /* CustomGameLabel.swift */,
-				5E496F1826457B4500F82665 /* KoreanLabel.swift */,
 				5E107890264D587100AF1F82 /* BombAnimation.swift */,
 			);
 			path = View;
@@ -311,7 +308,6 @@
 				5E496F012641160A00F82665 /* MiniGameViewController.swift in Sources */,
 				5E18CDEF26393B17002A3CFD /* LiarGameViewController.swift in Sources */,
 				5E496F1326453A7800F82665 /* CustomGameLabel.swift in Sources */,
-				5E496F1926457B4500F82665 /* KoreanLabel.swift in Sources */,
 				5E18CDEB26393B17002A3CFD /* AppDelegate.swift in Sources */,
 				5E18CDED26393B17002A3CFD /* SceneDelegate.swift in Sources */,
 				5E496F2A264BA0E700F82665 /* Extension+UIImage.swift in Sources */,
