@@ -30,6 +30,8 @@
 		5E496F21264A267500F82665 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F20264A267500F82665 /* GameTableViewCell.swift */; };
 		5E496F24264A780000F82665 /* KoreanQuizViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F23264A780000F82665 /* KoreanQuizViewControllerTwo.swift */; };
 		5E496F2A264BA0E700F82665 /* Extension+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E496F29264BA0E600F82665 /* Extension+UIImage.swift */; };
+		5E74443226676152003079C1 /* KoreanProverb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74443126676152003079C1 /* KoreanProverb.swift */; };
+		5E74443626676614003079C1 /* SpeedQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E74443526676614003079C1 /* SpeedQuizViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		5E496F20264A267500F82665 /* GameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 		5E496F23264A780000F82665 /* KoreanQuizViewControllerTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanQuizViewControllerTwo.swift; sourceTree = "<group>"; };
 		5E496F29264BA0E600F82665 /* Extension+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage.swift"; sourceTree = "<group>"; };
+		5E74443126676152003079C1 /* KoreanProverb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanProverb.swift; sourceTree = "<group>"; };
+		5E74443526676614003079C1 /* SpeedQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedQuizViewController.swift; sourceTree = "<group>"; };
 		7E279EF64DB99C61EF220A03 /* Pods-MiniGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniGame.debug.xcconfig"; path = "Target Support Files/Pods-MiniGame/Pods-MiniGame.debug.xcconfig"; sourceTree = "<group>"; };
 		BC162CA20BE2AB7503255FF5 /* Pods-MiniGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniGame.release.xcconfig"; path = "Target Support Files/Pods-MiniGame/Pods-MiniGame.release.xcconfig"; sourceTree = "<group>"; };
 		D28F6B82C8541E47D8DD86B3 /* Pods_MiniGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiniGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +134,7 @@
 				5E1DFDA8263C156F0095BD49 /* Word.swift */,
 				5E496EE9263CF04600F82665 /* Korean.swift */,
 				5E496EF92640DCAC00F82665 /* MovieAlphabet.swift */,
+				5E74443126676152003079C1 /* KoreanProverb.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 				5E496F23264A780000F82665 /* KoreanQuizViewControllerTwo.swift */,
 				5E496EED263FCFE400F82665 /* MovieInitialViewController.swift */,
 				5E496EF62640DC9A00F82665 /* BombGameViewController.swift */,
+				5E74443526676614003079C1 /* SpeedQuizViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -301,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E496EEE263FCFE400F82665 /* MovieInitialViewController.swift in Sources */,
+				5E74443626676614003079C1 /* SpeedQuizViewController.swift in Sources */,
 				5E496EFA2640DCAC00F82665 /* MovieAlphabet.swift in Sources */,
 				5E496F24264A780000F82665 /* KoreanQuizViewControllerTwo.swift in Sources */,
 				5E496EEA263CF04600F82665 /* Korean.swift in Sources */,
@@ -311,6 +318,7 @@
 				5E18CDEB26393B17002A3CFD /* AppDelegate.swift in Sources */,
 				5E18CDED26393B17002A3CFD /* SceneDelegate.swift in Sources */,
 				5E496F2A264BA0E700F82665 /* Extension+UIImage.swift in Sources */,
+				5E74443226676152003079C1 /* KoreanProverb.swift in Sources */,
 				5E496F21264A267500F82665 /* GameTableViewCell.swift in Sources */,
 				5E496EE4263C4A2100F82665 /* CustomButton.swift in Sources */,
 				5E18CE0726394894002A3CFD /* TopicCollectionViewCell.swift in Sources */,
