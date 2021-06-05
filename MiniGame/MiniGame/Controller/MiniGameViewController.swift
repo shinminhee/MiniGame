@@ -15,7 +15,7 @@ class MiniGameViewController: UIViewController {
     let mainLogo = UIImageView()
     let bottomLogo = UIImageView()
     let gameTableView = UITableView()
-    let game = ["라이어게임", "훈민정음게임", "영화제목초성게임", "폭탄게임", "스피드게임"]
+    let game = ["라이어게임", "훈민정음게임", "영화제목초성게임", "폭탄게임", "속담스피드게임"]
     let colors: [UIColor] = [UIColor(displayP3Red: 119/255, green: 255/255, blue: 0/255, alpha: 1), UIColor(displayP3Red: 255/255, green: 0/255, blue: 146/255, alpha: 1), UIColor(displayP3Red: 255/255, green: 255/255, blue: 0/255, alpha: 1), UIColor(displayP3Red: 0/255, green: 255/255, blue: 255/255, alpha: 1), UIColor(displayP3Red: 119/255, green: 255/255, blue: 0/255, alpha: 1)]
     
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ extension MiniGameViewController: UITableViewDelegate {
             self.navigationController?.pushViewController(movieVC, animated: true)
         case "폭탄게임":
             self.navigationController?.pushViewController(bombVC, animated: true)
-        case "스피드게임":
+        case "속담스피드게임":
             self.navigationController?.pushViewController(speedVC, animated: true)
         default:
             break
