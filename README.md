@@ -1,15 +1,12 @@
 # MiniGame-ios
 
-<<<<<<< HEAD
+
+
 언제 어디서나 제약 없이 간단한 터치로 다 같이 할 수 있는 게임을 모아 미니게임으로 만들어 애플리케이션을 출시하기 위해 만들었습니다.
 
 ```
 라이어 게임, 훈민정음 게임, 영화 제목 초성 게임, 폭탄 게임을 한곳에 모아 다양하게 즐길 수 있는 앱을 개발함으로써, 게임에 필요한 알고리즘, 타이머, 애니메이션을 넣어 출시하는 것을 목표로 기획하였습니다.
 ```
-=======
-<img src="https://user-images.githubusercontent.com/76473014/120596665-fcbb7880-c47e-11eb-9a2f-06d849c430e8.jpeg"  width="200" height="350"> <img src="https://user-images.githubusercontent.com/76473014/120596672-fe853c00-c47e-11eb-959f-4a80a9aaf448.jpeg"  width="200" height="350"> <img src="https://user-images.githubusercontent.com/76473014/120596677-ffb66900-c47e-11eb-9686-c835c46f294a.jpeg"  width="200" height="350"> <img src="https://user-images.githubusercontent.com/76473014/120596683-00e79600-c47f-11eb-996b-ef994d92b607.jpeg"  width="200" height="350">
->>>>>>> 74997846226c2a0938dbe080e01c825e0055010b
-
 ## Team Members
 
 - 신민희
